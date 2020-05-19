@@ -1,0 +1,31 @@
+:root {
+    /* border-color */
+    --b-color: #444;
+
+    --text: #444;
+    --text-1: #777;
+    --ac-color: #9C9CFF;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100vh;
+}
+
+body {
+    margin: 0;
+    font-family: monospace;
+    font-size: 100%;
+    color: var(--text);
+}
+
+small {
+    color: var(--text-1);
+}
+
+.text-center {
+    text-align: center;
+}
