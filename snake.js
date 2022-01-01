@@ -1,8 +1,6 @@
-const ROOT_EL = document.querySelector('.js-snake')
-
 const ROWS = 10
 const COLUMS = 10
-
+const ROOT_EL = document.querySelector('.js-snake')
 ROOT_EL.style.cssText = `
 	box-sizing: border-box;
 	--size: min(calc(100vw / ${COLUMS}), calc(100vh / ${ROWS}));
@@ -18,27 +16,57 @@ for (let row = 0; row < ROWS; row++) {
 		div.style.border = '1px solid #eee'
 		div.dataset.y = row
 		div.dataset.x = col
+		div.classList.add('js-snake_grid_box')
 		ROOT_EL.appendChild(div)
 	}
 }
 
+const Food = {
+	position: [1, 1],
+
+	wasEaten: false,
+
+	eat() {
+		this.wasEaten = true
+		this.setRandomPosition()
+	},
+
+	setRandomPosition() {
+		const availablePlaces = [...document.querySelectorAll(".js-snake_grid_box:not(.js-snake_body)")]
+		const randomPlace = availablePlaces[getRandomInt(availablePlaces.length)]
+		this.position = [
+			Number(randomPlace.dataset.x),
+			Number(randomPlace.dataset.y)
+		]
+		console.log(this.position )
+	},
+
+	draw() {
+		const prevEl = ROOT_EL.querySelector('.js-snake_food')
+		if (prevEl) prevEl.classList.remove('js-snake_food')
+
+		const [foodX, foodY] = this.position
+		const foodDiv = findDiv(foodX, foodY)
+		foodDiv.classList.add('js-snake_food')
+	},
+}
+
 const Snake = {
-	// [[x, y], ...]
-	position: [
-		[4, 9],
-		[5, 9],
-		[6, 9],
-		[7, 9]
-	],
+	positions: [[4, 9], [5, 9], [6, 9], [7, 9]],
 
-	didEat: false,
+	headPosition() {
+		return at(this.positions, -1)
+	},
 
-	foodPosition: [1, 1],
+	tailPosition() {
+		return at(this.positions, 0)
+	},
 
-	// 'RIGHT'
-	// 'DOWN'
-	// 'LEFT'
-	// 'UP'
+	intersect(position) {
+		const rest = this.positions.filter(pos => pos !== this.headPosition())
+		return rest.find(pos => isSamePosition(pos, position))
+	},
+
 	direction: 'RIGHT',
 	setDirection(direction) {
 		if (this.direction == 'RIGHT' && direction === "LEFT") return
@@ -49,106 +77,65 @@ const Snake = {
 	},
 
 	draw() {
-		for (let [x, y] of this.position) {
-			const div = this.findDiv(x, y)
-			div.style.background = '#000'
+		const previousEls = [...ROOT_EL.querySelectorAll('.js-snake_body')]
+		previousEls.forEach(el => el.classList.remove('js-snake_body'))
+
+		for (let [x, y] of this.positions) {
+			const div = findDiv(x, y)
+			div.classList.add('js-snake_body')
 		}
-
-		const [foodX, foodY] = this.foodPosition
-		const foodDiv = this.findDiv(foodX, foodY)
-		foodDiv.style.background = '#f00'
-	},
-
-	findDiv(x, y) {
-		return ROOT_EL.querySelector(`[data-x='${x}'][data-y='${y}']`)
 	},
 
 	move() {
-		this._popTail()
+		this.popTail()
 
-		const [nextX, nextY] = this._getNextPosition()
-		const [foodX, foodY] = this.foodPosition
-		if (nextX === foodX && nextY === foodY) {
-			this.didEat = true
-			this.foodPosition = [
-				getRandomInt(COLUMS),
-				getRandomInt(ROWS)
-			]
-		}
-
-
-
-		this._pushHead([nextX, nextY])
-		this.draw()
+		this.pushHead()
 	},
 
-	_popTail() {
-		if (this.didEat) {
-			this.didEat = false
+	popTail() {
+		if (Food.wasEaten) {
+			Food.wasEaten = false
 			return
 		}
-		const [tailX, tailY] = this.position.shift()
-		const div = this.findDiv(tailX, tailY)
-		div.style.background = 'transparent'
+
+		this.positions.shift()
 	},
 
-	_getNextPosition() {
-		const [headX, headY] = this._getHeadPosition()
+	pushHead() {
+		const nextPosition = this.nextPosition()
+		return this.positions.push(nextPosition)
+	},
+
+	nextPosition() {
+		const [x, y] = this.headPosition()
+
 		switch (this.direction) {
 			case "RIGHT":{
-				const nextX = headX + 1
-				if (nextX > COLUMS - 1) {
-					return [0, headY]
-				}
-				return [nextX, headY]
+				const nextX = x + 1
+				if (nextX > COLUMS - 1) return [0, y]
+				return [nextX, y]
 			}
 			case "LEFT": {
-				const nextX = headX - 1
-				if (nextX < 0) {
-					return [COLUMS - 1, headY]
-				}
-				return [nextX, headY]
+				const nextX = x - 1
+				if (nextX < 0) return [COLUMS - 1, y]
+				return [nextX, y]
 			}
 			case "UP": {
-				const nextY = headY - 1
-				if (nextY < 0) {
-					return [headX, ROWS - 1]
-				}
-				return [headX, nextY]
+				const nextY = y - 1
+				if (nextY < 0) return [x, ROWS - 1]
+				return [x, nextY]
 			}
 			case "DOWN": {
-				const nextY = headY + 1
-				if (nextY > ROWS - 1) {
-					return [headX, 0]
-				}
-				return [headX, nextY]
+				const nextY = y + 1
+				if (nextY > ROWS - 1) return [x, 0]
+				return [x, nextY]
 			}
 		}
-		throw Error('YOU passed an incorrect direction')
+		throw Error('INCORRECT_DIRECTION')
 	},
 
-	_getHeadPosition() {
-		return this.position[this.position.length - 1]
-	},
 
-	_pushHead(nextPoisition) {
-		return this.position.push(nextPoisition)
-	},
-
-	gameInterval: null,
-
-	startGame() {
-		const FPS = 1000 / 8
-		this.gameInterval = setInterval(() => Snake.move(), FPS)
-	},
-
-	stopGame() {
-		console.log('stope')
-		clearInterval(this.gameInterval)
-	}
 }
-
-Snake.startGame()
 
 document.addEventListener('keydown', changeDirection);
 
@@ -168,7 +155,63 @@ function changeDirection(e) {
 		break;
 	}
 }
+		// document.addEventListener('keydown', changeDirection);
+		// document.removeEventListener('keydown', changeDirection);
 
+const game = {
+	interval: null,
+	fps: 1000 / 8,
+
+	startGame() {
+		this.interval = setInterval(this.draw, this.fps)
+	},
+
+	endGame() {
+		clearInterval(this.interval)
+	},
+
+	draw() {
+		Snake.move()
+
+		if (isSamePosition(Snake.headPosition(), Food.position)) {
+			Food.eat()
+		}
+
+		const didSnakeEatItself = Snake.intersect(Snake.headPosition())
+		if (didSnakeEatItself) {
+			const index = Snake.positions.findIndex(pos => pos === didSnakeEatItself)
+			Snake.positions = Snake.positions.slice(index)
+		}
+
+		Food.draw()
+		Snake.draw()
+	}
+}
+
+function main() {
+	game.startGame()
+}
+
+main()
+
+
+// HELPERS
 function getRandomInt(max) {
 	return Math.floor(Math.random() * max);
+}
+
+function findDiv(x, y) {
+	return ROOT_EL.querySelector(`[data-x='${x}'][data-y='${y}']`)
+}
+
+function isSamePosition([aX, aY], [bX, bY]){
+	if (aX === bX && aY === bY) return true
+	return false
+}
+
+function at(array, index) {
+	if (index >= 0) {
+		return array[index]
+	}
+	return array[array.length - Math.abs(index)]
 }
