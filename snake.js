@@ -1,10 +1,13 @@
 const ROWS = 10
 const COLUMS = 10
 const ROOT_EL = document.querySelector('.js-snake')
+const keys = []
+
 ROOT_EL.style.cssText = `
 	box-sizing: border-box;
 	--size: min(calc(100vw / ${COLUMS}), calc(100vh / ${ROWS}));
-	display: grid;
+	display: inline-grid;
+	border: 0.1rem solid #000;
 	grid-template-columns: repeat(${COLUMS}, var(--size));
 	grid-template-rows: repeat(${ROWS}, var(--size));
 	justify-content: center;
@@ -13,7 +16,6 @@ ROOT_EL.style.cssText = `
 for (let row = 0; row < ROWS; row++) {
 	for (let col = 0; col < COLUMS; col++) {
 		const div = document.createElement('div')
-		div.style.border = '1px solid #eee'
 		div.dataset.y = row
 		div.dataset.x = col
 		div.classList.add('js-snake_grid_box')
@@ -38,7 +40,6 @@ const Food = {
 			Number(randomPlace.dataset.x),
 			Number(randomPlace.dataset.y)
 		]
-		console.log(this.position )
 	},
 
 	draw() {
@@ -52,7 +53,7 @@ const Food = {
 }
 
 const Snake = {
-	positions: [[4, 9], [5, 9], [6, 9], [7, 9]],
+	positions: [[4, 7], [5, 7], [6, 7], [7, 7]],
 
 	headPosition() {
 		return at(this.positions, -1)
@@ -73,7 +74,7 @@ const Snake = {
 		if (this.direction == 'DOWN' && direction === "UP") return
 		if (this.direction == 'LEFT' && direction === "RIGHT") return
 		if (this.direction == 'UP' && direction === "DOWN") return
-		this.direction = direction
+		if (direction) this.direction = direction
 	},
 
 	draw() {
@@ -137,23 +138,34 @@ const Snake = {
 
 }
 
-document.addEventListener('keydown', changeDirection);
+ROOT_EL.addEventListener('keydown', changeDirection);
+
 
 function changeDirection(e) {
+	let direction;
 	switch (event.key) {
 	case "ArrowLeft":
-		Snake.setDirection("LEFT")
-		break;
+		e.preventDefault()
+		direction = "LEFT"
+		break
 	case "ArrowRight":
-		Snake.setDirection("RIGHT")
-		break;
+		e.preventDefault()
+		direction = "RIGHT"
+		break
 	case "ArrowUp":
-		Snake.setDirection("UP")
-		break;
+		e.preventDefault()
+		direction = "UP"
+		break
 	case "ArrowDown":
-		Snake.setDirection("DOWN")
-		break;
+		e.preventDefault()
+		direction = "DOWN"
+		break
 	}
+	console.log('direction', direction)
+	keys.push(direction)
+	// only remember the 2 last keys
+	if (keys.length > 2) keys.shift()
+	console.log(keys)
 }
 		// document.addEventListener('keydown', changeDirection);
 		// document.removeEventListener('keydown', changeDirection);
@@ -171,6 +183,8 @@ const game = {
 	},
 
 	draw() {
+		const direction = keys.shift()
+		Snake.setDirection(direction)
 		Snake.move()
 
 		if (isSamePosition(Snake.headPosition(), Food.position)) {
