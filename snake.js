@@ -1,5 +1,5 @@
-const ROWS = 10
-const COLUMS = 10
+const ROWS = 38
+const COLUMS = 50
 const ROOT_EL = document.querySelector('.js-snake')
 const keys = []
 
@@ -194,7 +194,7 @@ const game = {
 		const didSnakeEatItself = Snake.intersect(Snake.headPosition())
 		if (didSnakeEatItself) {
 			const index = Snake.positions.findIndex(pos => pos === didSnakeEatItself)
-			Snake.positions = Snake.positions.slice(index)
+			Snake.positions = Snake.positions.slice(index + 1)
 		}
 
 		Food.draw()
