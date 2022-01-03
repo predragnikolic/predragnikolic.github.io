@@ -12,17 +12,17 @@ const COLUMS = 50
 /** @type {HTMLElement | null} */
 const ROOT_EL = document.querySelector('.js-snake')
 
-/** @type {Direction[]} */
-const keys = []
-
 
 if (ROOT_EL) ROOT_EL.style.cssText = `
     --size: min(calc(100vw / ${COLUMS}), calc(100vh / ${ROWS}));
+    max-width: 100%;
     display: inline-grid;
     grid-template-columns: repeat(${COLUMS}, var(--size));
     grid-template-rows: repeat(${ROWS}, var(--size));
     justify-content: center;
-    border: 0.1rem solid #000;
+    border: 0.2rem solid #000;
+    box-shadow: 0 0 8px #000 inset;
+    background: #fff;
 `
 
 for (let row = 0; row < ROWS; row++) {
@@ -68,28 +68,96 @@ const Food = {
     },
 }
 
-const Snake = {
-    /** @type {Position[]} */
-    positions: [
-        [4, 7],
-        [5, 7],
-        [6, 7],
-        [7, 7]
-    ],
+/** @typedef {number} KeyCode */
+
+/** @typedef {{
+ *      controls: {
+ *          up: KeyCode,
+ *          down: KeyCode,
+ *          right: KeyCode,
+ *          left: KeyCode
+ *      }
+ *      positions: Position[]
+ * }} SnakeOptions */
+
+let id = 0;
+class Snake {
+    /**
+     * @param      {SnakeOptions}  options  The options
+     */
+    constructor(options) {
+        this.id = id
+        id++
+        /** @type {SnakeOptions} */
+        this.options = options
+
+        /** @type {Direction[]} */
+        this.inputs = []
+
+            /** @type {Position[]} */
+        this.positions = options.positions
+
+        /** @type {Direction} */
+        this.direction = 'RIGHT'
+
+        this.onKeyDown = this.changeDirection.bind(this)
+        ROOT_EL?.addEventListener('keydown', this.onKeyDown);
+    }
+
+    cleanup() {
+        ROOT_EL?.removeEventListener('keydown', this.onKeyDown);
+    }
+
+    /**
+     * @param      {KeyboardEvent}  e
+     */
+    changeDirection(e) {
+        /** @type {Direction | undefined} */
+        let direction;
+
+        const controls = this.options.controls
+        switch (e.keyCode) {
+        case controls.left: {
+            e.preventDefault()
+            direction = "LEFT"
+            break
+        }
+        case controls.right: {
+            e.preventDefault()
+            direction = "RIGHT"
+            break
+        }
+        case controls.up: {
+            e.preventDefault()
+            direction = "UP"
+            break
+        }
+        case controls.down: {
+            e.preventDefault()
+            direction = "DOWN"
+            break
+        }
+        }
+
+        if (direction) this.inputs.push(direction)
+
+        // only remember the 2 last keys
+        if (this.inputs.length > 2) this.inputs.shift()
+    }
 
     /**
      * @return     {Position}
      */
     headPosition() {
-        return at(this.positions, -1) || [0, 0]
-    },
+        return at(this.positions, -1) || [-1, -1]
+    }
 
     /**
      * @return     {Position}
      */
     tailPosition() {
-        return at(this.positions, 0) || [0, 0]
-    },
+        return at(this.positions, 0) || [-1, -1]
+    }
 
     /**
      * @param      {Position}  position
@@ -99,39 +167,40 @@ const Snake = {
         const rest = this.positions.filter(pos => pos !== this.headPosition())
         if (!rest) return null
         return rest.find(pos => isSamePosition(pos, position)) || null
-    },
+    }
 
-    /** @type {Direction} */
-    direction: 'RIGHT',
+    setDirection() {
+        const direction = this.inputs.shift()
 
-    /**
-     * @param      {Direction | undefined}  direction
-     * @return     {void}
-     */
-    setDirection(direction) {
         if (this.direction == 'RIGHT'   && direction === "LEFT")    return
         if (this.direction == 'DOWN'    && direction === "UP")      return
         if (this.direction == 'LEFT'    && direction === "RIGHT")   return
         if (this.direction == 'UP'      && direction === "DOWN")    return
 
         if (direction) this.direction = direction
-    },
+    }
 
     draw() {
-        const previousEls = ROOT_EL?.querySelectorAll('.js-snake_body')
-        if (previousEls) Array.from(previousEls).forEach(el => el.classList.remove('js-snake_body'))
+        const previousEls = ROOT_EL?.querySelectorAll(`.js-snake_body.id-${this.id}`)
+        if (previousEls) Array.from(previousEls).forEach(el => {
+            el.classList.remove('js-snake_body')
+            el.classList.remove(`id-${this.id}`)
+        })
 
         for (let position of this.positions) {
             const div = findDiv(position)
             div?.classList.add('js-snake_body')
+            div?.classList.add(`id-${this.id}`)
         }
-    },
+    }
 
     move() {
+        this.setDirection()
+
         this.popTail()
 
         this.pushHead()
-    },
+    }
 
     popTail() {
         if (Food.wasEaten) {
@@ -140,12 +209,12 @@ const Snake = {
         }
 
         this.positions.shift()
-    },
+    }
 
     pushHead() {
         const nextPosition = this.nextPosition()
         return this.positions.push(nextPosition)
-    },
+    }
 
     /**
      * @return     {Position}
@@ -176,52 +245,19 @@ const Snake = {
             }
         }
         throw Error('INCORRECT_DIRECTION')
+    }
+}
+
+
+const snake = new Snake({
+    controls: {
+        up: 38,
+        down: 40,
+        right: 39,
+        left: 37,
     },
-
-
-}
-
-ROOT_EL?.addEventListener('keydown', changeDirection);
-
-
-/**
- * @param      {KeyboardEvent}  e
- */
-function changeDirection(e) {
-
-    /** @type {Direction | undefined} */
-    let direction;
-
-    switch (e.key) {
-    case "ArrowLeft": {
-        e.preventDefault()
-        direction = "LEFT"
-        break
-    }
-    case "ArrowRight": {
-        e.preventDefault()
-        direction = "RIGHT"
-        break
-    }
-    case "ArrowUp": {
-        e.preventDefault()
-        direction = "UP"
-        break
-    }
-    case "ArrowDown": {
-        e.preventDefault()
-        direction = "DOWN"
-        break
-    }
-    }
-
-    if (direction) keys.push(direction)
-
-    // only remember the 2 last keys
-    if (keys.length > 2) keys.shift()
-}
-        // document.addEventListener('keydown', changeDirection);
-        // document.removeEventListener('keydown', changeDirection);
+    positions: [[4, 7], [5, 7], [6, 7], [7, 7]]
+})
 
 const game = {
     /** @type {number | undefined} */
@@ -234,25 +270,26 @@ const game = {
 
     endGame() {
         clearInterval(this.interval)
+        snake.cleanup()
     },
 
     draw() {
-        const direction = keys.shift()
-        Snake.setDirection(direction)
-        Snake.move()
+        snake.move()
 
-        if (isSamePosition(Snake.headPosition(), Food.position)) {
+        if (isSamePosition(snake.headPosition(), Food.position)) {
             Food.eat()
         }
 
-        const didSnakeEatItself = Snake.intersect(Snake.headPosition())
+        const didSnakeEatItself = snake.intersect(snake.headPosition())
         if (didSnakeEatItself) {
-            const index = Snake.positions.findIndex(pos => pos === didSnakeEatItself)
-            Snake.positions = Snake.positions.slice(index + 1)
+            // const index = snake.positions.findIndex(pos => pos === didSnakeEatItself)
+            // snake.positions = snake.positions.slice(index + 1)
+            game.endGame()
+            console.log('endGame', this)
         }
 
+        snake.draw()
         Food.draw()
-        Snake.draw()
     }
 }
 
