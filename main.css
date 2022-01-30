@@ -1,3 +1,5 @@
+@import url('./css/snake.css');
+
 :root {
     /* border-color */
     --b-color: #444;
@@ -28,4 +30,13 @@ small {
 
 .text-center {
     text-align: center;
+}
+
+button {
+    background: #fff;
+    padding: 1rem 2rem;
+    text-transform: uppercase;
+    border-radius: 10rem;
+    letter-spacing: 0.2rem;
+    border:  0.1rem solid var(--b-color);
 }

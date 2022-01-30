@@ -103,16 +103,15 @@
 }
 
 .grid {
-    --grid-size: 100vw;
+    --rows:  10;
+    --size: max(calc(100vw / var(--rows)), calc(100vh / var(--rows)));
     position: absolute;
+    transform: rotate(45deg) scale(1);
     width: 100vw;
-    transform: rotate(45deg);
-    height: 100vw;
-    height:
-    --times: 4;
+    height: 100%;
     display: grid;
-    grid-template-columns: repeat(10, 1fr);
-    grid-template-rows: repeat(10, 1fr);
+    grid-template-columns: repeat(var(--rows), var(--size));
+    grid-template-rows: repeat(var(--rows), var(--size));
 }
 
 

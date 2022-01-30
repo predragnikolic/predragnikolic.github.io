@@ -21,7 +21,16 @@ if (ROOT_EL) ROOT_EL.style.cssText = `
     grid-template-rows: repeat(${ROWS}, var(--size));
     justify-content: center;
     background: #fff;
+    position: fixed;
+    top:0;
+    left:0;
+    opacity: 0;
+    z-index: -1;
+    height: calc(${ROWS} * var(--size) + 8px);
+    border: 4px solid #000;
 `
+
+ROOT_EL?.focus()
 
 for (let row = 0; row < ROWS; row++) {
     for (let col = 0; col < COLUMS; col++) {
@@ -94,6 +103,7 @@ class Food {
  *          left: KeyCode
  *      }
  *      positions: Position[]
+ *      direction?: Direction
  * }} SnakeOptions */
 
 let id = 0;
@@ -114,7 +124,7 @@ class Snake {
         this.positions = options.positions
 
         /** @type {Direction} */
-        this.direction = 'RIGHT'
+        this.direction = options.direction || 'RIGHT'
 
         this.didEat = false
 
@@ -132,6 +142,14 @@ class Snake {
 
     cleanup() {
         ROOT_EL?.removeEventListener('keydown', this.onKeyDown);
+
+        const previousEls = ROOT_EL?.querySelectorAll(`.id-${this.id}`)
+        if (previousEls) Array.from(previousEls).forEach(el => {
+            el.classList.remove('js-snake_body')
+            el.classList.remove(`id-${this.id}`)
+        })
+
+        this.positions = []
     }
 
     /**
@@ -142,6 +160,7 @@ class Snake {
         let direction;
 
         const controls = this.options.controls
+        console.log('eej')
         switch (e.keyCode) {
         case controls.left: {
             e.preventDefault()
@@ -189,10 +208,18 @@ class Snake {
      * @param      {Position}  position
      * @return     {Position | null}
      */
-    intersect(position) {
+    intersectNoHead(position) {
         const rest = this.positions.filter(pos => pos !== this.headPosition())
         if (!rest) return null
         return rest.find(pos => isSamePosition(pos, position)) || null
+    }
+
+    /**
+     * @param      {Position}  position
+     * @return     {Position | null}
+     */
+    intersect(position) {
+        return this.positions.find(pos => isSamePosition(pos, position)) || null
     }
 
     setDirection() {
@@ -275,15 +302,47 @@ class Snake {
 }
 
 
-const snake = new Snake({
-    controls: {
-        up: 38,
-        down: 40,
-        right: 39,
-        left: 37,
-    },
-    positions: [[4, 10], [5, 10], [6, 10], [7, 10]]
-})
+let snakes = [
+    new Snake({
+        controls: {
+            up: 38,
+            down: 40,
+            right: 39,
+            left: 37,
+        },
+        direction: "RIGHT",
+        positions: [[4, 33], [5, 33], [6, 33], [7, 33]]
+    }),
+     new Snake({
+        controls: {
+            up: 87,
+            down: 83,
+            right: 68,
+            left: 65,
+        },
+        direction: "RIGHT",
+        positions: [[28, 33], [29, 33], [30, 33], [31, 33]]
+    }),
+    new Snake({
+        controls: {
+            up: 84,
+            down: 71,
+            right: 72,
+            left: 70,
+        },
+        direction: "RIGHT",
+        positions: [[48, 33], [49, 33], [50, 33], [51, 33]]
+    }),
+    new Snake({
+        controls: {
+            up: 73,
+            down: 75,
+            right: 76,
+            left: 74,
+        },
+        positions: [[4, 16], [5, 16], [6, 16], [7, 16]]
+    })
+]
 
 const map = `
 ------------------------------------------------------------------
@@ -303,7 +362,7 @@ map.split('\n').filter(Boolean).map((line, i) => {
     Array.from(line).forEach((char, j) => {
         if (char == 'x') foods.push(new Food({
             position: [Number(j), Number(i)],
-            respawn: false
+            respawn: Boolean(getRandomInt(2))
         }))
     })
 })
@@ -319,39 +378,81 @@ const game = {
 
     endGame() {
         clearInterval(this.interval)
-        snake.cleanup()
+        snakes.forEach(snake => snake.cleanup())
     },
 
     draw() {
-        snake.move()
+        snakes.forEach( snake => snake.move())
 
-        foods.forEach(food => {
-            if (isSamePosition(snake.headPosition(), food.position)) {
-                snake.eat(food)
+        for (let snake of snakes) {
+            const otherSnakes = snakes.filter(s => s !==snake)
+
+            otherSnakes.forEach(otherSnake => {
+                if (otherSnake.intersect(snake.headPosition())) {
+                    console.log(isSamePosition(otherSnake.headPosition(), snake.headPosition()))
+                    console.log(otherSnake.headPosition(), snake.headPosition())
+                    if (isSamePosition(otherSnake.headPosition(), snake.headPosition())) {
+                        dieSnake(snake)
+                        dieSnake(otherSnake)
+                        console.log(`Tied. Player ${snake.id + 1} and ${otherSnake.id + 1} both died.`)
+                    } else {
+                        console.log(`Player ${snake.id + 1} was killed by Player ${otherSnake.id + 1}.`)
+                        dieSnake(snake)
+                    }
+                }
+            })
+
+            foods.forEach(food => {
+                if (isSamePosition(snake.headPosition(), food.position)) {
+                    snake.eat(food)
+                }
+            })
+
+            const didSnakeEatItself = snake.intersectNoHead(snake.headPosition())
+            if (didSnakeEatItself) {
+                // const index = snake.positions.findIndex(pos => pos === didSnakeEatItself)
+                // snake.positions = snake.positions.slice(index + 1)
+                // game.endGame()
+
+                 dieSnake(snake)
             }
-        })
 
-        const didSnakeEatItself = snake.intersect(snake.headPosition())
-        if (didSnakeEatItself) {
-            // const index = snake.positions.findIndex(pos => pos === didSnakeEatItself)
-            // snake.positions = snake.positions.slice(index + 1)
-            game.endGame()
-            console.log('endGame', this)
+            if (snakes.length === 1) {
+                alert(`The winner is Player ${snakes[0].id + 1}`)
+                game.endGame()
+                break;
+            }
+
+            if (snakes.length === 0) {
+                alert(`No one won.`)
+                break;
+            }
         }
 
-        snake.draw()
 
+        snakes.forEach( snake => snake.draw())
         foods.forEach(food => food.draw())
     }
 }
 
-function main() {
+function prepareGame() {
+    if (ROOT_EL) {
+        ROOT_EL.style.zIndex = '1'
+        ROOT_EL.style.opacity = '1';
+        ROOT_EL.focus()
+    }
     game.startGame()
 }
 
-main()
-
 // HELPERS
+
+/**
+ * @param      {Snake}  snake
+ */
+function dieSnake(snake) {
+    snake.cleanup()
+    snakes = snakes.filter(s => s !== snake)
+}
 
 /**
  * Geta a random integer.

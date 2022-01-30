@@ -5,20 +5,125 @@
     <meta charset="utf-8">
     <title>Predrag Nikolic - site</title>
     <link rel="stylesheet" type="text/css" href="./main.css">
-    <style type="text/css">
-        .js-snake_body {
-            background: #000;
-            box-shadow: 0 0 8px #000;
-        }
-
-        .js-snake_food {
-            background: #000;
-            box-shadow: 0 0 8px #000;
-            border-radius: 50%;
-        }
-    </style>
 </head>
 <body>
+        <link rel="stylesheet" type="text/css" href="./css/home_page.css">
+    <div class="home_grid">
+        <section class="about-area relative">
+            <div class="grid js-populate-grid">
+                <!-- this will be populated in js -->
+            </div>
+            <section class="text-center profile_info">
+                <img class="profile_image" src="./img/compressed.jpg">
+                <div>
+                    <h1 class="profile_name">Predrag Nikolic</h1>
+                    <p>Frontend Developer</p>
+                    <button onclick="prepareGame()">Contact me</button>
+                </div>
+            </section>
+        </section>
+        <section class="featured-area">
+            <ul class="timeline">
+                <li class="timeline_item" tabindex="0">
+                    <p>
+                        <time datetime="2019-04">Apr. 2019</time> - <time>Now</time>
+                    </p>
+                    <p>Frontend Developer</p>
+                    <small>
+                        at <a href="https://codetri.be/">CodeTribe</a> in Novi Sad, Serbia
+                    </small>
+                </li>
+
+                <li class="timeline_item" tabindex="0">
+                    <p>
+                        <time datetime="2017-09">Oct. 2017</time> - <time datetime="2019-01">Jan. 2019</time>
+                    </p>
+                    <p>Bachelor's Degree</p>
+                    <small>
+                        in "<i>Computer Science</i>"<br>
+                        at <abbr title="Faculty of Economics and Engineering Management"><a href="http://www.fimek.edu.rs/">FIMEK</a></abbr> in Novi Sad, Serbia
+                    </small>
+                </li>
+
+                <li class="timeline_item" tabindex="0">
+                    <p>
+                        <time datetime="2014-10">Oct. 2017</time>
+                    </p>
+                    <p>High Professional Degree</p>
+                   <small>
+                        as "<i>Professional engineer of electrical engineering and computing</i>"<br>
+                        at <abbr title="High Medical and Business Technology School of Professional Studies"><a href="https://www.vmpts.edu.rs/">VMPTS</a></abbr> in Šabac, Serbia
+                    </small>
+                </li>
+
+                <li class="timeline_item" tabindex="0">
+                    <p>
+                        <time datetime="2017-08">Avg. 2017</time> - <time datetime="2017-09">Sept. 2017</time>
+                    </p>
+                    <p>Advanced Web Development Course</p>
+                    <small>
+                        at <a href="https://academy.vivifyideas.com/">Vivify Academy</a><br>
+                        in Novi Sad, Serbia
+                    </small>
+                </li>
+
+                <li class="timeline_item" tabindex="0">
+                    <p>
+                        <time datetime="2017-01">Jan. 2017</time> - <time datetime="2017-04">Apr. 2017</time>
+                    </p>
+                    <p>Intership At <a href="http://www.digipro.rs/">DIGIPRO</a></p>
+                    <small>
+                        as <i>Apprentice electrician</i><br>
+                        in Šabac, Serbia
+                    </small>
+                </li>
+
+                <li class="timeline_item" tabindex="0">
+                    <p>
+                        <time datetime="2016-09">Sept. 2016</time>
+                    </p>
+                    <p>Discovered Open Source And Joined GitHub</p>
+                </li>
+
+                <li class="timeline_item" tabindex="0">
+                    <p>
+                        <time datetime="2014-09">Sept. 2014</time>
+                    </p>
+                    <p>Went To College</p>
+                    <small>
+                        at <abbr title="High Medical and Business Technology School of Professional Studies"><a href="https://www.vmpts.edu.rs/">VMPTS</a></abbr> in Šabac, Serbia
+                    </small>
+                </li>
+
+                <li class="timeline_item" tabindex="0">
+                    <p>1995 - The Beginning</p>
+                </li>
+            </ul>
+        </section>
+
+        <script>
+        const populateGridEl = document.querySelector('.js-populate-grid');
+
+        for (let i = 0; i < 100; i++) {
+            const div = document.createElement("div");
+
+            div.onmouseenter = (e) => {
+                div.style.animation = 'none';
+                  div.offsetHeight; /* trigger reflow */
+                  div.style.animation = null;
+
+                div.classList.add('hover')
+
+                div.onanimationend = () => {
+                    div.classList.remove('hover')
+                }
+            }
+
+            populateGridEl.appendChild(div)
+        }
+        </script>
+    </div>
+
     <div class="js-snake" tabindex="0">
     </div>
 
