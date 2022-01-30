@@ -1,12 +1,14 @@
 .js-snake_body {
-    background: #000;
-    box-shadow: 0 0 8px #000;
+    background: #fff;
 }
 
 .js-snake_food {
-    background: #000;
-    box-shadow: 0 0 8px #000;
+    background: #fff;
     border-radius: 50%;
+}
+
+.js-snake_grid_box {
+    border: 0.1rem solid #ffffff30;
 }
 
 .js-snake {

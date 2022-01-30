@@ -20,7 +20,7 @@ if (ROOT_EL) ROOT_EL.style.cssText = `
     grid-template-columns: repeat(${COLUMS}, var(--size));
     grid-template-rows: repeat(${ROWS}, var(--size));
     justify-content: center;
-    background: #fff;
+    background: #000;
     position: fixed;
     top:0;
     left:0;
