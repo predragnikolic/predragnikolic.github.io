@@ -9,28 +9,29 @@
 const ROWS = 38
 const COLUMS = 70
 
+let numberOfPlayers = 1
+
+const modalEL = document.querySelector('[data-modal="game-modal"]')
+function showModal() {
+    modalEL.classList.remove('hide')
+}
+
+function hideModal() {
+    modalEL.classList.add('hide')
+}
+
 /** @type {HTMLElement | null} */
 const ROOT_EL = document.querySelector('.js-snake')
+
+const GAME_WRAPPER_EL = document.querySelector('.js-snake-wrapper')
 
 
 if (ROOT_EL) ROOT_EL.style.cssText = `
     --size: min(calc(100vw / ${COLUMS}), calc(100vh / ${ROWS}));
-    max-width: 100%;
-    display: inline-grid;
     grid-template-columns: repeat(${COLUMS}, var(--size));
     grid-template-rows: repeat(${ROWS}, var(--size));
-    justify-content: center;
-    background: #000;
-    position: fixed;
-    top:0;
-    left:0;
-    opacity: 0;
-    z-index: -1;
-    height: calc(${ROWS} * var(--size) + 8px);
-    border: 4px solid #000;
+    height: calc(${ROWS} * var(--size) - 4em);
 `
-
-ROOT_EL?.focus()
 
 for (let row = 0; row < ROWS; row++) {
     for (let col = 0; col < COLUMS; col++) {
@@ -96,6 +97,7 @@ class Food {
 /** @typedef {number} KeyCode */
 
 /** @typedef {{
+ *      id: string
  *      controls: {
  *          up: KeyCode,
  *          down: KeyCode,
@@ -112,8 +114,7 @@ class Snake {
      * @param      {SnakeOptions}  options  The options
      */
     constructor(options) {
-        this.id = id
-        id++
+        this.id = options.id
         /** @type {SnakeOptions} */
         this.options = options
 
@@ -297,52 +298,61 @@ class Snake {
                 return [x, nextY]
             }
         }
-        throw Error('INCORRECT_DIRECTION')
+        throw new Error('INCORRECT_DIRECTION')
     }
 }
 
 
-let snakes = [
-    new Snake({
-        controls: {
-            up: 38,
-            down: 40,
-            right: 39,
-            left: 37,
-        },
-        direction: "RIGHT",
-        positions: [[4, 33], [5, 33], [6, 33], [7, 33]]
-    }),
-     new Snake({
-        controls: {
-            up: 87,
-            down: 83,
-            right: 68,
-            left: 65,
-        },
-        direction: "RIGHT",
-        positions: [[28, 33], [29, 33], [30, 33], [31, 33]]
-    }),
-    new Snake({
-        controls: {
-            up: 84,
-            down: 71,
-            right: 72,
-            left: 70,
-        },
-        direction: "RIGHT",
-        positions: [[48, 33], [49, 33], [50, 33], [51, 33]]
-    }),
-    new Snake({
-        controls: {
-            up: 73,
-            down: 75,
-            right: 76,
-            left: 74,
-        },
-        positions: [[4, 16], [5, 16], [6, 16], [7, 16]]
-    })
-]
+let snakes = getAllPlayers()
+
+function getAllPlayers() {
+    return [
+        new Snake({
+            id: 1,
+            controls: {
+                up: 38,
+                down: 40,
+                right: 39,
+                left: 37,
+            },
+            direction: "RIGHT",
+            positions: [[10, 33], [11, 33], [12, 33], [13, 33]]
+        }),
+         new Snake({
+            id: 2,
+            controls: {
+                up: 87,
+                down: 83,
+                right: 68,
+                left: 65,
+            },
+            direction: "RIGHT",
+            positions: [[26, 33], [27, 33], [28, 33], [29, 33]]
+        }),
+        new Snake({
+            id: 3,
+            controls: {
+                up: 84,
+                down: 71,
+                right: 72,
+                left: 70,
+            },
+            direction: "RIGHT",
+            positions: [[42, 33], [43, 33], [44, 33], [45, 33]]
+        }),
+        new Snake({
+            id: 4,
+            controls: {
+                up: 73,
+                down: 75,
+                right: 76,
+                left: 74,
+            },
+            direction: "RIGHT",
+            positions: [[58, 33], [59, 33], [60, 33], [61, 33]]
+        })
+    ]
+}
 
 const map = `
 ------------------------------------------------------------------
@@ -356,16 +366,20 @@ const map = `
 `
 
 /** @type {Food[]} */
-const foods = []
+let foods = []
 
-map.split('\n').filter(Boolean).map((line, i) => {
-    Array.from(line).forEach((char, j) => {
-        if (char == 'x') foods.push(new Food({
-            position: [Number(j), Number(i)],
-            respawn: Boolean(getRandomInt(2))
-        }))
+function setInitallFood() {
+    foods = []
+    map.split('\n').filter(Boolean).map((line, i) => {
+        Array.from(line).forEach((char, j) => {
+            if (char == 'x') foods.push(new Food({
+                position: [Number(j), Number(i)],
+                respawn: Boolean(getRandomInt(2))
+            }))
+        })
     })
-})
+}
+
 
 const game = {
     /** @type {number | undefined} */
@@ -379,6 +393,7 @@ const game = {
     endGame() {
         clearInterval(this.interval)
         snakes.forEach(snake => snake.cleanup())
+        GAME_WRAPPER_EL.classList.add('hide')
     },
 
     draw() {
@@ -412,19 +427,19 @@ const game = {
             if (didSnakeEatItself) {
                 // const index = snake.positions.findIndex(pos => pos === didSnakeEatItself)
                 // snake.positions = snake.positions.slice(index + 1)
-                // game.endGame()
 
                  dieSnake(snake)
             }
 
-            if (snakes.length === 1) {
-                alert(`The winner is Player ${snakes[0].id + 1}`)
+            if (numberOfPlayers > 1 && snakes.length === 1) {
+                alert(`The winner is Player ${snakes[0].id}`)
                 game.endGame()
                 break;
             }
 
             if (snakes.length === 0) {
                 alert(`No one won.`)
+                game.endGame()
                 break;
             }
         }
@@ -435,10 +450,19 @@ const game = {
     }
 }
 
-function prepareGame() {
+function play(event) {
+    event.preventDefault()
+
+    game.endGame()
+    hideModal()
+
+
+    numberOfPlayers = Number(document.forms.gameSettings.elements.numberOfPlayers.value)
+    snakes = getAllPlayers().slice(0, numberOfPlayers)
+    setInitallFood()
+
+    GAME_WRAPPER_EL.classList.remove('hide')
     if (ROOT_EL) {
-        ROOT_EL.style.zIndex = '1'
-        ROOT_EL.style.opacity = '1';
         ROOT_EL.focus()
     }
     game.startGame()

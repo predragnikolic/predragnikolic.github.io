@@ -8,6 +8,42 @@
 </head>
 <body>
         <link rel="stylesheet" type="text/css" href="./css/home_page.css">
+        <div class="modal_wrapper hide" data-modal='game-modal'>
+        <div class="modal flex gap-1">
+            <section class="grow flex column">
+                <form name="gameSettings" onsubmit="play(event)">
+                    <h1>Contact</h1>
+
+                    <p>Select how many people will see my email:</p>
+                    <div class="mb-1">
+                        <select name="numberOfPlayers">
+                          <option value="1">One</option>
+                          <option value="2">Two</option>
+                          <option value="3">Three</option>
+                          <option value="4">Four</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-1">
+                        <label>
+                            <input type="checkbox" name="terms" required>
+                            <span>You accept that you'll be exposed to fun.</span>
+                        </label>
+                    </div>
+
+                    <button type="submit">See my email</button>
+                    <button type="button" onclick="hideModal()">No</button>
+                </form>
+            </section>
+            <section>
+                <h1>Instructions</h1>
+                <p>Person 1: &uarr; &larr; &darr; &rarr;</p>
+                <p>Person 2: W A S D</p>
+                <p>Person 3: T F G H</p>
+                <p>Person 4: I J K L</p>
+            </section>
+        </div>
+        </div>
     <div class="home_grid">
         <section class="about-area relative">
             <div class="grid js-populate-grid">
@@ -18,7 +54,7 @@
                 <div>
                     <h1 class="profile_name">Predrag Nikolic</h1>
                     <p>Frontend Developer</p>
-                    <button onclick="prepareGame()">Contact me</button>
+                    <button onclick="showModal()">Contact me</button>
                 </div>
             </section>
         </section>
@@ -80,13 +116,6 @@
 
                 <li class="timeline_item" tabindex="0">
                     <p>
-                        <time datetime="2016-09">Sept. 2016</time>
-                    </p>
-                    <p>Discovered Open Source And Joined GitHub</p>
-                </li>
-
-                <li class="timeline_item" tabindex="0">
-                    <p>
                         <time datetime="2014-09">Sept. 2014</time>
                     </p>
                     <p>Went To College</p>
@@ -124,8 +153,11 @@
         </script>
     </div>
 
-    <div class="js-snake" tabindex="0">
-    </div>
+    <section class="js-snake-wrapper hide">
+        <div class="js-snake" tabindex="0">
+        </div>
+    <section>
+
 
     <script src="./snake.js" ></script>
 </body>
