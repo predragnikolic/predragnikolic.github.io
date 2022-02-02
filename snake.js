@@ -92,6 +92,12 @@ class Food {
         foodDiv?.classList.add(`js-snake_food`)
         foodDiv?.classList.add(`id-${this.id}`)
     }
+
+    cleanup() {
+        const previousEl = ROOT_EL?.querySelector(`.js-snake_food.id-${this.id}`)
+        previousEl?.classList.remove('js-snake_food')
+        previousEl?.classList.remove(`id-${this.id}`)
+    }
 }
 
 /** @typedef {number} KeyCode */
@@ -393,6 +399,7 @@ const game = {
     endGame() {
         clearInterval(this.interval)
         snakes.forEach(snake => snake.cleanup())
+        foods.forEach(food => food.cleanup())
         GAME_WRAPPER_EL.classList.add('hide')
     },
 
