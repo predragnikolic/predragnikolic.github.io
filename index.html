@@ -12,9 +12,9 @@
         <div class="modal flex gap-1">
             <section class="grow flex column">
                 <form name="gameSettings" onsubmit="play(event)">
-                    <h1>Contact</h1>
+                    <h1>Contact me</h1>
 
-                    <p>Select how many people will see my email:</p>
+                    <p>But play a game first:</p>
                     <div class="mb-1">
                         <select name="numberOfPlayers">
                           <option value="1">One</option>
@@ -27,11 +27,11 @@
                     <div class="mb-1">
                         <label>
                             <input type="checkbox" name="terms" required>
-                            <span>You accept that you'll be exposed to fun.</span>
+                            <span>You accept that today is a good day.</span>
                         </label>
                     </div>
 
-                    <button type="submit">See my email</button>
+                    <button type="submit" class="mr-1">Play</button>
                     <button type="button" onclick="hideModal()">No</button>
                 </form>
             </section>
