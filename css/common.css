@@ -1,0 +1,125 @@
+.min-100vh {
+    min-height: 100vh;
+}
+
+.full-width {
+    width: 100%;
+}
+
+.container {
+    width: 100%;
+    max-width: 800px;
+    padding: 0 2rem;
+    margin: 0 auto;
+}
+
+.flex {
+    display: flex;
+}
+
+.column {
+    flex-direction: column;
+}
+
+.fs-3 {
+    font-size: 2rem;
+}
+
+.grow {
+    flex-grow: 1;
+}
+
+.block {
+    display: block;
+}
+
+.mb-1 {
+    margin-bottom: 1rem;
+}
+
+.mb-2 {
+    margin-bottom: 2rem;
+}
+
+.mb-4 {
+    margin-bottom: 4rem;
+}
+
+.p-2 {
+    padding: 2rem;
+}
+
+.justify-center {
+    justify-content: center;
+}
+
+.gap-2 {
+    gap: 2rem;
+}
+
+.align-center {
+    align-items: center;
+}
+
+.darken {
+    background: #00000020;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.profile_image {
+    height: 33rem;
+    width: 33rem;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: bottom;
+    box-shadow: 0 2rem 2rem #00000020;
+}
+
+.profile_name {
+    font-size: 3rem;
+}
+
+.timeline {
+    position: relative;
+    list-style: none;
+    padding-left: 4rem;
+}
+
+.timeline:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 1.4rem;
+    width: 0.2rem;
+    height: 100%;
+    background: var(--b-color);
+}
+
+.timeline_item {
+    position: relative;
+    margin-bottom: 4em;
+}
+
+.timeline_item:after {
+    content: '';
+    z-index: 1;
+    position: absolute;
+    top: 0;
+    left: -3.2rem;
+    width: 1rem;
+    height: 1rem;
+    border-radius: 50%;
+    border: 0.2rem solid #fff;
+    background: var(--background);
+}
+
+.bt-1 {
+    border-top: 0.1rem solid var(--b-color);
+}
+
+.opacity-05 {
+    opacity: 0.5;
+}

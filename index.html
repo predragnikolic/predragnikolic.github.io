@@ -5,161 +5,192 @@
     <meta charset="utf-8">
     <title>Predrag Nikolic - site</title>
     <link rel="stylesheet" type="text/css" href="./main.css">
-    <meta name="description" content="Predrag Nikolic is from Likodra, Serbia. Works as a Front End Developer."/>
+    <meta name="description" content="Predrag Nikolic, Frontend Developer from Likodra, Serbia."/>
 </head>
 <body>
-        <link rel="stylesheet" type="text/css" href="./css/home_page.css">
-        <div class="modal_wrapper hide" data-modal='game-modal'>
-        <div class="modal flex gap-1">
-            <section class="grow flex column">
-                <form name="gameSettings" onsubmit="play(event)">
-                    <h1>Contact me</h1>
-
-                    <p>But play a game first:</p>
-                    <div class="mb-1">
-                        <select name="numberOfPlayers">
-                          <option value="1">One</option>
-                          <option value="2">Two</option>
-                          <option value="3">Three</option>
-                          <option value="4">Four</option>
-                        </select>
-                    </div>
-
-                    <div class="mb-1">
-                        <label>
-                            <input type="checkbox" name="terms" required>
-                            <span>You accept that today is a good day.</span>
-                        </label>
-                    </div>
-
-                    <button type="submit" class="mr-1">Play</button>
-                    <button type="button" onclick="hideModal()">No</button>
-                </form>
-            </section>
-            <section>
-                <h1>Instructions</h1>
-                <p>Person 1: &uarr; &larr; &darr; &rarr;</p>
-                <p>Person 2: W A S D</p>
-                <p>Person 3: T F G H</p>
-                <p>Person 4: I J K L</p>
-            </section>
-        </div>
-        </div>
-    <div class="home_grid">
-        <section class="about-area relative">
-            <div class="grid js-populate-grid">
-                <!-- this will be populated in js -->
+    <section class="min-100vh flex justify-center align-center text-center">
+        <div class="container">
+            <img class="profile_image" src="./img/compressed.jpg">
+            <div>
+                <h1 class="profile_name">Predrag Nikolic</h1>
+                <p>Frontend Developer at <a href="https://codetri.be/">CodeTribe</a></p>
+                <a href="mailto:mail@predrag.pro?subject=Say%20hi%20to%20Predrag!">mail@predrag.pro</a>
             </div>
-            <section class="text-center profile_info">
-                <img class="profile_image" src="./img/compressed.jpg">
-                <div>
-                    <h1 class="profile_name">Predrag Nikolic</h1>
-                    <p>Frontend Developer</p>
-                    <button onclick="showModal()">Contact me</button>
-                </div>
-            </section>
-        </section>
-        <section class="featured-area">
+        </div>
+    </section>
+    <section class="min-100vh flex column darken">
+        <div class="container grow p-2">
+            <h1 class="mb-2">Blog</h1>
             <ul class="timeline">
-                <li class="timeline_item" tabindex="0">
-                    <p>
-                        <time datetime="2019-04">Apr. 2019</time> - <time>Now</time>
-                    </p>
-                    <p>Frontend Developer</p>
-                    <small>
-                        at <a href="https://codetri.be/">CodeTribe</a> in Novi Sad, Serbia
-                    </small>
+                <li class="timeline_item">
+                    <time class="block mb-1">Comming Soon... maybe never :)</time>
+                    <article>
+                        <a href="#">Translations the cheap way</a>
+                    </article>
                 </li>
-
-                <li class="timeline_item" tabindex="0">
-                    <p>
-                        <time datetime="2017-09">Oct. 2017</time> - <time datetime="2019-01">Jan. 2019</time>
-                    </p>
-                    <p>Bachelor's Degree</p>
-                    <small>
-                        in "<i>Computer Science</i>"<br>
-                        at <abbr title="Faculty of Economics and Engineering Management"><a href="http://www.fimek.edu.rs/">FIMEK</a></abbr> in Novi Sad, Serbia
-                    </small>
-                </li>
-
-                <li class="timeline_item" tabindex="0">
-                    <p>
-                        <time datetime="2014-10">Oct. 2017</time>
-                    </p>
-                    <p>High Professional Degree</p>
-                   <small>
-                        as "<i>Professional engineer of electrical engineering and computing</i>"<br>
-                        at <abbr title="High Medical and Business Technology School of Professional Studies"><a href="https://www.vmpts.edu.rs/">VMPTS</a></abbr> in Šabac, Serbia
-                    </small>
-                </li>
-
-                <li class="timeline_item" tabindex="0">
-                    <p>
-                        <time datetime="2017-08">Avg. 2017</time> - <time datetime="2017-09">Sept. 2017</time>
-                    </p>
-                    <p>Advanced Web Development Course</p>
-                    <small>
-                        at <a href="https://academy.vivifyideas.com/">Vivify Academy</a><br>
-                        in Novi Sad, Serbia
-                    </small>
-                </li>
-
-                <li class="timeline_item" tabindex="0">
-                    <p>
-                        <time datetime="2017-01">Jan. 2017</time> - <time datetime="2017-04">Apr. 2017</time>
-                    </p>
-                    <p>Intership At <a href="http://www.digipro.rs/">DIGIPRO</a></p>
-                    <small>
-                        as <i>Apprentice electrician</i><br>
-                        in Šabac, Serbia
-                    </small>
-                </li>
-
-                <li class="timeline_item" tabindex="0">
-                    <p>
-                        <time datetime="2014-09">Sept. 2014</time>
-                    </p>
-                    <p>Went To College</p>
-                    <small>
-                        at <abbr title="High Medical and Business Technology School of Professional Studies"><a href="https://www.vmpts.edu.rs/">VMPTS</a></abbr> in Šabac, Serbia
-                    </small>
-                </li>
-
-                <li class="timeline_item" tabindex="0">
-                    <p>1995 - The Beginning</p>
+                <li class="timeline_item">
+                    <time>1995</time> - The Beginning
                 </li>
             </ul>
-        </section>
-
-        <script>
-        const populateGridEl = document.querySelector('.js-populate-grid');
-
-        for (let i = 0; i < 100; i++) {
-            const div = document.createElement("div");
-
-            div.onmouseenter = (e) => {
-                div.style.animation = 'none';
-                  div.offsetHeight; /* trigger reflow */
-                  div.style.animation = null;
-
-                div.classList.add('hover')
-
-                div.onanimationend = () => {
-                    div.classList.remove('hover')
-                }
-            }
-
-            populateGridEl.appendChild(div)
-        }
-        </script>
-    </div>
-
-    <section class="js-snake-wrapper hide">
-        <div class="js-snake" tabindex="0">
         </div>
-    <section>
 
+        <p class="container grow text-center opacity-05 fs-3 p-2" id="js-advice">
+            <!-- js will populate this -->
+        </p>
 
-    <script src="./snake.js" ></script>
+        <footer class="container text-center bt-1 p-2 flex align-center justify-center gap-2 opacity-05">
+            <a target="_blank" href="https://github.com/predragnikolic">
+                <img src="./img/github.svg" class="github_logo">
+            </a>
+        </footer>
+    </section>
+
+    <script>
+        const advices = [
+          '"Life is about making an impact, not making an income." -Kevin Kruse',
+          '"Whatever the mind of man can conceive and believe, it can achieve." –Napoleon Hill',
+          '"Strive not to be a success, but rather to be of value." –Albert Einstein',
+          '"Two roads diverged in a wood, and I—I took the one less traveled by, And that has made all the difference." –Robert Frost',
+          '"I attribute my success to this: I never gave or took any excuse." –Florence Nightingale',
+          '"You miss 100% of the shots you don’t take." –Wayne Gretzky',
+          '"The most difficult thing is the decision to act, the rest is merely tenacity." –Amelia Earhart',
+          '"Every strike brings me closer to the next home run." –Babe Ruth',
+          '"Definiteness of purpose is the starting point of all achievement." –W. Clement Stone',
+          '"Life isn\'t about getting and having, it\'s about giving and being." –Kevin Kruse',
+          '"Life is what happens to you while you’re busy making other plans." –John Lennon',
+          '"We become what we think about." –Earl Nightingale',
+          '"ife is 10% what happens to me and 90% of how I react to it." –Charles Swindoll',
+          '"The most common way people give up their power is by thinking they don’t have any." –Alice Walker',
+          '"The mind is everything. What you think you become. –Buddha"',
+          '"The best time to plant a tree was 20 years ago. The second best time is now." –Chinese Proverb',
+          '"An unexamined life is not worth living." –Socrates',
+          '"Eighty percent of success is showing up." –Woody Allen',
+          '"Your time is limited, so don’t waste it living someone else’s life." –Steve Jobs',
+          '"Winning isn’t everything, but wanting to win is." –Vince Lombardi',
+          '"I am not a product of my circumstances. I am a product of my decisions." –Stephen Covey',
+          '"Every child is an artist. The problem is how to remain an artist once he grows up." –Pablo Picasso',
+          '"You can never cross the ocean until you have the courage to lose sight of the shore." –Christopher Columbus',
+          '"Either you run the day, or the day runs you." –Jim Rohn',
+          '"Whether you think you can or you think you can’t, you’re right." –Henry Ford',
+          '"The two most important days in your life are the day you are born and the day you find out why." –Mark Twain',
+          '"Whatever you can do, or dream you can, begin it. Boldness has genius, power and magic in it." –Johann Wolfgang von Goethe',
+          '"The best revenge is massive success." –Frank Sinatra',
+          '"People often say that motivation doesn’t last. Well, neither does bathing. That’s why we recommend it daily." –Zig Ziglar',
+          '"Life shrinks or expands in proportion to one\'s courage." –Anais Nin',
+          '"If you hear a voice within you say “you cannot paint,” then by all means paint and that voice will be silenced." –Vincent Van Gogh',
+          '"There is only one way to avoid criticism: do nothing, say nothing, and be nothing." –Aristotle',
+          '"Ask and it will be given to you; search, and you will find; knock and the door will be opened for you." –Jesus',
+          '"The only person you are destined to become is the person you decide to be." –Ralph Waldo Emerson',
+          '"Go confidently in the direction of your dreams. Live the life you have imagined." –Henry David Thoreau',
+          '"Few things can help an individual more than to place responsibility on him, and to let him know that you trust him." –Booker T. Washington',
+          '"Certain things catch your eye, but pursue only those that capture the heart." – Ancient Indian Proverb',
+          '"Believe you can and you’re halfway there." –Theodore Roosevelt',
+          '"Everything you’ve ever wanted is on the other side of fear." –George Addair',
+          '"We can easily forgive a child who is afraid of the dark; the real tragedy of life is when men are afraid of the" light. –Plato',
+          '"Teach thy tongue to say, "I do not know," and thous shalt" progress." –Maimonides',
+          '"Start where you are. Use what you have. Do what you can." –Arthur Ashe',
+          '"Fall seven times and stand up eight." –Japanese Proverb',
+          '"Everything has beauty, but not everyone cansee." –Confucius',
+          '"How wonderful it is that nobody need wait a single moment before starting to improve the world." –Anne Frank',
+          '"When I let go of what I am, I become what I might be." –Lao Tzu',
+          '"Life is not measured by the number of breaths we take, but by the moments that take our breath away." –Maya Angelou',
+          '"Happiness is not something readymade. It comes from your own actions." –Dalai Lama',
+          '"If you\'re offered a seat on a rocket ship, don\'t ask what seat! Just get on." –Sheryl Sandberg',
+          '"If the wind will not serve, take to the oars." –Latin Proverb',
+          '"You can’t fall if you don’t climb. But there’s no joy in living your whole life on the ground." –Unknown',
+          '"We must believe that we are gifted for something, and that this thing, at whatever cost, must be attained." –Marie Curie',
+          '"Too many of us are not living our dreams because we are living our fears." –Les Brown',
+          '"Challenges are what make life interesting and overcoming them is what makes life meaningful." –Joshua J. Marine',
+          '"If you want to lift yourself up, lift up someone else." –Booker T. Washington',
+          '"I have been impressed with the urgency of doing. Knowing is not enough; we must apply. Being willing is not enough; we must do." –Leonardo da Vinci',
+          '"Limitations live only in our minds. But if we use our imaginations, our possibilities become limitless." –Jamie Paolinetti',
+          '"You take your life in your own hands, and what happens? A terrible thing, no one to blame." –Erica Jong',
+          '"What’s money? A man is a success if he gets up in the morning and goes to bed at night and in between does what he wants to do." –Bob Dylan',
+          '"I didn’t fail the test. I just found 100 ways to do it wrong." –Benjamin Franklin',
+          '"In order to succeed, your desire for success should be greater than your fear of failure." –Bill Cosby',
+          '"A person who never made a mistake never tried anything new." -Albert Einstein',
+          '"The person who says it cannot be done should not interrupt the person who is doing it." –Chinese Proverb',
+          '"There are no traffic jams along the extra mile." –Roger Staubach',
+          '"It is never too late to be what you might have been." –George Eliot',
+          '"You become what you believe." –Oprah Winfrey',
+          '"What Oprah Has Learned From Her 25 Years Of Interviews"',
+          '"I would rather die of passion than of boredom." –Vincent van Gogh',
+          '"A truly rich man is one whose children run into his arms when his hands are empty." –Unknown',
+          '"It is not what you do for your children, but what you have taught them to do for themselves, that will make them successful human beings." –Ann Landers',
+          '"If you want your children to turn out well, spend twice as much time with them, and half as much money." –Abigail Van Buren',
+          '"Build your own dreams, or someone else will hire you to build theirs." –Farrah Gray',
+          '"Education costs money. But then so does ignorance." –Sir Claus Moser',
+          '"I have learned over the years that when one\'s mind is made up, this diminishes fear." –Rosa Parks',
+          '"It does not matter how slowly you go as long as you do not stop." –Confucius',
+          '"If you look at what you have in life, you\'ll always have more. If you look at what you don\'t have in life, you\'ll never have enough." –Oprah Winfrey',
+          '"Remember that not getting what you want is sometimes a wonderful stroke of luck." –Dalai Lama',
+          '"You can’t use up creativity. The more you use, the more you have." –Maya Angelou',
+          '"Dream big and dare to fail." –Norman Vaughan',
+          '"Our lives begin to end the day we become silent about things that matter." –Martin Luther King Jr.',
+          '"Do what you can, where you are, with what you have." –Teddy Roosevelt',
+          '"If you do what you’ve always done, you’ll get what you’ve always gotten." –Tony Robbins',
+          '"Dreaming, after all, is a form of planning." –Gloria Steinem',
+          '"It\'s your place in the world; it\'s your life. Go on and do all you can with it, and make it the life you want to live." –Mae Jemison',
+          '"You may be disappointed if you fail, but you are doomed if you don\'t try." –Beverly Sills',
+          '"Remember no one can make you feel inferior without your consent." –Eleanor Roosevelt',
+          '"Life is what we make it, always has been, always will be." –Grandma Moses',
+          '"The question isn’t who is going to let me; it’s who is going to stop me." –Ayn Rand',
+          '"When everything seems to be going against you, remember that the airplane takes off against the wind, not with it." –Henry Ford',
+          '"It’s not the years in your life that count. It’s the life in your years." –Abraham Lincoln',
+          '"Change your thoughts and you change your world." –Norman Vincent Peale',
+          '"Either write something worth reading or do something worth writing." –Benjamin Franklin',
+          '"Nothing is impossible, the word itself says, “I’m possible!”" –Audrey Hepburn',
+          '"The only way to do great work is to love what you do." –Steve Jobs',
+          '"If you can dream it, you can achieve it." –Zig Ziglar',
+          '"Remember that there is no code faster than no code."',
+          '"Simplicity is the soul of efficiency."',
+          '"...it is simplicity that is difficult to make."',
+          '"Less is more."',
+          '"I have yet to see any problem, however complicated, which, when you looked at <br />it in the right way, did not become still more complicated. "',
+          '"Simple things should be simple and complex things should be possible. "',
+          '"Perfection (in design) is achieved not when there is nothing more to add, but <br />rather when there is nothing more to take away. "',
+          '"Plan to throw one away; you will anyhow. "',
+          '"Smart data structures and dumb code works alot better than the other way  around."',
+          '"Premature optimization is the root of all evil in programming. "',
+          '"A language that doesn\'t have everything is actually easier to program in than some that do. "',
+          '"The difference between a good and a poor architect is that the poor architect <br />succumbs to every temptation and the good one resists it."',
+          '"Refactoring provides enough energy to a system for it to relax into a new and <br />more comfortable state, a new local minimum."',
+          '"Beauty is more important in computing than anywhere else in technology <br />because software is so complicated. Beauty is the ultimate defense against complexity."',
+          '"Fools ignore complexity; pragmatists suffer it; experts avoid it; geniuses remove it."',
+          '"The cheapest, fastest, and most reliable components of a computer system are those that aren\'t there."',
+          '"Good judgment comes from experience; experience comes from bad judgment."',
+          '"Everything should be made as simple as possible, but not simpler."',
+          '"To arrive at the simple is difficult."',
+          '"The structure of a system reflects the structure of the organization that built it."',
+          '"The unavoidable price of reliability is simplicity."',
+          '"Computer Science is the only discipline in which we view adding a new wing to a building <br />as being maintenance."',
+          '"Controlling complexity is the essence of computer programming."',
+          '"Complexity is a sign of technical immaturity. Simplicity of use is the real sign of a well <br />design product whether it is an ATM or a Patriot missile."',
+          '"Simplicity does not precede complexity, but follows it."',
+          '"Walking on water and developing software from a specification are easy if both are frozen."',
+          '"Technical skill is mastery of complexity, while creativity is mastery of simplicity."',
+          '"Architect: Someone who knows the difference between that which could be done and that which should be done."',
+          '"The greatest obstacle to discovery is not ignorance, but the illusion of knowledge."',
+          '"A complex system that works is invariably found to have evolved from a simple <br />system that works."',
+          '"Simplicity is the peak of civilization."',
+          '"The ability to simplify means to eliminate the unnecessary so that the necessary may speak."',
+          '"The art of simplicity is a puzzle of complexity."',
+          '"Reality is that which, when you stop believing in it, doesn\'t go away."',
+          '"Furious activity is no substitute for understanding."',
+          '"The trouble with the world is that the stupid are cocksure and the <br />intelligent are full of doubt."',
+          '"An organisation that treats its programmers as morons will soon have <br />programmers that are willing and able to act like morons only."',
+          '"The most important single aspect of software development is to be clear about <br />what you are trying to build."',
+          '"Simplicity is prerequisite for reliability."',
+          '"If you cannot grok the overall structure of a program while taking a shower, <br />you are not ready to code it."',
+          '"Nothing resolves design issues like an implementation."',
+          '"The problem with Wikipedia is that it only works in practice. In theory, it\'s <br />a total disaster."',
+          '"In theory, there is no difference between theory and practice. But, in <br />practice, there is."',
+          '"Many of the above quotations are from Glenn Vanderburg\'s <br />Quotations on Simplicity in Software Design page."'
+        ]
+        const advice = advices[Math.floor(Math.random() * advices.length)];
+        const el = document.getElementById('js-advice')
+        el.innerHTML = advice
+    </script>
+
 </body>
 </html>
