@@ -116,8 +116,8 @@
     background: var(--background);
 }
 
-.bt-1 {
-    border-top: 0.1rem solid var(--b-color);
+.bt-2 {
+    border-top: 0.2rem solid var(--b-color);
 }
 
 .opacity-05 {
