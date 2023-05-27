@@ -33,7 +33,7 @@ readdirSync(postsDir).forEach(file => {
     const layout = readFileSync(path.join(__dirname, 'base', 'layout.html'), { encoding: 'utf8' })
     const htmlContent = content.replace(unparsedMeta + "\n", "")
     const gluedTogetherBlogPost = layout.replace('<!-- REPLACE ME WITH JS -->', htmlContent)
-    writeFileSync(`../blog/${meta.slug}.html`, gluedTogetherBlogPost);
+    writeFileSync(`../cita/${meta.slug}.html`, gluedTogetherBlogPost);
 });
 
 
@@ -43,11 +43,11 @@ metas.forEach(meta => {
   const categories = meta.tags.map(tag => `<category>${tag}</category>`).join('\n')
   rssItems.push(`<item>
     <title>${meta.title}</title>
-    <link>https://predrag.pro/blog/${meta.slug}.html</link>
+    <link>https://predrag.pro/cita/${meta.slug}.html</link>
+     <description>&lt;img src="${meta.image}"&gt;</description>
     <description>${meta.description}</description>
     <author>${meta.author}</author>
     <pubDate>${meta.date}</pubDate>
-    <image><url>${meta.image}</url></image>
     ${categories}
   </item>`)
 })
