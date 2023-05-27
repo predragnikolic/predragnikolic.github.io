@@ -11,6 +11,7 @@
     <link>https://predrag.pro/cita/git-diff-view-0-6-0-release.html</link>
      <description>&lt;img src="https://img.freepik.com/premium-photo/grey-abstract-background_427757-34.jpg"&gt;</description>
     <description>Some description</description>
+    <media:thumbnail url="https://img.freepik.com/premium-photo/grey-abstract-background_427757-34.jpg"/>
     <author>Predrag Nikolic</author>
     <pubDate>2023-05-27T00:00:00</pubDate>
     <category>sublime-text</category>
