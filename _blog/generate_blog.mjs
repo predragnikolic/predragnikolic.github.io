@@ -9,6 +9,7 @@ const postsDir = './';
  *  title: string
  *  description: string
  *  date: string
+ *  image: string
  *  tags: string[]
  * }} Meta
  */
@@ -26,6 +27,7 @@ readdirSync(postsDir).forEach(file => {
 
     const unparsedMeta = content.match(/(.*#:369:#)/gms)[0]
     const meta = parseMeta(unparsedMeta)
+    console.log(meta)
     metas.push(meta)
     // create html post
     const layout = readFileSync(path.join(__dirname, 'base', 'layout.html'), { encoding: 'utf8' })
@@ -45,10 +47,10 @@ metas.forEach(meta => {
     <description>${meta.description}</description>
     <author>${meta.author}</author>
     <pubDate>${meta.date}</pubDate>
+    <image><url>${meta.image}</url></image>
     ${categories}
   </item>`)
 })
-console.log(rssItems)
 const baseRss = readFileSync(path.join(__dirname, 'base', 'rss.xml'), { encoding: 'utf8' })
 const gluedTogetherRssFeed = baseRss.replace('<!-- REPLACE ME WITH JS -->', rssItems.join('\n'))
 writeFileSync(`../rss.xml`, gluedTogetherRssFeed);
@@ -66,7 +68,7 @@ function parseMeta(unparsedMeta) {
     tags: []
   }
   for (let line of lines) {
-    const [key, value] = line.split(':', 2)
+    const [key, value] = line.split(': ', 2)
     meta[key] = value.trim()
 
     if (key === 'tags') {
