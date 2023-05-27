@@ -9,7 +9,6 @@ const postsDir = './';
  *  title: string
  *  description: string
  *  date: string
- *  image: string
  *  tags: string[]
  * }} Meta
  */
@@ -44,7 +43,6 @@ metas.forEach(meta => {
   rssItems.push(`<item>
     <title>${meta.title}</title>
     <link>https://predrag.pro/cita/${meta.slug}.html</link>
-     <description>&lt;img src="${meta.image}"&gt;</description>
     <description>${meta.description}</description>
     <author>${meta.author}</author>
     <pubDate>${meta.date}</pubDate>
@@ -78,7 +76,7 @@ function parseMeta(unparsedMeta) {
   }
 
   const presentKeys = Object.keys(meta)
-  const requiredMetaKeys = ['slug', 'title', 'description', 'date', 'tags', 'image']
+  const requiredMetaKeys = ['slug', 'title', 'description', 'date', 'tags']
   requiredMetaKeys.forEach(requiredKey => {
     if (!presentKeys.includes(requiredKey)) throw Error(`Missing meta: ${requiredKey}`)
   })
