@@ -1,9 +1,11 @@
-<rss version="2.0">
+<rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:wfw="http://wellformedweb.org/CommentAPI/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:sy="http://purl.org/rss/1.0/modules/syndication/" xmlns:slash="http://purl.org/rss/1.0/modules/slash/">
   <channel>
-    <title>predrag.pro</title>
+    <title>Predrag Nikolic blog</title>
+    <atom:link href="https://predrag.pro/rss.xml" rel="self" type="application/rss+xml">
     <link>https://predrag.pro</link>
+
     <description>
-      Just to say hello.
+      I write(or not) about developer experience and stuff related to Web Development.
     </description>
 
   <item>
@@ -14,6 +16,10 @@
     <pubDate>2023-05-27T00:00:00</pubDate>
     <category>sublime-text</category>
 <category>react</category>
+<content:encoded><!--[CDATA[<p-->
+  <p>HEllo</p>
+    <a href="#"><img src="https://img.freepik.com/premium-photo/grey-abstract-background_427757-34.jpg" class="screenshot" width="401" height="300"></a>
+]]&gt;</content:encoded>
   </item>
   </channel>
 </rss>
