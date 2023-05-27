@@ -18,7 +18,7 @@
 <category>react</category>
 <content:encoded><!--[CDATA[<p-->
   <p>HEllo</p>
-    <a href="#"><img src="https://img.freepik.com/premium-photo/grey-abstract-background_427757-34.jpg" class="screenshot" width="401" height="300"></a>
+    <img src="https://img.freepik.com/premium-photo/grey-abstract-background_427757-34.jpg" class="screenshot" width="401" height="300">
 ]]&gt;</content:encoded>
   </item>
   </channel>
