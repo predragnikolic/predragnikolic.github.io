@@ -37,7 +37,7 @@ readdirSync(postsDir).forEach(file => {
       <meta name='date' content='${meta.date}'>
 
       <meta name='og:title' content='${meta.title}'>
-      <meta name='og:url' content='https://predrag.pro/cita/${meta.slug}'>
+      <meta name='og:url' content='https://predrag.pro/blog/${meta.slug}'>
       ${ meta.image ? `<meta name='og:image' content='${meta.image}`: ''}
       <meta name='og:site_name' content='predrag.pro'>
       <meta name='og:description' content='${meta.description}'>
@@ -52,7 +52,7 @@ readdirSync(postsDir).forEach(file => {
       .replace('<!-- REPLACE ME WITH TITLE AND DESCRIPTION JS -->', titleAndDecription)
       .replace('<!-- REPLACE ME WITH JS -->', content)
       .replace('<!-- ADD META WITH JS -->', metaContent)
-    writeFileSync(`./cita/${meta.slug}`, gluedTogetherBlogPost);
+    writeFileSync(`./blog/${meta.slug}`, gluedTogetherBlogPost);
 });
 
 metas = metas.sort((a, b) => new Date(a.date) > new Date(b.date))
@@ -63,7 +63,7 @@ metas.forEach(meta => {
   const categories = meta.tags.map(tag => `<category>${tag}</category>`).join('\n')
   rssItems.push(`<item>
     <title>${meta.title}</title>
-    <link>https://predrag.pro/cita/${meta.slug}</link>
+    <link>https://predrag.pro/blog/${meta.slug}</link>
     <description>${meta.description}</description>
     <author>${meta.author}</author>
     <pubDate>${meta.date}</pubDate>
@@ -72,7 +72,7 @@ metas.forEach(meta => {
 })
 const baseRss = readFileSync(path.join(postsDir, 'base', 'rss.xml'), { encoding: 'utf8' })
 const gluedTogetherRssFeed = baseRss.replace('<!-- REPLACE ME WITH JS -->', rssItems.join('\n'))
-writeFileSync(`./rss.xml`, gluedTogetherRssFeed);
+writeFileSync(`./feed`, gluedTogetherRssFeed);
 
 /**
  * @param      {string}  content  The unparsed meta
