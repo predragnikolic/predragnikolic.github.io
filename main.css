@@ -38,3 +38,7 @@ h1, p {
     width: 3rem;
     height: 3rem;
 }
+
+hr {
+    border-color: var(--b-color);
+}
