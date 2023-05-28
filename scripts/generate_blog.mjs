@@ -57,7 +57,7 @@ metas.forEach(meta => {
   const categories = meta.tags.map(tag => `<category>${tag}</category>`).join('\n')
   rssItems.push(`<item>
     <title>${meta.title}</title>
-    <link>https://predrag.pro/cita/${meta.slug}.html</link>
+    <link>https://predrag.pro/cita/${meta.slug}</link>
     <description>${meta.description}</description>
     <author>${meta.author}</author>
     <pubDate>${meta.date}</pubDate>
