@@ -5,34 +5,31 @@
 
 <img src="https://raw.githubusercontent.com/predragnikolic/sublime-git-diff-view/master/img/showcase.png" >
 
-<p>After 2 years of no updates, version 0.6.0 is here.</p>
-
-
-<h3 id="new-features">New features:</h3>
-
-<ul>
-	<li>New UI for staged files.</li>
-	<li>New UI for diff view.</li>
-	<li>"Discard Changes" is now shown in a small popup menu, instead of a distracting modal.</li>
-	<li>Improvement to the logic responsible to restore the old window layout.</li>
-</ul>
+<p>Version 0.6.0 is here.</p>
 
 <h3 id="breaking-changes">Breaking Changes:</h3>
 
 <ul>
-	<li>Support for Sublime Text 3 is dropped! Users who are on Sublime Text 3 will just continue to use GitDiffView 0.5.0.</li>
+	<li>Switched to Python 3.8. New version only supports Sublime Text 4! Users who are on Sublime Text 3 will just continue to use GitDiffView 0.5.0.</li>
+	<li><code>highlight_file_names</code> setting is removed.</li>
+	<li><code>staged_symbol</code> setting is removed.</li>
+</ul>
+
+<h3 id="new-features">New Features:</h3>
+
+<ul>
+	<li>New UI for the status view.</li>
+	<li>New UI for the diff view.</li>
+	<li>"Discard Changes" now uses a small popup menu to confirm the discard, instead of a distracting modal.</li>
+	<li>Improvement to the logic responsible to restore the old window layout.</li>
 </ul>
 
 <h3 id="other-changes">Other Changes:</h3>
 
 <ul>
 	<li>A complete rewrite of the plugin.</li>
-	<li>Switched to Python 3.8.</li>
 	<li>Added Mypy for type-checking.</li>
 </ul>
 
-<p>While the new update should brings improvements, it doesn't mean that it is perfect.</p>
 
-<p>The new git diff view is now able to highlight/visualize char that had been added/removed, but the code that is used for that sometimes doesn't detect the changes how I would expect. Right now <code>difflib.ndiff</code> is <a href="https://github.com/predragnikolic/sublime-git-diff-view/blob/b94640b684186a96a04377ab30f2660a30d93a17/command_update_diff_view.py#L74-L129">used</a>. PR that could improve this are welcome.</p>
-
-<p>I would recommend the GitDiffView plugin when you want to quickly see the changes that you did before committing. <br>If you need better performance and more features, I would strongly recommend to check out <a href="https://www.sublimemerge.com/">Sublime Merge</a>.</p>
+<p style="text-align: right;">Have a nice day!</p>
