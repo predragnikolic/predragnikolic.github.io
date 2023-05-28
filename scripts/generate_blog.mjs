@@ -72,7 +72,7 @@ metas.forEach(meta => {
 })
 const baseRss = readFileSync(path.join(postsDir, 'base', 'rss.xml'), { encoding: 'utf8' })
 const gluedTogetherRssFeed = baseRss.replace('<!-- REPLACE ME WITH JS -->', rssItems.join('\n'))
-writeFileSync(`./feed`, gluedTogetherRssFeed);
+writeFileSync(`./rss.xml`, gluedTogetherRssFeed);
 
 /**
  * @param      {string}  content  The unparsed meta
