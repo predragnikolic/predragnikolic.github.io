@@ -17,7 +17,7 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const postsDir = '../src';
+const postsDir = './src';
 /** @type {Meta[]} */
 let metas = []
 readdirSync(postsDir).forEach(file => {
@@ -27,7 +27,7 @@ readdirSync(postsDir).forEach(file => {
     const content = readFileSync(fullPathToFile, { encoding: 'utf8' });
     console.log({ content })
 
-    const meta = parseMeta(content, file)
+    const meta = parseMeta( content, file)
     metas.push(meta)
     // create html post
     const metaContent = `
@@ -43,10 +43,16 @@ readdirSync(postsDir).forEach(file => {
       <meta name='og:description' content='${meta.description}'>
     `
     const layout = readFileSync(path.join(postsDir, 'base', 'layout.html'), { encoding: 'utf8' })
+    const titleAndDecription = `
+      <h1 class="blog_title">${meta.title}</h1>
+      <p class="blog_description">${meta.description}</p>
+    `
+
     const gluedTogetherBlogPost = layout
+      .replace('<!-- REPLACE ME WITH TITLE AND DESCRIPTION JS -->', titleAndDecription)
       .replace('<!-- REPLACE ME WITH JS -->', content)
       .replace('<!-- ADD META WITH JS -->', metaContent)
-    writeFileSync(`../cita/${meta.slug}`, gluedTogetherBlogPost);
+    writeFileSync(`./cita/${meta.slug}`, gluedTogetherBlogPost);
 });
 
 metas = metas.sort((a, b) => new Date(a.date) > new Date(b.date))
@@ -66,7 +72,7 @@ metas.forEach(meta => {
 })
 const baseRss = readFileSync(path.join(postsDir, 'base', 'rss.xml'), { encoding: 'utf8' })
 const gluedTogetherRssFeed = baseRss.replace('<!-- REPLACE ME WITH JS -->', rssItems.join('\n'))
-writeFileSync(`../rss.xml`, gluedTogetherRssFeed);
+writeFileSync(`./rss.xml`, gluedTogetherRssFeed);
 
 /**
  * @param      {string}  content  The unparsed meta

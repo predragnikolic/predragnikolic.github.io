@@ -1,0 +1,9 @@
+{
+	"engines": {
+		"node": "19"
+	},
+	"scripts": {
+		"dev": "node  --watch-path=./src/ ./scripts/generate_blog.mjs",
+		"build": "node ./scripts/generate_blog.mjs"
+	}
+}
