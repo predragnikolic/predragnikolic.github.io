@@ -1,9 +1,9 @@
 <rss version="2.0">
   <channel>
-    <title>predrag.pro</title>
+    <title>Predrag Nikolic Blog</title>
     <link>https://predrag.pro</link>
     <description>
-      Just to say hello.
+      Let's hope that I will write about Sublime Text and stuff related to web development.
     </description>
 
   <!-- REPLACE ME WITH JS -->
