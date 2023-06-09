@@ -27,7 +27,7 @@
     <content:encoded><![CDATA[
     <img src="https://raw.githubusercontent.com/predragnikolic/sublime-git-diff-view/master/img/showcase.png" >
 
-<p>Version 0.6.0 of the GitDiffView plugin for Sublime Text is here.</p>
+<p>Version 0.6.0 of the <a href="https://github.com/predragnikolic/sublime-git-diff-view">GitDiffView</a> plugin for Sublime Text is here.</p>
 
 <h3 id="breaking-changes">Breaking Changes:</h3>
 
