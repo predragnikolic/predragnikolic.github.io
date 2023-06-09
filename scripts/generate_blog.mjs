@@ -11,6 +11,7 @@ import { fileURLToPath } from 'url';
  *  date: string
  *  image?: string
  *  tags: string[]
+ *  content: string
  * }} Meta
  */
 
@@ -25,7 +26,6 @@ readdirSync(postsDir).forEach(file => {
 
     const fullPathToFile = path.join(postsDir, file)
     const content = readFileSync(fullPathToFile, { encoding: 'utf8' });
-    console.log({ content })
 
     const meta = parseMeta( content, file)
     metas.push(meta)
@@ -62,12 +62,16 @@ const rssItems = []
 metas.forEach(meta => {
   const categories = meta.tags.map(tag => `<category>${tag}</category>`).join('\n')
   rssItems.push(`<item>
+    <guid>${meta.slug}</guid>
     <title>${meta.title}</title>
     <link>https://predrag.pro/blog/${meta.slug}</link>
     <description>${meta.description}</description>
     <author>${meta.author}</author>
-    <pubDate>${meta.date}</pubDate>
+    <pubDate>${new Date(meta.date).toUTCString()}</pubDate>
     ${categories}
+    <content:encoded><![CDATA[
+    ${meta.content}
+    ]]></content:encoded>
   </item>`)
 })
 const baseRss = readFileSync(path.join(postsDir, 'base', 'rss.xml'), { encoding: 'utf8' })
@@ -79,22 +83,30 @@ writeFileSync(`./rss.xml`, gluedTogetherRssFeed);
  * @return     {Meta}    The Meta (not facebook meta (:)
  */
 function parseMeta(content, slug) {
-  const title = content.match(/<title>(.*)<\/title>/)[1]
+  const [fullTitleMatch, title] = content.match(/<title>(.*)<\/title>/)
   if (!title) throw Error("Title tag is missing.")
-  const description = content.match(/['"]description['"]\scontent=['"](.+)['"]\s?>/)[1]
+  content = content.replace(fullTitleMatch, '')
+  const [fullDescriptionMatch, description] = content.match(/<meta.+['"]description['"]\scontent=['"](.+)['"]\s?>/)
   if (!description) throw Error("<meta name='description' content='*'> missing")
-  const tags = content.match(/['"]keywords['"]\scontent=['"](.+)['"]\s?>/)[1].split(',').map(tag => tag.trim())
+  content = content.replace(fullDescriptionMatch, '')
+  let [fullTagsMatch, tags] = content.match(/<meta.+['"]keywords['"]\scontent=['"](.+)['"]\s?>/)
   if (!tags) throw Error("<meta name='tags' content='*'> missing")
-  const date = content.match(/['"]date['"]\scontent=['"](.+)['"]\s?>/)[1]
+  content = content.replace(fullTagsMatch, '')
+  tags = tags.split(',').map(tag => tag.trim())
+  const [fullDateMatch, date] = content.match(/<meta.+['"]date['"]\scontent=['"](.+)['"]\s?>/)
   if (!date) throw Error("<meta name='date' content='*'> missing")
+  content = content.replace(fullDateMatch, '')
+
+  content = content.trim()
   /** @type {Meta} */
   const meta = {
     slug,
-    author: 'Predrag Nikolic',
+    author: 'mail@predrag.pro',
     title,
     description,
     date,
-    tags: []
+    tags,
+    content
   }
   return meta
 }
