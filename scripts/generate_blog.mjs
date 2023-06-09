@@ -62,7 +62,7 @@ const rssItems = []
 metas.forEach(meta => {
   const categories = meta.tags.map(tag => `<category>${tag}</category>`).join('\n')
   rssItems.push(`<item>
-    <guid>${meta.slug}</guid>
+    <guid isPermaLink="false">${meta.slug}</guid>
     <title>${meta.title}</title>
     <link>https://predrag.pro/blog/${meta.slug}</link>
     <description>${meta.description}</description>
@@ -101,7 +101,7 @@ function parseMeta(content, slug) {
   /** @type {Meta} */
   const meta = {
     slug,
-    author: 'mail@predrag.pro',
+    author: 'mail@predrag.pro (Предраг Николић)',
     title,
     description,
     date,
