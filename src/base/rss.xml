@@ -9,7 +9,7 @@
 
   <channel>
     <title>Предраг Николић</title>
-    <atom:link href="https://predrag.pro/rss.html" rel="self" type="application/rss+xml" />
+    <atom:link href="https://predrag.pro/rss.xml" rel="self" type="application/rss+xml" />
 
     <link>https://predrag.pro</link>
     <description>
