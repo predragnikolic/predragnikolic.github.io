@@ -7,6 +7,8 @@
   xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
   xmlns:slash="http://purl.org/rss/1.0/modules/slash/">
 
+
+
   <channel>
     <title>Предраг Николић</title>
     <atom:link href="https://predrag.pro/rss.xml" rel="self" type="application/rss+xml" />
@@ -53,7 +55,7 @@
 	<li>Added Mypy for type-checking.</li>
 </ul>
 
-<p>I pretty much enjoyed working on this update. The code has changed. The experience will feel familiar, yet different. Is the plugin better than before? Decide for yourself. :)</p>
+<p>I pretty much enjoyed working on this update. The code has changed. The experience will feel familiar, yet different.</p>
 
 
 <p style="text-align: right;">Have a nice day!</p>
