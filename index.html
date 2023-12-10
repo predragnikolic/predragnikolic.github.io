@@ -5,17 +5,24 @@
     <link rel="icon" href="/img/favicon.svg">
     <meta charset="utf-8">
     <title>Predrag Nikolic - site</title>
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;600&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
+
+
     <link rel="stylesheet" type="text/css" href="/main.css">
     <meta name="description" content="Predrag Nikolic, Frontend Developer from Likodra, Serbia."/>
 </head>
 <body>
     <section class="min-100vh flex justify-center align-center text-center">
-        <div class="container">
+        <div class="container p-2">
             <img class="profile_image" src="./img/compressed.jpg">
             <div>
-                <h1 class="profile_name">Ја сам Предраг Николић</h1>
-                <p>Неки кажу да сам само драг,</p>
-                <p>а неки да сам пре био драг, а сад не.</p>
+                <h1 class="profile_name">Предраг Николић</h1>
+                <div class="profile_description">
+                    <p>Frontend Developer</p>
+                    <a href="mailto:mail@predrag.pro?subject=Say%20hi%20to%20Predrag!">mail@predrag.pro</a>
+                </div>
             </div>
         </div>
     </section>
@@ -35,7 +42,7 @@
             </ul>
         </div>
 
-        <p class="container grow text-center opacity-05 fs-3 p-2" id="js-advice">
+        <p class="container grow text-center opacity-05 font-xl p-2" id="js-advice">
             <!-- js will populate this -->
         </p>
 
@@ -48,16 +55,21 @@
 
     <script>
         const advices = [
-          '"Живот је кратак, поједи батак" - Даниела Метикош',
-          '"I don\'t use the word \"problem\"." – Игорь Евсюков',
-          '"Слободно време проведено на нечему што волиш, није изгубљено време." - Алексеј Макаји',
-          '"Један коњ увек вуче више" - моја мама',
-          '"Треба знати када стати" - ја',
-          '"No one really knows anything" - unknown'
+          'Живот је кратак, поједи батак – Даниела Метикош',
+          'I rarely use the word problem – Игорь Евсюков',
+          'Један коњ увек вуче више – моја мама',
+          'Треба знати када стати',
+          'No one really knows anything'
         ]
         const advice = advices[Math.floor(Math.random() * advices.length)];
+        const [text, author='unknown']= advice.replace(/\n/g, '<br/>').split('–')
         const el = document.getElementById('js-advice')
-        el.innerHTML = advice.replace(/\n/g, '<br/>')
+        el.innerHTML = `<p>
+            <span class="font-xxl">"</span>
+            ${text}
+            <span class="font-xxl last-quote">"</span>
+        </p>
+        <p class="font-l">- ${author}</p>`
     </script>
 
 </body>

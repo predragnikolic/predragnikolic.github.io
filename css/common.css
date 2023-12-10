@@ -9,7 +9,7 @@
 .container {
     width: 100%;
     max-width: 800px;
-    padding: 0 2rem;
+    padding: 0 40px;
     margin: 0 auto;
 }
 
@@ -21,8 +21,24 @@
     flex-direction: column;
 }
 
-.fs-3 {
-    font-size: 2rem;
+.font-s {
+    font-size: 14px;
+}
+
+.font-m {
+    font-size: 16px;
+}
+
+.font-l {
+    font-size: 20px;
+}
+
+.font-xl {
+    font-size: 30px;
+}
+
+.font-xxl {
+    font-size: 50px;
 }
 
 .grow {
@@ -43,6 +59,10 @@
 
 .mb-4 {
     margin-bottom: 4rem;
+}
+
+.mt-1 {
+    margin-top: 1rem;
 }
 
 .mt-4 {
@@ -73,6 +93,18 @@
     text-align: center;
 }
 
+.text-accent {
+    color: var(--ac-color);
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.uppercase {
+    text-transform: uppercase;
+}
+
 .profile_image {
     width: 100%;
     max-width: 30rem;
@@ -84,7 +116,26 @@
 }
 
 .profile_name {
-    font-size: 3rem;
+    font-size: 40px;
+    margin-bottom: 0;
+}
+
+.profile_description {
+    font-size: 18px;
+}
+
+@media (max-width: 400px) {
+    .profile_image {
+        max-width: 20rem;
+    }
+
+    .profile_name {
+        font-size: 28px;
+    }
+
+    .profile_description {
+        font-size: 16px;
+    }
 }
 
 .timeline {
@@ -117,8 +168,17 @@
     width: 1rem;
     height: 1rem;
     border-radius: 50%;
-    border: 0.2rem solid #fff;
+    border: 0.2rem solid var(--b-color);
     background: var(--background);
+}
+
+.timeline_item:last-of-type:after {
+    top: 3px;
+}
+
+.last-quote {
+    display: inline-block;
+    transform: translateY(50%);
 }
 
 .bt-2 {
@@ -128,3 +188,8 @@
 .opacity-05 {
     opacity: 0.5;
 }
+
+.opacity-08 {
+    opacity: 0.8;
+}
+
