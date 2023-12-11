@@ -1,5 +1,5 @@
 .blog_title {
-	margin: 40px;
+	margin: 40px 28px;
 	font-size: 40px;
 	padding-top: 20px;
 	text-align: center;
@@ -13,6 +13,7 @@
 	padding: 0;
 	text-align: center;
 	padding-bottom: 30px;
+	line-height: 1.9;
 }
 
 .blog img {
@@ -20,7 +21,7 @@
 }
 
 .blog.container {
-	padding: 0 40px;
+	padding: 0 28px;
 }
 
 .blog {
@@ -28,21 +29,20 @@
 	line-height: 1.9;
 }
 
-
 .blog code {
 	background: #00000020;
 	padding: 0.1rem 0.4rem;
 	border-radius: 0.4rem;
-	font-family: Courier;
 	border: 1px solid var(--b-color);
 }
 
 @media only screen and (max-width: 600px) {
-	body {
-		padding: 0 1rem;
+	.blog_title {
+		font-size: 32px;
 	}
-	.blog {
-		font-size: 1rem;
-		line-height: 1.8rem;
+
+	.blog_description {
+		font-size: 16px;
 	}
+
 }
