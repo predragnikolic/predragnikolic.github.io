@@ -105,6 +105,10 @@
     text-transform: uppercase;
 }
 
+.relative {
+    position: relative;
+}
+
 .profile_image {
     width: 100%;
     max-width: 30rem;
@@ -193,3 +197,16 @@
     opacity: 0.8;
 }
 
+.home_dots {
+    position: absolute;
+    bottom: -20px;
+    right: 0px;
+    height: 224px;
+    margin: 20px;
+}
+
+@media (max-width: 500px) {
+    .home_dots {
+        display: none;
+    }
+}
