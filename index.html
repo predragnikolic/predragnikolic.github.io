@@ -101,7 +101,7 @@
                     const h = cellWidth * 0.8
                     const n = noise2D(x * 0.001 + frame, y * 0.001)
                     const m = noise2D(x * 0.003 + frame, y * 0.003)
-                    frame += 0.000002
+                    frame += 0.000003
                     const angle = n * Math.PI * 0.2
 
                     ctx.save()
@@ -133,7 +133,6 @@
         window.addEventListener('resize', () => {
             requestAnimationFrame(() => {
                 setCanvasSize()
-                draw()
             })
         })
     </script>
