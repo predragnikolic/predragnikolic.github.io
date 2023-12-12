@@ -15,6 +15,7 @@
 </head>
 <body>
     <section class="min-100vh flex justify-center align-center text-center">
+        <canvas id="perlin-noise-bg"></canvas>
         <div class="container p-2">
             <img class="profile_image" src="./img/compressed.jpg">
             <div>
@@ -70,6 +71,67 @@
             <span class="font-xxl last-quote">"</span>
         </p>
         <p class="font-l">- ${author}</p>`
+    </script>
+    <script type="module">
+        import {createNoise2D} from "https://unpkg.com/simplex-noise@4.0.1/dist/esm/simplex-noise.js"
+        const noise2D = createNoise2D();
+        const canvas = document.querySelector('canvas')
+        const ctx = canvas.getContext('2d')
+
+        let frame = 1
+        const draw = () => {
+            ctx.fillStyle = '#192224'
+            const gridWidth = canvas.width
+            const gridHeight = canvas.height
+            ctx.fillRect(0, 0, gridWidth, gridHeight)
+            const rows = gridHeight > 800 ? 30 : 20;
+            const cols = gridWidth > 1000 ? 30 : gridWidth > 800 ? 20 : 10;
+            const cells = rows * cols,
+                cellWidth = gridWidth / cols,
+                cellHeight = gridHeight / rows;
+
+            for (let row = 0; row < rows; row++) {
+                for (let col = 0; col < cols; col++) {frame
+                    const x = col * cellWidth,
+                         y = row * cellHeight;
+                    const w = cellWidth * 0.8;
+                    const h = cellWidth * 0.8;
+                    const n = noise2D(x*0.001 + frame, y*0.001);
+                    frame+= 0.000003
+                    const angle = n * Math.PI * 0.2
+
+                    ctx.save()
+                    ctx.translate(x,y)
+                    ctx.translate(cellWidth*0.5,cellHeight*0.5)
+                    ctx.rotate(angle)
+
+                    ctx.beginPath()
+                    ctx.moveTo(w * -0.5, 0)
+                    ctx.strokeStyle = 'rgba(0, 255, 255,' + 0.1 * angle + ')'
+                    ctx.stokeOpa
+                    ctx.lineWidth = 4
+                    ctx.lineTo(w * 0.5, 0)
+                    ctx.stroke()
+
+                    ctx.restore()
+                }
+            }
+
+            requestAnimationFrame(draw)
+        }
+
+        const setCanvasSize = () => {
+            canvas.width = window.innerWidth
+            canvas.height = window.innerHeight
+        }
+        setCanvasSize()
+        draw()
+        window.addEventListener('resize', () => {
+            requestAnimationFrame(() => {
+                setCanvasSize()
+                draw()
+            })
+        })
     </script>
 
 </body>

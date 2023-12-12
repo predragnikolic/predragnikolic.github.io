@@ -47,3 +47,8 @@ h1, p {
 hr {
     border-color: var(--b-color);
 }
+
+#perlin-noise-bg {
+    position: absolute;
+    z-index: -1;
+}
