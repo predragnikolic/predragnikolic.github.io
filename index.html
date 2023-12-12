@@ -81,35 +81,36 @@
         const ctx = canvas.getContext('2d')
 
         let frame = 1
-        const draw = () => {
-            ctx.fillStyle = '#192224'
+         const draw = () => {
+            ctx.fillStyle = "#192224"
             const gridWidth = canvas.width
             const gridHeight = canvas.height
             ctx.fillRect(0, 0, gridWidth, gridHeight)
-            const rows = gridHeight > 800 ? 30 : 20;
-            const cols = gridWidth > 1000 ? 30 : gridWidth > 800 ? 20 : 10;
+            const rows = gridHeight > 800 ? 30 : 24
+            const cols = gridWidth > 1000 ? 30 : gridWidth > 800 ? 20 : 12
             const cells = rows * cols,
                 cellWidth = gridWidth / cols,
                 cellHeight = gridHeight / rows;
 
             for (let row = 0; row < rows; row++) {
-                for (let col = 0; col < cols; col++) {frame
+                for (let col = 0; col < cols; col++) {
                     const x = col * cellWidth,
-                         y = row * cellHeight;
-                    const w = cellWidth * 0.8;
-                    const h = cellWidth * 0.8;
-                    const n = noise2D(x*0.001 + frame, y*0.001);
-                    frame+= 0.000003
+                        y = row * cellHeight;
+                    const w = cellWidth * 0.8
+                    const h = cellWidth * 0.8
+                    const n = noise2D(x * 0.001 + frame, y * 0.001)
+                    const m = noise2D(x * 0.003 + frame, y * 0.003)
+                    frame += 0.000002
                     const angle = n * Math.PI * 0.2
 
                     ctx.save()
-                    ctx.translate(x,y)
-                    ctx.translate(cellWidth*0.5,cellHeight*0.5)
+                    ctx.translate(x, y)
+                    ctx.translate(cellWidth * 0.5, cellHeight * 0.5)
                     ctx.rotate(angle)
 
                     ctx.beginPath()
                     ctx.moveTo(w * -0.5, 0)
-                    ctx.strokeStyle = 'rgba(0, 255, 255,' + 0.2 * angle + ')'
+                    ctx.strokeStyle = "rgba(255, 255, 255," + 0.2 * m * Math.PI * 0.2 + ")"
                     ctx.stokeOpa
                     ctx.lineWidth = 2
                     ctx.lineTo(w * 0.5, 0)
