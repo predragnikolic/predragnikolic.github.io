@@ -1,17 +1,27 @@
+.blog_body {
+	background: linear-gradient(top, #161e20, #192224);
+	color: #ddd;
+}
+
+.blog_body h1, h2, h3 {
+	color: #fff;
+}
+
+.gold_banner {
+	height: 10px;
+	width: 100%;
+	background: var(--ac-color);
+}
+
 .blog_title {
-	margin: 40px 28px;
 	font-size: 40px;
 	padding-top: 20px;
-	text-align: center;
 }
 
 .blog_description {
-	opacity: 0.7;
 	font-size: 18px;
-	max-width: 40ch;
-	margin: 0 auto;
+	max-width: 50ch;
 	padding: 0;
-	text-align: center;
 	padding-bottom: 30px;
 	line-height: 1.9;
 }
@@ -20,8 +30,14 @@
 	width: 100%;
 }
 
+.blog li {
+	line-height: 2;
+}
+
 .blog.container {
-	padding: 0 28px;
+    max-width: 900px;
+    padding: 0 40px;
+    margin: 0 auto;
 }
 
 .blog {
