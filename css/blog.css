@@ -47,6 +47,7 @@
 	white-space: pre-wrap;
 	display: block;
     padding: 0.4rem;
+    overflow: auto;
 }
 
 .blog img {
