@@ -26,9 +26,47 @@
 	line-height: 1.9;
 }
 
+.blog .note {
+	display: block;
+    border-left: 0.4rem solid var(--ac-color);
+    padding-left: 0.4rem;
+    background: linear-gradient(to right, #00000090, transparent);
+}
+
+.noselect {
+	user-select: none;
+}
+
+.blog .note::before {
+	content: "NOTE:";
+	margin-right: 0.4rem;
+	font-weight: bold;
+}
+
+.blog .code-block {
+	white-space: pre-wrap;
+	display: block;
+    padding: 0.4rem;
+}
+
+.blog img {
+	border-radius: 0.4rem;
+	background: linear-gradient(to right, #00000090, transparent);
+	width: 100%;
+}
+
+.blog video {
+	margin: 18px 0;
+	border-radius: 0.4rem;
+	background: linear-gradient(to right, #00000090, transparent);
+	width: 100%;
+}
+
+
 .blog img {
 	width: 100%;
 }
+
 
 .blog li {
 	line-height: 2;

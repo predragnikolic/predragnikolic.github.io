@@ -1,0 +1,45 @@
+<title>Visualize your database</title>
+<meta name='description' content='An <a href="https://www.npmjs.com/package/@predragnikolic/pn-show-db">npm tool</a> to visualize your database<br />and generate SQL with a local Ollama model.'>
+<meta name='keywords' content='postgres,visualize,sql,ollama,phi,sqlcoder'>
+<meta name='date' content='2024-05-05T12:59:00'>
+
+<img height="402" src="https://github.com/predragnikolic/predragnikolic.github.io/assets/22029477/57b18467-b67b-41b7-8b5d-0adfa6332eaf" >
+
+<h3 id="getting-started">Getting started</h3>
+
+<ol>
+	<li>Create a <code>.env</code> file with the following content:</li>
+	<code class="code-block"># Change the connection string
+DATABASE_URL=postgres://user:password@host:5432/database</code>
+	</li>
+	<li><p>From the root folder where the <code>.env</code> file is present, run:</p>
+	<code class="code-block"><span class="noselect mr-1">$</span>npx @predragnikolic/pn-show-db --db=postgres</code>
+	<p>That will open a browser and visualize your database.</p></li>
+</ol>
+
+<small class="note">Currently only Postgres is supported.</small>
+
+<h2 id="ollama-ai">Generate SQL code with a local Ollama model</h2>
+
+<p>There is support for local Ollama models such as <code>phi3</code> or <code>sqlcoder</code>.</p>
+
+<ul>
+	<li><code>phi3</code> - Phi is a small language model capable of common-sense reasoning and language understanding. It showcases “state-of-the-art performance” among language models with less than 13 billion parameters.</li>
+	<li><code>sqlcoder</code> - This 15B completion model generally requires at least 16GB of RAM.</li>
+</ul>
+
+<small class="note">When the <code>--ollama-model=MODEL_NAME</code> argument is specified, a wand icon will appear in the top left corner.</small>
+
+<h2 id="setup-ollama-phi">Setup Ollama and Phi</h2>
+
+<p>Download <a href="https://ollama.com/download">Ollama</a>.</p>
+<p>Run <code><span class="noselect mr-1">$</span>ollama run phi3</code> to install <code>phi3</code>.</p>
+
+<p>To use <code>phi3</code> with <code>@predragnikolic/pn-show-db</code>, run:</p>
+<code class="code-block"><span class="noselect mr-1">$</span>npx @predragnikolic/pn-show-db --db=postgres --ollama-model=phi3
+</code>
+
+<video src="https://github.com/predragnikolic/predragnikolic.github.io/assets/22029477/eee69ed1-b8f2-4c34-b2cb-329d18d469d7" controls></video>
+
+
+<p style="text-align: right;">Христос васкрсе!</p>
