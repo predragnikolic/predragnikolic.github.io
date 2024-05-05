@@ -159,7 +159,7 @@
     <guid isPermaLink="false">visualize-your-database.html</guid>
     <title>Visualize your database</title>
     <link>https://predrag.pro/blog/visualize-your-database.html</link>
-    <description>An <a href="https://www.npmjs.com/package/@predragnikolic/pn-show-db">npm tool</a> to visualize your database<br />and generate SQL with a local Ollama model.</description>
+    <description>An <a href="https://www.npmjs.com/package/@predragnikolic/pn-show-db">npm tool</a> to visualize your database <br />and generate SQL with a local Ollama model.</description>
     <author>mail@predrag.pro (Предраг Николић)</author>
     <pubDate>Sun, 05 May 2024 10:59:00 GMT</pubDate>
     <category>postgres</category>
