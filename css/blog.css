@@ -29,7 +29,7 @@
 .blog .note {
 	display: block;
     border-left: 0.4rem solid var(--ac-color);
-    padding-left: 0.4rem;
+    padding: 1rem;
     background: linear-gradient(to right, #00000090, transparent);
 }
 

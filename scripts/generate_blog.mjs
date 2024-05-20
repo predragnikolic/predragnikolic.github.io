@@ -49,9 +49,9 @@ readdirSync(postsDir).forEach(file => {
     `
 
     const gluedTogetherBlogPost = layout
-      .replace('<!-- REPLACE ME WITH TITLE AND DESCRIPTION JS -->', titleAndDecription)
-      .replace('<!-- REPLACE ME WITH JS -->', content)
-      .replace('<!-- ADD META WITH JS -->', metaContent)
+      .replace('<!-- {{TITLE_DESCRIPTION}} -->', titleAndDecription)
+      .replace('<!--  {{BLOG_POST}}  -->', content)
+      .replace('<!-- {{BLOG_META}}-->', metaContent)
     writeFileSync(`./blog/${meta.slug}`, gluedTogetherBlogPost);
 });
 
