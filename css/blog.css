@@ -1,6 +1,7 @@
 .blog_body {
 	background: linear-gradient(top, #161e20, #192224);
 	color: #ddd;
+	font-family: 'Jura';
 }
 
 .blog_body h1, h2, h3 {
@@ -14,7 +15,8 @@
 }
 
 .blog_title {
-	font-size: 40px;
+    font-family: "myFirstFont";
+	font-size: 2.7rem;
 	padding-top: 20px;
 }
 
@@ -41,6 +43,10 @@
 	content: "NOTE:";
 	margin-right: 0.4rem;
 	font-weight: bold;
+}
+
+.blog pre {
+	font-family: 'Jura';
 }
 
 .blog .code-block {
@@ -86,6 +92,7 @@
 }
 
 .blog code {
+	font-family: 'Jura';
 	background: #00000020;
 	padding: 0.1rem 0.4rem;
 	border-radius: 0.4rem;

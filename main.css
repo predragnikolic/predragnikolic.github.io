@@ -19,7 +19,7 @@ html, body {
 
 body {
     margin: 0;
-    font-family: 'JetBrains Mono', monospace;    font-size: 18px;
+    font-family: 'Jura', monospace;    font-size: 18px;
     color: var(--text);
     background-color: var(--background);
 }
