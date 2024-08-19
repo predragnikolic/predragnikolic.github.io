@@ -1,11 +1,11 @@
 .blog_body {
-	background: linear-gradient(top, #161e20, #192224);
-	color: #ddd;
+	background: #fafafa;
+	color: #333;
 	font-family: 'Jura';
 }
 
 .blog_body h1, h2, h3 {
-	color: #fff;
+	color: #000;
 }
 
 .gold_banner {
@@ -15,7 +15,7 @@
 }
 
 .blog_title {
-    font-family: "myFirstFont";
+    font-family: "Yeseva One";
 	font-size: 2.7rem;
 	padding-top: 20px;
 }
@@ -30,9 +30,9 @@
 
 .blog .note {
 	display: block;
-    border-left: 0.4rem solid var(--ac-color);
+    border-left: 0.4rem solid #fccb9e;
     padding: 1rem;
-    background: linear-gradient(to right, #00000090, transparent);
+    background: linear-gradient(to right, #00000010, transparent);
 }
 
 .noselect {
@@ -52,7 +52,7 @@
 .blog .code-block {
 	white-space: pre-wrap;
 	display: block;
-    padding: 0.4rem;
+    padding: 0.4rem 0.8rem;
     overflow: auto;
 }
 
@@ -93,7 +93,7 @@
 
 .blog code {
 	font-family: 'Jura';
-	background: #00000020;
+	background: #fff;
 	padding: 0.1rem 0.4rem;
 	border-radius: 0.4rem;
 	border: 1px solid var(--b-color);

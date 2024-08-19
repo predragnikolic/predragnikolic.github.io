@@ -3,7 +3,7 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="/img/favicon.svg">
-    <meta name="theme-color" content="#161e20">
+    <meta name="theme-color" content="#161e19">
     <meta charset="utf-8">
     <title>Предраг Николић</title>
      <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -58,11 +58,11 @@
         </div>
 
 
-        <p class="container grow text-center opacity-05 font-xl pb-2" id="js-advice">
+        <p class="container grow text-center font-xl pb-2" id="js-advice">
             <!-- js will populate this -->
         </p>
 
-        <footer class="container text-center bt-2 p-2 flex align-center justify-center gap-2 opacity-05">
+        <footer class="container text-center bt-2 p-2 flex align-center justify-center gap-2 opacity-08">
             <a target="_blank" href="https://github.com/predragnikolic">
                 <img src="/img/github.svg" class="github_logo">
             </a>
@@ -98,12 +98,12 @@
 
         let frame = 1
          const draw = () => {
-            ctx.fillStyle = "#192224"
+            ctx.fillStyle = "#d0d2ce"
             const gridWidth = canvas.width
             const gridHeight = canvas.height
             ctx.fillRect(0, 0, gridWidth, gridHeight)
-            const rows = gridHeight > 800 ? 30 : 24
-            const cols = gridWidth > 1000 ? 30 : gridWidth > 800 ? 20 : 12
+            const rows = 66
+            const cols = gridWidth > 1000 ? 66 : 100
             const cells = rows * cols,
                 cellWidth = gridWidth / cols,
                 cellHeight = gridHeight / rows;
@@ -116,7 +116,7 @@
                     const h = cellWidth * 0.8
                     const n = noise2D(x * 0.001 + frame, y * 0.001)
                     const m = noise2D(x * 0.003 + frame, y * 0.003)
-                    frame += 0.000003
+                    frame += 0.000001
                     const angle = n * Math.PI * 0.2
 
                     ctx.save()
@@ -126,10 +126,10 @@
 
                     ctx.beginPath()
                     ctx.moveTo(w * -0.5, 0)
-                    ctx.strokeStyle = "rgba(255, 255, 255," + 0.2 * m * Math.PI * 0.2 + ")"
+                    ctx.strokeStyle = "rgba(0, 0, 0," + 0.06 * m * Math.PI * 0.06 + ")"
                     ctx.stokeOpa
                     ctx.lineWidth = 2
-                    ctx.quadraticCurveTo(0, h * 0.5 * (n / 2), w * 0.5, 0); // Quadratic curve to create wave effect
+                    ctx.quadraticCurveTo(0, h * -100 * (n / 2), w * 100, 0); // Quadratic curve to create wave effect
                     ctx.stroke()
 
                     ctx.restore()

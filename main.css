@@ -1,9 +1,9 @@
 @import url('./css/common.css');
 
 :root {
-    --text: #fff;
-    --b-color: #ffffff20;
-    --background: #192224;
+    --text: #333;
+    --b-color: #00000010;
+    --background: #fefefe;
     --ac-color: #fccb9e;
     --rounded: 1rem;
 }
@@ -25,7 +25,7 @@ body {
 }
 
 a {
-    color: var(--ac-color);
+    color: #000;
     text-decoration: none;
     font-weight: bold;
 }

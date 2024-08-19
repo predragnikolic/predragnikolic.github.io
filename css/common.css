@@ -94,7 +94,7 @@
 }
 
 .darken {
-    background: #00000020;
+    background: #efefef;
 }
 
 .text-center {
@@ -124,7 +124,7 @@
     border-radius: 50%;
     object-fit: cover;
     object-position: bottom;
-    border: 8px solid #161e20;
+    border: 8px solid #161e19;
 }
 
 .profile_name {
@@ -154,7 +154,7 @@
     left: 1.4rem;
     width: 0.1rem;
     height: 100%;
-    background: var(--b-color);
+    background: #000;
 }
 
 .timeline_item {
@@ -171,8 +171,8 @@
     width: 1rem;
     height: 1rem;
     border-radius: 50%;
-    border: 0.1rem solid var(--b-color);
-    background: var(--background);
+    border: 0.1rem solid #000;
+    background: #efefef;
 }
 
 .timeline_item:last-of-type:after {
