@@ -40,9 +40,15 @@ h1, p {
 }
 
 .github_logo {
-    width: 48px;
-    height: 48px;
+    opacity: 0.5;
+    width: 40px;
+    height: 40px;
 }
+
+.github_logo:hover {
+    opacity: 1;
+}
+
 
 hr {
     border-color: var(--b-color);
