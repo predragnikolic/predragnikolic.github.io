@@ -89,9 +89,9 @@
         const [text, author='unknown']= advice.replace(/\n/g, '<br/>').split('–')
         const el = document.getElementById('js-advice')
         el.innerHTML = `<p>
-            <span class="font-xxl">"</span>
+            <span>"</span>
             ${text}
-            <span class="font-xxl last-quote">"</span>
+            <span class="last-quote">"</span>
         </p>
         <p class="font-l">- ${author}</p>`
     </script>

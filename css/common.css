@@ -37,10 +37,6 @@
     font-size: 30px;
 }
 
-.font-xxl {
-    font-size: 50px;
-}
-
 .grow {
     flex-grow: 1;
 }
