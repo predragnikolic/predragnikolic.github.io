@@ -18,6 +18,21 @@
     font-family: "Yeseva One";
 	font-size: 2.7rem;
 	padding-top: 20px;
+	animation: slideUp 0.3s forwards;
+}
+
+@keyframes slideUp {
+	0% {
+		opacity: 0;
+		transform: translateY(33px);
+	}
+	33% {
+		transform: translateY(6px);
+	}
+	100% {
+		opacity: 1;
+		transform: translateY(0);
+	}
 }
 
 .blog_description {
@@ -26,6 +41,13 @@
 	padding: 0;
 	padding-bottom: 30px;
 	line-height: 1.9;
+	animation: slideUp 0.3s backwards;
+	animation-delay: 0.1s;
+}
+
+.blog-section {
+	animation: slideUp 0.3s backwards;
+	animation-delay: 0.2s;
 }
 
 .blog .note {
