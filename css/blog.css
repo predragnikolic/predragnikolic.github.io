@@ -80,14 +80,14 @@
 
 .blog img {
 	border-radius: 0.4rem;
-	background: linear-gradient(to right, #00000090, transparent);
+	background: linear-gradient(to right, #00000020, transparent, #00000010);
 	width: 100%;
 }
 
 .blog video {
 	margin: 18px 0;
 	border-radius: 0.4rem;
-	background: linear-gradient(to right, #00000090, transparent);
+	background: linear-gradient(to right, #00000020, transparent, #00000010);
 	width: 100%;
 }
 
@@ -97,6 +97,11 @@
 	width: 100%;
 }
 
+
+.blog .image-compare img {
+	object-fit: initial;
+	width: initial;
+}
 
 .blog li {
 	line-height: 2;

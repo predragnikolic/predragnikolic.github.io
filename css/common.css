@@ -131,6 +131,10 @@
     border: 8px solid #161e19;
 }
 
+.rounded {
+    border-radius: 0.4rem;
+}
+
 .profile_name {
     font-family: "Yeseva One";
     font-size: 38px;
@@ -234,4 +238,8 @@
     .font-xxl {
         font-size: 28px;
     }
+}
+
+.icv__label {
+    background: #000 !important;
 }
