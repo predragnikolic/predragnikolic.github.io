@@ -156,9 +156,9 @@
     ]]></content:encoded>
   </item>
 <item>
-    <guid isPermaLink="false">pravoslavna-knjizara-spoiler.html</guid>
+    <guid isPermaLink="false">pravoslavna-knjizara-is-live.html</guid>
     <title>"Православна књижара" is now live</title>
-    <link>https://predrag.pro/blog/pravoslavna-knjizara-spoiler.html</link>
+    <link>https://predrag.pro/blog/pravoslavna-knjizara-is-live.html</link>
     <description>Let's take a look:</description>
     <author>mail@predrag.pro (Предраг Николић)</author>
     <pubDate>Mon, 16 Sep 2024 19:36:00 GMT</pubDate>
@@ -210,7 +210,7 @@
 <p class="text-center mb-2">Product Details Page</p>
 
 <p>Apart from the obvious visual changes, the application architecture has been rebuilt from the ground up with the most modern web tooling available.</p>
-<p>The goal was to create an app that looks appealing, features smooth animations, functions seamlessly as a mobile app, and delivers an excellent user experience.</p>
+<p>The goal was to create an app that looks appealing, features smooth animations, mobile friendly, and delivers an excellent user experience.</p>
 
 <p>Please give it a try and see if it meets these expectations.</p>
 
