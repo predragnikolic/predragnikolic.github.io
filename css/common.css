@@ -2,6 +2,10 @@
     min-height: 100dvh;
 }
 
+.min-100vh {
+    min-height: 100vh;
+}
+
 .full-width {
     width: 100%;
 }
