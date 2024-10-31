@@ -156,11 +156,14 @@
         }
         setCanvasSize()
         draw()
-        window.addEventListener('resize', () => {
-            requestAnimationFrame(() => {
-                setCanvasSize()
+        const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+        if (!isMobile) {
+            window.addEventListener('resize', (e) => {
+                requestAnimationFrame(() => {
+                    setCanvasSize()
+                })
             })
-        })
+        }
     </script>
 
 </body>
