@@ -16,10 +16,10 @@
     <meta name="description" content="Програмер из Ликодре."/>
 </head>
 <body>
-    <section class="min-100dvh flex justify-center align-center text-center">
-        <canvas id="perlin-noise-bg" style="min-height: 100%; width: 100%;"></canvas>
+    <section class="flex justify-center align-center text-center" style="height: 100dvh; width:100%">
+        <canvas id="perlin-noise-bg"></canvas>
         <div class="container p-2">
-            <img class="profile_image" src="./img/asd.jpg">
+            <img class="profile_image" src="./img/compressed.jpg">
             <div>
                 <h1 class="profile_name">Предраг Николић</h1>
                 <div class="profile_description">
@@ -114,7 +114,7 @@
             const gridHeight = canvas.height
             ctx.fillRect(0, 0, gridWidth, gridHeight)
             const rows = 66
-            const cols = gridWidth > 1000 ? 66 : 100
+            const cols = gridWidth > 1000 ? 66 : 99
             const cells = rows * cols,
                 cellWidth = gridWidth / cols,
                 cellHeight = gridHeight / rows;
