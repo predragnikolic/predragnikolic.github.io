@@ -13,13 +13,13 @@
 }
 
 html, body {
-    height: 100dvh;
+    height: 100vh;
     margin: 0;
 }
 
 body {
     margin: 0;
-    font-family: 'Jura', monospace;    font-size: 18px;
+    font-family: 'Jura', monospace; font-size: 18px;
     color: var(--text);
     background-color: var(--background);
 }
