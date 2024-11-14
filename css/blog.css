@@ -9,11 +9,30 @@
 }
 
 .gold_banner {
-	height: 10px;
+	height: 3px;
 	width: 100%;
-	background: var(--ac-color);
+	background: linear-gradient(90deg, #161903, #000);
+	position: fixed;
+	top: 0;
+	z-index: 10;
+	transform-origin: left;
+  
+  	/* Animation properties */
+  	animation: appear ease-in-out;
+  	animation-timeline: scroll();
+  	animation-duration: 1s;
 }
 
+
+/* Keyframes to animate scaleX from 0 to 1 */
+@keyframes appear {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
 .blog_title {
 	margin-top: 0;
     font-family: "Yeseva One";
