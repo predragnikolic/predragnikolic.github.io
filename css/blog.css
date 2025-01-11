@@ -1,11 +1,18 @@
 .blog_body {
 	background: #fafafa;
 	color: #333;
-	font-family: 'Jura';
+	font-family: "Jura";
 }
 
-.blog_body h1, h2, h3 {
-	color: #000;
+.blog_body h1,
+h2,
+h3 {
+	color: var(--text);
+	font-family: "bukyVede";
+}
+.blog_body h2,
+.blog_body h3 {
+	font-size: 2rem;
 }
 
 .gold_banner {
@@ -16,26 +23,25 @@
 	top: 0;
 	z-index: 10;
 	transform-origin: left;
-  
-  	/* Animation properties */
-  	animation: appear ease-in-out;
-  	animation-timeline: scroll();
-  	animation-duration: 1s;
-}
 
+	/* Animation properties */
+	animation: appear ease-in-out;
+	animation-timeline: scroll();
+	animation-duration: 1s;
+}
 
 /* Keyframes to animate scaleX from 0 to 1 */
 @keyframes appear {
-  from {
-    transform: scaleX(0);
-  }
-  to {
-    transform: scaleX(1);
-  }
+	from {
+		transform: scaleX(0);
+	}
+	to {
+		transform: scaleX(1);
+	}
 }
 .blog_title {
 	margin-top: 0;
-    font-family: "Yeseva One";
+	font-family: "bukyVede";
 	font-size: 2.7rem;
 	animation: slideUp 0.3s forwards;
 }
@@ -71,9 +77,9 @@
 
 .blog .note {
 	display: block;
-    border-left: 0.4rem solid #fccb9e;
-    padding: 1rem;
-    background: linear-gradient(to right, #00000010, transparent);
+	border-left: 0.4rem solid #fccb9e;
+	padding: 1rem;
+	background: linear-gradient(to right, #00000010, transparent);
 }
 
 .noselect {
@@ -87,14 +93,14 @@
 }
 
 .blog pre {
-	font-family: 'Jura';
+	font-family: "Jura";
 }
 
 .blog .code-block {
 	white-space: pre-wrap;
 	display: block;
-    padding: 0.4rem 0.8rem;
-    overflow: auto;
+	padding: 0.4rem 0.8rem;
+	overflow: auto;
 }
 
 .blog img {
@@ -110,7 +116,6 @@
 	width: 100%;
 }
 
-
 .blog img {
 	object-fit: cover;
 	width: 100%;
@@ -120,19 +125,13 @@
 	line-height: 2;
 }
 
-.blog.container {
-    max-width: 900px;
-    padding: 0 40px;
-    margin: 0 auto;
-}
-
 .blog {
 	font-size: 18px;
 	line-height: 1.9;
 }
 
 .blog code {
-	font-family: 'Jura';
+	font-family: "Jura";
 	background: #fff;
 	padding: 0.1rem 0.4rem;
 	border-radius: 0.4rem;
@@ -140,10 +139,6 @@
 }
 
 @media only screen and (max-width: 600px) {
-	.blog.container {
-		 padding: 0 30px;
-	}
-
 	.blog_title {
 		font-size: 32px;
 	}
@@ -177,7 +172,7 @@
 	transition: all 0.3s ease;
 	mask: linear-gradient(to right, #0000 0, var(--range-position, 50%), #000 0);
 }
-.compare input[type='range'] {
+.compare input[type="range"] {
 	left: 0;
 	top: 0;
 	position: absolute;
@@ -190,7 +185,7 @@
 	cursor: pointer;
 	-webkit-tap-highlight-color: transparent;
 }
-.compare input[type='range']::-webkit-slider-thumb {
+.compare input[type="range"]::-webkit-slider-thumb {
 	appearance: none;
 	width: 9px;
 	height: 10vh;
@@ -198,7 +193,7 @@
 	border-radius: 1rem;
 	background: CanvasText;
 }
-.compare input[type='range']::-moz-range-thumb {
+.compare input[type="range"]::-moz-range-thumb {
 	appearance: none;
 	width: 9px;
 	height: 10vh;
@@ -207,4 +202,3 @@
 	background: CanvasText;
 }
 /*compare end*/
-

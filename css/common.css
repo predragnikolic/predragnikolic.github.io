@@ -1,7 +1,6 @@
 ::-webkit-scrollbar {
-  display: none; /* for Chrome, Safari, and Opera */
+    display: none; /* for Chrome, Safari, and Opera */
 }
-
 
 .min-100dvh {
     min-height: 100dvh;
@@ -17,13 +16,17 @@
 
 .container {
     width: 100%;
-    max-width: 800px;
+    max-width: 900px;
     padding: 0 40px;
     margin: 0 auto;
 }
 
 .flex {
     display: flex;
+}
+
+.flex-wrap-reverse {
+    flex-wrap: wrap-reverse;
 }
 
 .column {
@@ -55,27 +58,31 @@
 }
 
 .mb-1 {
-    margin-bottom: 1rem;
+    margin-bottom: 1rem !important;
 }
 
 .mb-2 {
-    margin-bottom: 2rem;
+    margin-bottom: 2rem !important;
 }
 
 .mb-4 {
-    margin-bottom: 4rem;
+    margin-bottom: 4rem !important;
 }
 
 .mt-1 {
-    margin-top: 1rem;
+    margin-top: 1rem !important;
 }
 
 .mt-3 {
-    margin-top: 2rem;
+    margin-top: 2rem !important;
 }
 
 .mt-4 {
-    margin-top: 4rem;
+    margin-top: 4rem !important;
+}
+
+.mt-9 {
+    margin-top: 9rem !important;
 }
 
 .mr-1 {
@@ -84,6 +91,11 @@
 
 .p-2 {
     padding: 2rem;
+}
+
+.py-6 {
+    padding-top: 6rem;
+    padding-bottom: 6rem;
 }
 
 .pb-2 {
@@ -106,6 +118,10 @@
     gap: 2rem;
 }
 
+.gap-3 {
+    gap: 3rem;
+}
+
 .align-center {
     align-items: center;
 }
@@ -116,6 +132,9 @@
 
 .text-center {
     text-align: center;
+}
+.text-right {
+    text-align: right;
 }
 
 .text-accent {
@@ -136,20 +155,27 @@
 
 .profile_image {
     width: 100%;
-    max-width: 22rem;
+    max-width: 18rem;
     aspect-ratio: 1 / 1;
     border-radius: 50%;
     object-fit: cover;
     object-position: bottom;
-    border: 8px solid #161e19;
 }
 
 .rounded {
     border-radius: 0.4rem;
 }
 
-.profile_name {
-    font-family: "Yeseva One";
+.md-text {
+    font-family: bukyVede;
+    font-size: 24px;
+    letter-spacing: 1.5px;
+    margin-bottom: 0;
+}
+
+
+.big-text {
+    font-family: bukyVede;
     font-size: 38px;
     letter-spacing: 1.5px;
     margin-bottom: 0;
@@ -160,8 +186,6 @@
     font-weight: 200;
 }
 
-
-
 .timeline {
     position: relative;
     list-style: none;
@@ -169,13 +193,13 @@
 }
 
 .timeline:after {
-    content: '';
+    content: "";
     position: absolute;
     top: 0;
     left: 1.4rem;
     width: 0.1rem;
     height: 100%;
-    background: #000;
+    background: var(--text);
 }
 
 .timeline_item {
@@ -184,7 +208,7 @@
 }
 
 .timeline_item:after {
-    content: '';
+    content: "";
     z-index: 1;
     position: absolute;
     top: 0;
@@ -192,7 +216,7 @@
     width: 1rem;
     height: 1rem;
     border-radius: 50%;
-    border: 0.1rem solid #000;
+    border: 0.1rem solid var(--text);
     background: #efefef;
 }
 
@@ -223,6 +247,8 @@
     right: 0px;
     height: 224px;
     margin: 20px;
+    z-index: -1;
+    opacity: 0.5;
 }
 
 @media (max-width: 500px) {
@@ -233,10 +259,10 @@
 
 @media (max-width: 400px) {
     .profile_image {
-        max-width: 300px;
+        max-width: 100px;
     }
 
-    .profile_name {
+    .big-text {
         font-size: 24px;
     }
 
@@ -254,5 +280,5 @@
 }
 
 .icv__label {
-    background: #000 !important;
+    background: var(--text) !important;
 }
