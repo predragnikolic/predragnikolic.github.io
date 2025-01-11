@@ -2,7 +2,7 @@
 
 @font-face {
     font-family: bukyVede;
-    src: url("/css/fonts/BukyVede_Light.ttf");
+    src: url("/css/fonts/BukyVede_Light.ttf") format('truetype');
 }
 
 .font-bukyVede {
