@@ -15,6 +15,11 @@ h3 {
 	font-size: 2rem;
 }
 
+.blog  h2,.blog  h3,.blog  h4,.blog  h5,.blog  h6 {
+    margin-top: 18px;
+}
+
+
 .gold_banner {
 	height: 3px;
 	width: 100%;
