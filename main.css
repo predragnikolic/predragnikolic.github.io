@@ -87,10 +87,6 @@ hr {
     .video-grid {
         grid-template-columns: 1fr;
     }
-
-    .cta {
-        font-size: 30px;
-    }
 }
 
 .video-grid > * {
@@ -108,6 +104,12 @@ hr {
     transition: 1s;
     box-shadow: 6px 6px 0 black;
     transform: skewX(-15deg);
+}
+
+@media (max-width:500px) {
+    .cta {
+        font-size: 30px;
+    }
 }
 
 .cta:focus {
