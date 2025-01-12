@@ -10,10 +10,10 @@
 
 
   <channel>
-    <title>Предраг Николић</title>
-    <atom:link href="https://predrag.pro/rss.xml" rel="self" type="application/rss+xml" />
+    <title>Istok</title>
+    <atom:link href="https://predragnikolic.github.io/rss.xml" rel="self" type="application/rss+xml" />
 
-    <link>https://predrag.pro</link>
+    <link>https://predragnikolic.github.io</link>
     <description>
       Let's hope that I will write about Sublime Text and stuff related to web development.
     </description>
@@ -23,7 +23,7 @@
     <title>GitDiffView 0.6.0 is released</title>
     <link>https://predrag.pro/blog/git-diff-view-0-6-0-release.html</link>
     <description>The GitDiffView plugin for Sublime Text got a new UI and some UX improvements.</description>
-    <author>mail@predrag.pro (Предраг Николић)</author>
+    <author>Предраг Николић</author>
     <pubDate>Fri, 09 Jun 2023 19:21:00 GMT</pubDate>
     <category>sublime-text</category>
     <content:encoded><![CDATA[
@@ -66,7 +66,7 @@
     <title>Песме мога прадеде Гвоздена</title>
     <link>https://predrag.pro/blog/pesme-moga-pradede.html</link>
     <description>Песмe препричава његов син Михајло Николић.</description>
-    <author>mail@predrag.pro (Предраг Николић)</author>
+    <author>Предраг Николић</author>
     <pubDate>Sat, 06 Jan 2024 12:46:00 GMT</pubDate>
     <category>Ован на мотору</category>
     <content:encoded><![CDATA[
@@ -160,7 +160,7 @@
     <title>"Православна књижара" is now live</title>
     <link>https://predrag.pro/blog/pravoslavna-knjizara-is-live.html</link>
     <description>Let's take a look:</description>
-    <author>mail@predrag.pro (Предраг Николић)</author>
+    <author>Предраг Николић</author>
     <pubDate>Fri, 27 Sep 2024 19:36:00 GMT</pubDate>
     <category>postgres</category>
 <category>visualize</category>
@@ -241,7 +241,7 @@
     <title>Visualize your database</title>
     <link>https://predrag.pro/blog/visualize-your-database.html</link>
     <description>An <a href="https://www.npmjs.com/package/@predragnikolic/pn-show-db">npm tool</a> to visualize your database <br />and generate SQL with a local Ollama model.</description>
-    <author>mail@predrag.pro (Предраг Николић)</author>
+    <author>Предраг Николић</author>
     <pubDate>Sun, 05 May 2024 10:59:00 GMT</pubDate>
     <category>postgres</category>
 <category>visualize</category>

@@ -6,7 +6,7 @@
 }
 
 .font-bukyVede {
-    font-family: bukyVede;
+    font-family: var(--font);
 }
 
 :root {
@@ -15,6 +15,7 @@
     --background: #fff;
     --ac-color: #fccb9e;
     --rounded: 1rem;
+    --font: bukyVede, 'Yeseva One';
 }
 
 * {
@@ -82,16 +83,21 @@ hr {
     grid-template-rows: repeat(4, 200px);
 }
 
+@media (max-width:500px) {
+    .video-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
 .video-grid > * {
     border-radius: 40px;
-    background: #fafafa;
 }
 
 .cta {
     display: flex;
     padding: 10px 45px;
     text-decoration: none !important;
-    font-family: 'bukyVede', sans-serif;
+    font-family: var(--font);
     font-size: 40px;
     color: white;
     background: var(--text);

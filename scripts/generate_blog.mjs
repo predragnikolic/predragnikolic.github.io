@@ -101,7 +101,7 @@ function parseMeta(content, slug) {
   /** @type {Meta} */
   const meta = {
     slug,
-    author: 'mail@predrag.pro (Предраг Николић)',
+    author: 'Предраг Николић',
     title,
     description,
     date,

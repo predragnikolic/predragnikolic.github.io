@@ -10,10 +10,10 @@
 
 
   <channel>
-    <title>Предраг Николић</title>
-    <atom:link href="https://predrag.pro/rss.xml" rel="self" type="application/rss+xml" />
+    <title>Istok</title>
+    <atom:link href="https://predragnikolic.github.io/rss.xml" rel="self" type="application/rss+xml" />
 
-    <link>https://predrag.pro</link>
+    <link>https://predragnikolic.github.io</link>
     <description>
       Let's hope that I will write about Sublime Text and stuff related to web development.
     </description>
