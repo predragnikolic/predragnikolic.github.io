@@ -87,6 +87,10 @@ hr {
     .video-grid {
         grid-template-columns: 1fr;
     }
+
+    .cta {
+        font-size: 30px;
+    }
 }
 
 .video-grid > * {
