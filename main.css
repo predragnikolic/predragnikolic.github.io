@@ -2,11 +2,12 @@
 
 @font-face {
     font-family: bukyVede;
-    src: url("/css/fonts/BukyVede_Light.ttf") format('truetype');
+    src: url("/css/fonts/BukyVede-Regular.ttf") format("truetype");
 }
 
 .font-bukyVede {
     font-family: var(--font);
+    letter-spacing: 2px;
 }
 
 :root {
@@ -15,7 +16,7 @@
     --background: #fff;
     --ac-color: #fccb9e;
     --rounded: 1rem;
-    --font: bukyVede, 'Yeseva One';
+    --font: bukyVede, "Yeseva One";
 }
 
 * {
@@ -46,7 +47,12 @@ a:hover {
     text-decoration: underline;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     margin: 0;
 }
 
@@ -83,7 +89,7 @@ hr {
     grid-template-rows: repeat(4, 200px);
 }
 
-@media (max-width:500px) {
+@media (max-width: 500px) {
     .video-grid {
         grid-template-columns: 1fr;
     }
@@ -99,7 +105,7 @@ hr {
     padding: 10px 45px;
     text-decoration: none !important;
     font-family: var(--font);
-    font-size: 40px;
+    font-size: 30px;
     color: white;
     background: var(--text);
     transition: 1s;
@@ -107,14 +113,14 @@ hr {
     transform: skewX(-15deg);
 }
 
-@media (max-width:500px) {
+@media (max-width: 500px) {
     .cta {
         font-size: 30px;
     }
 }
 
 .cta:focus {
-   outline: none; 
+    outline: none;
 }
 
 .cta:hover {
@@ -127,22 +133,22 @@ hr {
     margin-right: 0px;
 }
 
-.cta:hover  span:nth-child(2) {
+.cta:hover span:nth-child(2) {
     transition: 0.5s;
     margin-right: 45px;
 }
 
 .cta span {
-    transform: skewX(15deg) 
-  }
+    transform: skewX(15deg);
+}
 
- .cta span:nth-child(2) {
+.cta span:nth-child(2) {
     width: 20px;
     margin-left: 30px;
     position: relative;
     top: 12%;
-  }
-  
+}
+
 /**************SVG****************/
 
 .cta path.one {

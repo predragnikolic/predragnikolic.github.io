@@ -9,16 +9,20 @@ h2,
 h3 {
 	color: var(--text);
 	font-family: var(--font);
+	letter-spacing: 1.5px;
 }
 .blog_body h2,
 .blog_body h3 {
 	font-size: 2rem;
 }
 
-.blog  h2,.blog  h3,.blog  h4,.blog  h5,.blog  h6 {
-    margin-top: 1rem;
+.blog h2,
+.blog h3,
+.blog h4,
+.blog h5,
+.blog h6 {
+	margin-top: 1rem;
 }
-
 
 .gold_banner {
 	height: 3px;
@@ -47,6 +51,7 @@ h3 {
 .blog_title {
 	margin-top: 0;
 	font-family: var(--font);
+	letter-spacing: 1.5px;
 	font-size: 2.7rem;
 	animation: slideUp 0.3s backwards;
 	animation-delay: 0.1s;
