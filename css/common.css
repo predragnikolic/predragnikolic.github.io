@@ -29,6 +29,10 @@
     display: flex;
 }
 
+.flex-wrap {
+    flex-wrap: wrap;
+}
+
 .flex-wrap-reverse {
     flex-wrap: wrap-reverse;
 }
@@ -259,7 +263,7 @@
     z-index: -1;
 }
 
-@media (max-width: 500px) {
+@media (max-width: 600px) {
     .home_dots {
         display: none;
     }
