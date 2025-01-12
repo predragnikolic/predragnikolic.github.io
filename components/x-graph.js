@@ -11,6 +11,7 @@ customElements.define(
         --num: ${num};
         width: var(--width);
         min-width: var(--width);
+        max-width: 100%;
       }
       .graph {
         --cell-size: calc(var(--size, 80vh) / var(--num) * 5);

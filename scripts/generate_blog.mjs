@@ -45,6 +45,11 @@ readdirSync(postsDir).forEach(file => {
     const layout = readFileSync(path.join(postsDir, 'base', 'layout.html'), { encoding: 'utf8' })
     const titleAndDecription = `
       <h1 class="blog_title">${meta.title}</h1>
+      <div class='flex' style='gap: 10px'>
+        ${new Intl.DateTimeFormat({month: 'long', year: 'numeric', day: 'numeric'}).format(new Date(meta.date))}
+      <span>-</span>
+        ${meta.tags.map(tag => `<div class="tag">${tag}</div>`).join('')}
+      </div>
       <p class="blog_description">${meta.description}</p>
     `
 

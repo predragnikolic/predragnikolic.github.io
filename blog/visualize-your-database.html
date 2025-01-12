@@ -36,12 +36,23 @@
                 <span class="ml-3 font-bukyVede" style="font-size: 26px; letter-spacing: 1.5px;">Istok</span></a>
     </header>
 </div>
+
+<div class="blog container">
+    <div class="flex blog_graph"><x-graph numbers="100" style="--size: min(80vw, 761px); "></x-graph></div>
+</div>
+
 <div class="blog container">
     
       <h1 class="blog_title">Visualize your database</h1>
+      <div class='flex' style='gap: 10px'>
+        5/5/2024
+      <span>-</span>
+        <div class="tag">postgres</div><div class="tag">visualize</div><div class="tag">sql</div><div class="tag">ollama</div><div class="tag">phi</div><div class="tag">sqlcoder</div>
+      </div>
       <p class="blog_description">An <a href="https://www.npmjs.com/package/@predragnikolic/pn-show-db">npm tool</a> to visualize your database <br />and generate SQL with a local Ollama model.</p>
     
 </div>
+
     <section class="blog container blog-section">
 <title>Visualize your database</title>
 <meta name='description' content='An <a href="https://www.npmjs.com/package/@predragnikolic/pn-show-db">npm tool</a> to visualize your database <br />and generate SQL with a local Ollama model.'>
@@ -99,5 +110,7 @@ DATABASE_URL=postgres://user:password@host:5432/database</code>
             </a>
 
         </footer>
+        <script src="/components/x-graph.js"></script>
+
 </body>
 </html>
