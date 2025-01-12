@@ -43,12 +43,17 @@ h3 {
 	margin-top: 0;
 	font-family: var(--font);
 	font-size: 2.7rem;
-	animation: slideUp 0.3s forwards;
-	animation-delay: 0.05s;
+	animation: slideUp 0.3s backwards;
+	animation-delay: 0.1s;
+}
+
+.blog_meta {
+	animation: slideUp 0.3s backwards;
+	animation-delay: 0.2s;
 }
 
 .blog_graph {
-	animation: slideUp 0.3s forwards;
+	animation: slideUp 0.3s backwards;
 	margin: 30px 0 20px 0;
 }
 
@@ -73,12 +78,12 @@ h3 {
 	padding-bottom: 30px;
 	line-height: 1.9;
 	animation: slideUp 0.3s backwards;
-	animation-delay: 0.1s;
+	animation-delay: 0.3s;
 }
 
 .blog-section {
 	animation: slideUp 0.3s backwards;
-	animation-delay: 0.2s;
+	animation-delay: 0.4s;
 }
 
 .blog .note {
