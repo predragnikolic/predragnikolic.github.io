@@ -95,6 +95,7 @@ hr {
 
 .cta {
     display: flex;
+    align-items: center;
     padding: 10px 45px;
     text-decoration: none !important;
     font-family: var(--font);
