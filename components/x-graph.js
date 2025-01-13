@@ -101,10 +101,9 @@ customElements.define(
   },
 );
 
-let p = null;
-
+let isAnimating = false;
+let animations = [];
 function shuffleChildrenWithFlip(el) {
-  let isAnimating = false;
   const children = Array.from(el.children);
   const originalPositions = children.map((child, index) => ({
     child,
@@ -125,87 +124,76 @@ function shuffleChildrenWithFlip(el) {
     };
   });
 
-  // Get final positions of original children
-  const finalPositions = p
-    ? p
-    : originalPositions.map((item) => {
-        const rect = item.child.getBoundingClientRect();
-        return {
-          left: rect.left,
-          top: rect.top,
-          width: rect.width,
-          height: rect.height,
-        };
-      });
+  const finalPositions = originalPositions.map((item) => {
+    const rect = item.child.getBoundingClientRect();
+    return {
+      left: rect.left,
+      top: rect.top,
+      width: rect.width,
+      height: rect.height,
+    };
+  });
 
-  p = finalPositions;
+  if (isAnimating) {
+    isAnimating = false;
+    animations.forEach((animation) => animation.cancel());
+    animations = [];
+    return;
+  }
 
-  let animations = [];
+  isAnimating = true;
 
-  const shuffleHandler = () => {
-    if (isAnimating) {
-      animations.forEach((animation) => animation.cancel());
-      animations = [];
-      return;
-    }
+  // Apply initial styles to shuffled children
+  shuffledChildren.forEach((child, index) => {
+    child.style.position = "fixed";
+    child.style.left = `${initialPositions[index].left}px`;
+    child.style.top = `${initialPositions[index].top}px`;
+    child.style.width = `${initialPositions[index].width}px`;
+    child.style.height = `${initialPositions[index].height}px`;
+  });
 
-    isAnimating = true;
+  // Append shuffled children to parent
+  el.innerHTML = "";
+  shuffledChildren.forEach((child) => el.appendChild(child));
 
-    // Apply initial styles to shuffled children
-    shuffledChildren.forEach((child, index) => {
-      child.style.position = "fixed";
-      child.style.left = `${initialPositions[index].left}px`;
-      child.style.top = `${initialPositions[index].top}px`;
-      child.style.width = `${initialPositions[index].width}px`;
-      child.style.height = `${initialPositions[index].height}px`;
-    });
+  // Calculate and store original container height
+  const originalContainerHeight = el.offsetHeight;
 
-    // Append shuffled children to parent
-    el.innerHTML = "";
-    shuffledChildren.forEach((child) => el.appendChild(child));
+  // Create and store animations
+  animations = shuffledChildren.map((child, index) => {
+    const keyframes = [
+      { transform: `translate(0, 0)` },
+      {
+        transform: `translate(${finalPositions[index].left - initialPositions[index].left}px, ${finalPositions[index].top - initialPositions[index].top}px)`,
+      },
+    ];
 
-    // Calculate and store original container height
-    const originalContainerHeight = el.offsetHeight;
+    const timing = {
+      duration: 400,
+      easing: "ease",
+    };
 
-    // Create and store animations
-    animations = shuffledChildren.map((child, index) => {
-      const keyframes = [
-        { transform: `translate(0, 0)` },
-        {
-          transform: `translate(${finalPositions[index].left - initialPositions[index].left}px, ${finalPositions[index].top - initialPositions[index].top}px)`,
-        },
-      ];
+    const animation = child.animate(keyframes, timing);
 
-      const timing = {
-        duration: 400,
-        easing: "ease",
-      };
+    animation.onfinish = () => {
+      // Remove styles after animation
+      child.style.position = "";
+      child.style.left = "";
+      child.style.top = "";
+      child.style.width = "";
+      child.style.height = "";
+      child.style.transform = "";
 
-      const animation = child.animate(keyframes, timing);
+      // Check if all animations have finished
+      if (animations.every((animation) => animation.finished)) {
+        el.style.height = `${originalContainerHeight}px`;
+        isAnimating = false;
+        animations = [];
+      }
+    };
 
-      animation.onfinish = () => {
-        // Remove styles after animation
-        child.style.position = "";
-        child.style.left = "";
-        child.style.top = "";
-        child.style.width = "";
-        child.style.height = "";
-        child.style.transform = "";
-
-        // Check if all animations have finished
-        if (animations.every((animation) => animation.finished)) {
-          el.style.height = `${originalContainerHeight}px`;
-          isAnimating = false;
-          animations = [];
-        }
-        p = null;
-      };
-
-      return animation;
-    });
-  };
-
-  el.addEventListener("click", shuffleHandler);
+    return animation;
+  });
 }
 
 function shuffleArray(array) {
