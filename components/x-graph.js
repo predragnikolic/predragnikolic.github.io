@@ -135,9 +135,6 @@ function shuffleChildrenWithFlip(el) {
   });
 
   if (isAnimating) {
-    isAnimating = false;
-    animations.forEach((animation) => animation.cancel());
-    animations = [];
     return;
   }
 
