@@ -186,7 +186,6 @@
     margin-bottom: 0;
 }
 
-
 .big-text {
     font-family: var(--font);
     font-size: 38px;
@@ -203,6 +202,7 @@
     position: relative;
     list-style: none;
     padding-left: 4rem;
+    z-index: 1;
 }
 
 .timeline:after {
@@ -260,7 +260,7 @@
     right: 0px;
     height: 224px;
     margin: 20px;
-    z-index: -1;
+    z-index: 0;
 }
 
 @media (max-width: 600px) {
