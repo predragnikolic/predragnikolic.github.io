@@ -1,0 +1,28 @@
+<title>HTML and CSS cheatsheet</title>
+<meta name='description' content='Here is a HTML/CSS cheatsheet of code snippets I always forget.'>
+<meta name='keywords' content='CSS, HTML'>
+<meta name='date' content='2025-02-23T15:39:00'>
+
+<a href="#color-text-based-on-background">Color text based on background color with CSS</a>
+
+<style>
+.text-based-on-background {
+  background: var(--bg);
+  color: lch(from var(--bg) calc((49.44 - l) * infinity) 0 0);
+}
+</style>
+
+<code class="code-block mt-1">.text-based-on-background {
+  --bg: #ccc;
+  background: var(--bg);
+  color: lch(from var(--bg) calc((49.44 - l) * infinity) 0 0);
+}
+</code>
+<div style="--bg: #333; padding: 6rem;" class="text-based-on-background rounded mt-1">
+  Text based on background
+</div>
+
+<p>Thanks you <a href="https://x.com/devongovett/status/1863733091409461256">devongovett</a> for sharing this.</p>
+
+
+

@@ -24,6 +24,34 @@ h3 {
 	margin-top: 1rem;
 }
 
+/* START of dot-container */
+.dot-container::before {
+	max-width: 491px;
+	position: absolute;
+	width: 100%;
+	content: '';
+	z-index: -2;
+    top: -23vh;
+    left: calc(88% + 20px);
+    bottom: -4vh;
+    opacity: 0.5;
+    background-image: radial-gradient(#000 6%, transparent 0);
+    background-size: 28px 28px;
+}
+
+.dot-container::after {
+	max-width: 427px;
+	z-index: -3;
+    top: -24vh;
+    left: 88%;
+    bottom: 4vh;
+    position: absolute;
+    width: 100%;
+    content: '';
+	background-color: #00000006;
+}
+/* END of dot-container */
+
 .gold_banner {
 	height: 3px;
 	width: 100%;
@@ -54,12 +82,12 @@ h3 {
 	letter-spacing: 1.5px;
 	font-size: 2.7rem;
 	animation: slideUp 0.3s backwards;
-	animation-delay: 0.1s;
+	animation-delay: 0.2s;
 }
 
 .blog_meta {
 	animation: slideUp 0.3s backwards;
-	animation-delay: 0.2s;
+	animation-delay: 0.3s;
 }
 
 .blog_graph {
@@ -88,12 +116,12 @@ h3 {
 	padding-bottom: 30px;
 	line-height: 1.9;
 	animation: slideUp 0.3s backwards;
-	animation-delay: 0.3s;
+	animation-delay: 0.4s;
 }
 
 .blog-section {
 	animation: slideUp 0.3s backwards;
-	animation-delay: 0.4s;
+	animation-delay: 0.5s;
 }
 
 .blog .note {

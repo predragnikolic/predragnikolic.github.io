@@ -15,7 +15,18 @@
     <link rel="stylesheet" type="text/css" href="/main.css">
     <link rel="stylesheet" type="text/css" href="/css/blog.css">
 
-<!-- {{BLOG_META}}-->
+
+      <meta name='author' content='Предраг Николић'>
+      <meta name='description' content='Here is a HTML/CSS cheatsheet of code snippets I always forget.'>
+      <meta name='keywords' content='CSS, HTML'>
+      <meta name='date' content='2025-02-23T15:39:00'>
+
+      <meta name='og:title' content='HTML and CSS cheatsheet'>
+      <meta name='og:url' content='https://predrag.pro/blog/html-and-css-cheatsheet.html'>
+      
+      <meta name='og:site_name' content='predrag.pro'>
+      <meta name='og:description' content='Here is a HTML/CSS cheatsheet of code snippets I always forget.'>
+    
 </head>
 <body class="blog_body">
 <div class="gold_banner"></div>
@@ -31,11 +42,47 @@
 </div>
 
 <div class="blog container">
-    <!-- {{TITLE_DESCRIPTION}} -->
+    
+      <h1 class="blog_title">HTML and CSS cheatsheet</h1>
+      <div class='flex blog_meta flex-wrap' style='gap: 10px'>
+        February 23, 2025
+      <span>-</span>
+        <div class="tag">CSS</div><div class="tag">HTML</div>
+      </div>
+      <p class="blog_description">Here is a HTML/CSS cheatsheet of code snippets I always forget.</p>
+    
 </div>
 
     <section class="blog container blog-section">
-<!--  {{BLOG_POST}}  -->
+<title>HTML and CSS cheatsheet</title>
+<meta name='description' content='Here is a HTML/CSS cheatsheet of code snippets I always forget.'>
+<meta name='keywords' content='CSS, HTML'>
+<meta name='date' content='2025-02-23T15:39:00'>
+
+<a href="#color-text-based-on-background">Color text based on background color with CSS</a>
+
+<style>
+.text-based-on-background {
+  background: var(--bg);
+  color: lch(from var(--bg) calc((49.44 - l) * infinity) 0 0);
+}
+</style>
+
+<code class="code-block mt-1">.text-based-on-background {
+  --bg: #ccc;
+  background: var(--bg);
+  color: lch(from var(--bg) calc((49.44 - l) * infinity) 0 0);
+}
+</code>
+<div style="--bg: #333; padding: 6rem;" class="text-based-on-background rounded mt-1">
+  Text based on background
+</div>
+
+<p>Thanks you <a href="https://x.com/devongovett/status/1863733091409461256">devongovett</a> for sharing this.</p>
+
+
+
+
     </section>
 
 
