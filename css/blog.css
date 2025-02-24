@@ -1,3 +1,7 @@
+html, body {
+	overflow-x: hidden;
+}
+
 .blog_body {
 	background: #fafafa;
 	color: #333;
@@ -48,7 +52,7 @@ h3 {
     position: absolute;
     width: 100%;
     content: '';
-	background-color: #00000006;
+	background-color: #00000004;
 }
 /* END of dot-container */
 

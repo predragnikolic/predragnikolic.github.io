@@ -17,7 +17,7 @@
 
 
       <meta name='author' content='Предраг Николић'>
-      <meta name='description' content='Here is a HTML/CSS cheatsheet of code snippets I always forget.'>
+      <meta name='description' content='On this page you will see a HTML/CSS cheatsheet of new browser APIs and maybe something interesting.'>
       <meta name='keywords' content='CSS, HTML'>
       <meta name='date' content='2025-02-23T15:39:00'>
 
@@ -25,7 +25,7 @@
       <meta name='og:url' content='https://predrag.pro/blog/html-and-css-cheatsheet.html'>
       
       <meta name='og:site_name' content='predrag.pro'>
-      <meta name='og:description' content='Here is a HTML/CSS cheatsheet of code snippets I always forget.'>
+      <meta name='og:description' content='On this page you will see a HTML/CSS cheatsheet of new browser APIs and maybe something interesting.'>
     
 </head>
 <body class="blog_body">
@@ -49,13 +49,13 @@
       <span>-</span>
         <div class="tag">CSS</div><div class="tag">HTML</div>
       </div>
-      <p class="blog_description">Here is a HTML/CSS cheatsheet of code snippets I always forget.</p>
+      <p class="blog_description">On this page you will see a HTML/CSS cheatsheet of new browser APIs and maybe something interesting.</p>
     
 </div>
 
     <section class="blog container blog-section">
 <title>HTML and CSS cheatsheet</title>
-<meta name='description' content='Here is a HTML/CSS cheatsheet of code snippets I always forget.'>
+<meta name='description' content='On this page you will see a HTML/CSS cheatsheet of new browser APIs and maybe something interesting.'>
 <meta name='keywords' content='CSS, HTML'>
 <meta name='date' content='2025-02-23T15:39:00'>
 
@@ -252,7 +252,182 @@ div:hover p {
 <p>More info at <a href="https://developer.chrome.com/docs/css-ui/animate-to-height-auto">developer.chrome.com</a>.</p>
 
 
-<p style="text-align: center;">- Post will be updated over time -</p>
+<hr class="mt-4 mb-4" />
+
+<style>
+.svg-example {
+  svg {
+    background: transparent;
+  }
+
+  path {
+    mix-blend-mode: overlay;
+  }
+
+  #num {
+    position: absolute;
+    top: 50%;
+    color: #fff;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: sans-serif;
+    font-size: 120px;
+  }
+}
+</style>
+<div class="svg-example flex full-width justify-center"><svg style="width: 300px; height: 300px;">
+  <defs>
+    <filter id="f1" x="0" y="0">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="0"></feGaussianBlur>
+    </filter>
+    <filter id="f2" x="0" y="0">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="1"></feGaussianBlur>
+    </filter>
+    <filter id="f3" x="0" y="0">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="2"></feGaussianBlur>
+    </filter>
+    <filter id="f4" x="0" y="0">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="3"></feGaussianBlur>
+    </filter>
+  </defs>
+  <g id="svg"></g>
+  <g id="cs"></g>
+  <g id="ce"></g>
+</svg></div>
+<script>
+  let x = 0;
+let text = document.getElementById('num');
+const svg = document.getElementById('svg');
+console.log(svg.getBoundingClientRect())
+
+class Path {
+  constructor(options) {
+    this.pointNum = options.pointNum;
+    this.radius = options.radius;
+    this.cx = options.cx;
+    this.cy = options.cy;
+    this.parent = options.parent;
+    this.points = options.points || [];
+    this.pathIndex = options.pathIndex;
+    this.tick = 0;
+    
+    this.init();
+  }
+  
+  init() {
+    if (this.points.length === 0) {
+      this.points = Array.from({ length: this.pointNum }).map((p, i) => ({
+        x: Math.cos((i * 360 / this.pointNum - 90) * Math.PI / 180),
+        y: Math.sin((i * 360 / this.pointNum - 90) * Math.PI / 180),
+        offs: Math.floor(Math.random() * (i % 18) * Math.PI),
+      }));
+    } else {
+      this.points = this.points.map((p, i) => ({
+        x: p.x,
+        y: p.y,
+        offs: p.offs + ((i + this.pathIndex * 25) / 180 * Math.PI),
+      }))
+    }
+    
+    this.g = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+    this.parent.appendChild(this.g);
+    
+    this.animate();
+  }
+  
+  getPath(points) {
+    let curve = points.reduce((acc, p, i, a) => {
+      if (i === 0) {
+        acc += `M ${(p.x + a[1].x) / 2},${(p.y + a[1].y) / 2}`;
+      }
+      if (i > 0 && i !== a.length - 1) {
+        acc += ` Q ${p.x},${p.y} ${(p.x + a[i + 1].x) / 2},${(p.y + a[i + 1].y) / 2}`;
+      }
+      if (i === a.length - 1) {
+        acc += ` Q ${p.x},${p.y} ${(p.x + a[0].x) / 2},${(p.y + a[0].y) / 2}`;
+      }
+      return acc;
+    }, '');
+    curve += ` Q ${points[0].x},${points[0].y} ${(points[0].x + points[1].x) / 2},${(points[0].y + points[1].y) / 2}`;
+    if (this.pathIndex > 1) {
+      return `<path stroke="#000" filter="url(#f${this.pathIndex})" stroke-width="2" fill="transparent" d="${curve} Z"/>`;
+    } else {
+      return `<path stroke="#000" stroke-width="2" fill="transparent" d="${curve} Z"/>`;
+    }
+    
+  }
+  
+  getPoints() {
+    return this.points;
+  }
+  
+  animate() {
+    this.tick++;
+    if (this.tick === 120) this.tick = 0;
+    
+    const drawnPoints = this.points.map((p, i) => {
+      if (i < x * this.pointNum) {
+        if (this.pathIndex === -1) {
+          const ce = document.getElementById('ce');
+          ce.innerHTML = `<circle 
+            cx="${p.x * this.radius + this.cx}" 
+            cy="${p.y * this.radius + this.cy}" 
+            r="6" 
+            fill="#fff" 
+            stroke-width="3" 
+            stroke="#fff" 
+          />`;
+          if (i === 0) {
+            const cs = document.getElementById('cs');
+            cs.innerHTML = `<circle 
+              cx="${p.x * this.radius + this.cx}" 
+              cy="${p.y * this.radius + this.cy}" 
+              r="6" 
+              fill="#fff" 
+              stroke-width="3" 
+              stroke="#fff" 
+            />`;
+          }
+        }
+        return {
+           x: p.x * this.radius + this.cx,
+           y: p.y * this.radius + this.cy,
+        };
+      }
+      return {
+         x: p.x * this.radius * (100 + 4 * Math.sin(this.tick * 3 / 180 * Math.PI + p.offs)) / 100 + this.cx,
+         y: p.y * this.radius * (100 + 4 * Math.sin(this.tick * 3 / 180 * Math.PI + p.offs)) / 100 + this.cy,
+      };
+    });
+    
+    this.g.innerHTML = this.getPath(drawnPoints);
+    window.requestAnimationFrame(this.animate.bind(this));
+  }
+}
+  console.log(svg.width)
+const basePath = new Path({
+  pointNum: 60,
+  radius: 100,
+  cx: 150,
+  cy: 150,
+  pathIndex: -1,
+  parent: svg,
+});
+
+const basePathPoints = basePath.getPoints();
+
+Array.from({ length: 5 }).map((v, i) => new Path({
+  pointNum: 60,
+  radius: 100 - i * i / 2,
+  cx: 150,
+  cy: 150,
+  parent: svg,
+  points: basePathPoints,
+  pathIndex: i,
+}));
+</script>
+
+<p style="text-align: right; opacity: 0.5;font-weight: bold;">...post will be updated over time</p>
 
 
 
