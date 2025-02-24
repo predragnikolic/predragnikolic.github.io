@@ -65,6 +65,10 @@
     display: block;
 }
 
+.m-0 {
+    margin: 0 !important;
+}
+
 .mb-1 {
     margin-bottom: 1rem !important;
 }
@@ -240,6 +244,10 @@
 .last-quote {
     display: inline-block;
     transform: translateY(50%);
+}
+
+.b-1 {
+    border: 0.2rem solid var(--b-color);
 }
 
 .bt-2 {
