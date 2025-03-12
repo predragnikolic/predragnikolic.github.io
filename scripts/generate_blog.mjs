@@ -47,7 +47,7 @@ readdirSync(postsDir).forEach(file => {
       <h1 class="blog_title">${meta.title}</h1>
       <div class='flex blog_meta flex-wrap' style='gap: 10px'>
         ${new Intl.DateTimeFormat('sr', {month: 'long', year: 'numeric', day: 'numeric'}).format(new Date(meta.date))}
-      <span>-</span>
+        ${meta.tags.length ? "<span>-</span>": '' }
         ${meta.tags.map(tag => `<div class="tag">${tag}</div>`).join('')}
       </div>
       <p class="blog_description">${meta.description}</p>
@@ -94,10 +94,9 @@ function parseMeta(content, slug) {
   const [fullDescriptionMatch, description] = content.match(/<meta.+['"]description['"]\scontent=['"](.+)['"]\s?>/)
   if (!description) throw Error("<meta name='description' content='*'> missing")
   content = content.replace(fullDescriptionMatch, '')
-  let [fullTagsMatch, tags] = content.match(/<meta.+['"]keywords['"]\scontent=['"](.+)['"]\s?>/)
-  if (!tags) throw Error("<meta name='tags' content='*'> missing")
+  let [fullTagsMatch, tags] = content.match(/<meta.+['"]keywords['"]\scontent=['"](.+)['"]\s?>/) || [undefined, '']
   content = content.replace(fullTagsMatch, '')
-  tags = tags.split(',').map(tag => tag.trim())
+  tags = tags.split(',').map(tag => tag.trim()).filter(Boolean)
   const [fullDateMatch, date] = content.match(/<meta.+['"]date['"]\scontent=['"](.+)['"]\s?>/)
   if (!date) throw Error("<meta name='date' content='*'> missing")
   content = content.replace(fullDateMatch, '')
