@@ -169,6 +169,13 @@ h3 {
 	width: 100%;
 }
 
+.blog .video {
+	margin: 18px 0;
+	border-radius: 0.4rem;
+	background: linear-gradient(to right, #00000020, transparent, #00000010);
+	width: 100%;
+}
+
 .blog img {
 	object-fit: cover;
 	width: 100%;
