@@ -175,7 +175,7 @@
     aspect-ratio: 1 / 1;
     border-radius: 40px;
     object-fit: cover;
-    object-position: bottom;
+    object-position: 50% 60%;
     margin: 0 auto;
 }
 

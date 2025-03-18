@@ -19,9 +19,65 @@
     </description>
 
   <item>
+    <guid isPermaLink="false">visualize-your-database.html</guid>
+    <title>Visualize your database</title>
+    <link>https://predragnikolic.github.io/blog/visualize-your-database.html</link>
+    <description>An <a href="https://www.npmjs.com/package/@predragnikolic/pn-show-db">npm tool</a> to visualize your database <br />and generate SQL with a local Ollama model.</description>
+    <author>Предраг Николић</author>
+    <pubDate>Sun, 05 May 2024 10:59:00 GMT</pubDate>
+    <category>postgres</category>
+<category>visualize</category>
+<category>sql</category>
+<category>ollama</category>
+<category>phi</category>
+<category>sqlcoder</category>
+    <content:encoded><![CDATA[
+    <img height="402" src="https://github.com/predragnikolic/predragnikolic.github.io/assets/22029477/57b18467-b67b-41b7-8b5d-0adfa6332eaf" >
+
+<h3 id="getting-started">Getting started</h3>
+
+<ol>
+	<li>Create a <code>.env</code> file with the following content:</li>
+	<code class="code-block"># Change the connection string
+DATABASE_URL=postgres://user:password@host:5432/database</code>
+	</li>
+	<li><p>From the root folder where the <code>.env</code> file is present, run:</p>
+	<code class="code-block"><span class="noselect mr-1">$</span>npx @predragnikolic/pn-show-db --db=postgres</code>
+	<p>That will open a browser and visualize your database.</p></li>
+</ol>
+
+<small class="note">Currently only Postgres is supported.</small>
+
+<h2 id="ollama-ai">Generate SQL code with a local Ollama model</h2>
+
+<p>There is support for local Ollama models such as <code>phi3</code> or <code>sqlcoder</code>.</p>
+
+<ul>
+	<li><code>phi3</code> - Phi is a small language model capable of common-sense reasoning and language understanding. It showcases “state-of-the-art performance” among language models with less than 13 billion parameters.</li>
+	<li><code>sqlcoder</code> - This 15B completion model generally requires at least 16GB of RAM.</li>
+</ul>
+
+<small class="note">When the <code>--ollama-model=MODEL_NAME</code> argument is specified, a wand icon will appear in the top left corner.</small>
+
+<h2 id="setup-ollama-phi">Setup Ollama and Phi</h2>
+
+<p>Download <a href="https://ollama.com/download">Ollama</a>.</p>
+<p>Run <code><span class="noselect mr-1">$</span>ollama run phi3</code> to install <code>phi3</code>.</p>
+
+<p>To use <code>phi3</code> with <code>@predragnikolic/pn-show-db</code>, run:</p>
+<code class="code-block"><span class="noselect mr-1">$</span>npx @predragnikolic/pn-show-db --db=postgres --ollama-model=phi3
+</code>
+
+<video src="https://github.com/predragnikolic/predragnikolic.github.io/assets/22029477/eee69ed1-b8f2-4c34-b2cb-329d18d469d7" controls></video>
+
+
+<p style="text-align: right;">Христос васкрсе!</p>
+    ]]></content:encoded>
+  </item>
+<item>
     <guid isPermaLink="false">3_dana_pred_15_mart.html</guid>
     <title>3 дана пред 15 март</title>
-    <link>https://predrag.pro/blog/3_dana_pred_15_mart.html</link>
+    <link>https://predragnikolic.github.io/blog/3_dana_pred_15_mart.html</link>
     <description>...све се ово једном одиграло...</description>
     <author>Предраг Николић</author>
     <pubDate>Wed, 12 Mar 2025 12:00:00 GMT</pubDate>
@@ -45,7 +101,7 @@
 <item>
     <guid isPermaLink="false">git-diff-view-0-6-0-release.html</guid>
     <title>GitDiffView 0.6.0 is released</title>
-    <link>https://predrag.pro/blog/git-diff-view-0-6-0-release.html</link>
+    <link>https://predragnikolic.github.io/blog/git-diff-view-0-6-0-release.html</link>
     <description>The GitDiffView plugin for Sublime Text got a new UI and some UX improvements.</description>
     <author>Предраг Николић</author>
     <pubDate>Fri, 09 Jun 2023 19:21:00 GMT</pubDate>
@@ -86,9 +142,103 @@
     ]]></content:encoded>
   </item>
 <item>
+    <guid isPermaLink="false">pesme-moga-pradede.html</guid>
+    <title>Песме мога прадеде Гвоздена</title>
+    <link>https://predragnikolic.github.io/blog/pesme-moga-pradede.html</link>
+    <description>Песмe препричава његов син Михајло Николић.</description>
+    <author>Предраг Николић</author>
+    <pubDate>Sat, 06 Jan 2024 12:46:00 GMT</pubDate>
+    <category>песма</category>
+    <content:encoded><![CDATA[
+    <details>
+<summary><h3 style="display: inline-block;">Oван на мотору<a href="#ovan-na-motoru" style="margin-left: 10px;">#</a></h3></summary>
+
+<p><b>Увод</b></p>
+
+<p><i>"Радња се дешава 50-тих година после рата.
+Кад је било све опорезовано сељацима
+и џукелу ако држиш,
+и казан и волове и кола шинска,
+виноград, на све порез плаћаш, да не говорим земљу, ја.
+И онда Гвозден, прадеда твој и Јанка овога отац,
+певају песму, а то се није смело онда, али су они певали.
+
+Па каже овако:"</i></p>
+
+<pre>
+Ој, сељаче, мученче,
+Вазда радиш гладан и жедан,
+И тако си увек бедан.
+
+Деца су ти боса и гола,
+По трњу се за стоком избола.
+
+Опет, жељна сира и млека,
+Тако бедно живети до века.
+
+Срада људе пореза и мода,
+Ал' највише управа прихода.
+
+Таксу платиш на казан и кола,
+Тако исто на обадва вола.
+
+Точарину платиш на ракију,
+И шприцање јадних кокошију.
+
+Па се такса на виноград даје,
+И на керче што пред кућом лаје.
+
+На све стране сељак паре баца,
+Мора платити мркање оваца.
+
+Овце су се париле и прије,
+Ал' парење нико плаћо није.
+
+Ал' се томе сељак и не чуди,
+Јер вештачки данас паре људи.
+
+Овце моје, будите, будите у тору,
+Доће вама ован на мотору.
+</pre>
+
+</details>
+
+<details>
+<summary><h3 style="display: inline-block;">Лужара<a href="#vodenica" style="margin-left: 10px;">#</a></h3></summary>
+
+<p><b>Увод</b></p>
+
+<p><i>"Љубин отац Рајко био је добар човек. Код њега, Никола, Жијо и Милош оду зими по три, четири игранке. Добар био, знаш, са омладином. Једног дана у пролеће, још није био посејан кукуруз по пољу, ми чували овце, где је мост сад.<br /><br />
+Кад иде Рајко из реке и носи нешто замотано, нашао неку дроњу. Оно дете, мртво, нашао у води. Ту је била брана за лужару, ону воденицу код Ђуриновца. И тап, да се јави милицји. Милиција извести лекара, суд. Долази лекар, долази суд. И дете на самој кривини овде где се скреће ка мосту и чобана нас вако. Они њихов посао ураде, а Гвозден онда спева песму за Рајка:"</i></p>
+
+<pre>
+Боже мили и Божија Мајко,
+Шта уради из Деспића Рајко.
+
+Он не ради што народ воли,
+Већ тражи копилади по води.
+
+То је било у пролећне дане,
+Нађе дете код лужарне бране.
+
+<i>"Па је онда тога још било,
+Па онда, кад је суд дошо...
+Нисам све упамтио...
+И онда Гвозден у песми каже:"</i>
+
+Гледа судија Рајка од главе до пете,
+Па му вели "Море Рајко налинк на те дете".
+</pre>
+</details>
+
+
+<p style="text-align: right;">- Гвозден Николић</p>
+    ]]></content:encoded>
+  </item>
+<item>
     <guid isPermaLink="false">html-and-css-cheatsheet.html</guid>
     <title>HTML and CSS cheatsheet</title>
-    <link>https://predrag.pro/blog/html-and-css-cheatsheet.html</link>
+    <link>https://predragnikolic.github.io/blog/html-and-css-cheatsheet.html</link>
     <description>On this page you will see a HTML/CSS cheatsheet of new browser APIs and maybe something interesting.</description>
     <author>Предраг Николић</author>
     <pubDate>Sun, 23 Feb 2025 14:39:00 GMT</pubDate>
@@ -467,103 +617,9 @@ Array.from({ length: 5 }).map((v, i) => new Path({
     ]]></content:encoded>
   </item>
 <item>
-    <guid isPermaLink="false">pesme-moga-pradede.html</guid>
-    <title>Песме мога прадеде Гвоздена</title>
-    <link>https://predrag.pro/blog/pesme-moga-pradede.html</link>
-    <description>Песмe препричава његов син Михајло Николић.</description>
-    <author>Предраг Николић</author>
-    <pubDate>Sat, 06 Jan 2024 12:46:00 GMT</pubDate>
-    <category>песма</category>
-    <content:encoded><![CDATA[
-    <details>
-<summary><h3 style="display: inline-block;">Oван на мотору<a href="#ovan-na-motoru" style="margin-left: 10px;">#</a></h3></summary>
-
-<p><b>Увод</b></p>
-
-<p><i>"Радња се дешава 50-тих година после рата.
-Кад је било све опорезовано сељацима
-и џукелу ако држиш,
-и казан и волове и кола шинска,
-виноград, на све порез плаћаш, да не говорим земљу, ја.
-И онда Гвозден, прадеда твој и Јанка овога отац,
-певају песму, а то се није смело онда, али су они певали.
-
-Па каже овако:"</i></p>
-
-<pre>
-Ој, сељаче, мученче,
-Вазда радиш гладан и жедан,
-И тако си увек бедан.
-
-Деца су ти боса и гола,
-По трњу се за стоком избола.
-
-Опет, жељна сира и млека,
-Тако бедно живети до века.
-
-Срада људе пореза и мода,
-Ал' највише управа прихода.
-
-Таксу платиш на казан и кола,
-Тако исто на обадва вола.
-
-Точарину платиш на ракију,
-И шприцање јадних кокошију.
-
-Па се такса на виноград даје,
-И на керче што пред кућом лаје.
-
-На све стране сељак паре баца,
-Мора платити мркање оваца.
-
-Овце су се париле и прије,
-Ал' парење нико плаћо није.
-
-Ал' се томе сељак и не чуди,
-Јер вештачки данас паре људи.
-
-Овце моје, будите, будите у тору,
-Доће вама ован на мотору.
-</pre>
-
-</details>
-
-<details>
-<summary><h3 style="display: inline-block;">Лужара<a href="#vodenica" style="margin-left: 10px;">#</a></h3></summary>
-
-<p><b>Увод</b></p>
-
-<p><i>"Љубин отац Рајко био је добар човек. Код њега, Никола, Жијо и Милош оду зими по три, четири игранке. Добар био, знаш, са омладином. Једног дана у пролеће, још није био посејан кукуруз по пољу, ми чували овце, где је мост сад.<br /><br />
-Кад иде Рајко из реке и носи нешто замотано, нашао неку дроњу. Оно дете, мртво, нашао у води. Ту је била брана за лужару, ону воденицу код Ђуриновца. И тап, да се јави милицји. Милиција извести лекара, суд. Долази лекар, долази суд. И дете на самој кривини овде где се скреће ка мосту и чобана нас вако. Они њихов посао ураде, а Гвозден онда спева песму за Рајка:"</i></p>
-
-<pre>
-Боже мили и Божија Мајко,
-Шта уради из Деспића Рајко.
-
-Он не ради што народ воли,
-Већ тражи копилади по води.
-
-То је било у пролећне дане,
-Нађе дете код лужарне бране.
-
-<i>"Па је онда тога још било,
-Па онда, кад је суд дошо...
-Нисам све упамтио...
-И онда Гвозден у песми каже:"</i>
-
-Гледа судија Рајка од главе до пете,
-Па му вели "Море Рајко налинк на те дете".
-</pre>
-</details>
-
-
-<p style="text-align: right;">- Гвозден Николић</p>
-    ]]></content:encoded>
-  </item>
-<item>
     <guid isPermaLink="false">pravoslavna-knjizara-is-live.html</guid>
     <title>"Православна књижара" is now live</title>
-    <link>https://predrag.pro/blog/pravoslavna-knjizara-is-live.html</link>
+    <link>https://predragnikolic.github.io/blog/pravoslavna-knjizara-is-live.html</link>
     <description>Let's take a look:</description>
     <author>Предраг Николић</author>
     <pubDate>Fri, 27 Sep 2024 19:36:00 GMT</pubDate>
@@ -632,62 +688,6 @@ Array.from({ length: 5 }).map((v, i) => new Path({
     compareNode.style.setProperty('--range-position', `${e.target.value}%`)
   }
 </script>
-    ]]></content:encoded>
-  </item>
-<item>
-    <guid isPermaLink="false">visualize-your-database.html</guid>
-    <title>Visualize your database</title>
-    <link>https://predrag.pro/blog/visualize-your-database.html</link>
-    <description>An <a href="https://www.npmjs.com/package/@predragnikolic/pn-show-db">npm tool</a> to visualize your database <br />and generate SQL with a local Ollama model.</description>
-    <author>Предраг Николић</author>
-    <pubDate>Sun, 05 May 2024 10:59:00 GMT</pubDate>
-    <category>postgres</category>
-<category>visualize</category>
-<category>sql</category>
-<category>ollama</category>
-<category>phi</category>
-<category>sqlcoder</category>
-    <content:encoded><![CDATA[
-    <img height="402" src="https://github.com/predragnikolic/predragnikolic.github.io/assets/22029477/57b18467-b67b-41b7-8b5d-0adfa6332eaf" >
-
-<h3 id="getting-started">Getting started</h3>
-
-<ol>
-	<li>Create a <code>.env</code> file with the following content:</li>
-	<code class="code-block"># Change the connection string
-DATABASE_URL=postgres://user:password@host:5432/database</code>
-	</li>
-	<li><p>From the root folder where the <code>.env</code> file is present, run:</p>
-	<code class="code-block"><span class="noselect mr-1">$</span>npx @predragnikolic/pn-show-db --db=postgres</code>
-	<p>That will open a browser and visualize your database.</p></li>
-</ol>
-
-<small class="note">Currently only Postgres is supported.</small>
-
-<h2 id="ollama-ai">Generate SQL code with a local Ollama model</h2>
-
-<p>There is support for local Ollama models such as <code>phi3</code> or <code>sqlcoder</code>.</p>
-
-<ul>
-	<li><code>phi3</code> - Phi is a small language model capable of common-sense reasoning and language understanding. It showcases “state-of-the-art performance” among language models with less than 13 billion parameters.</li>
-	<li><code>sqlcoder</code> - This 15B completion model generally requires at least 16GB of RAM.</li>
-</ul>
-
-<small class="note">When the <code>--ollama-model=MODEL_NAME</code> argument is specified, a wand icon will appear in the top left corner.</small>
-
-<h2 id="setup-ollama-phi">Setup Ollama and Phi</h2>
-
-<p>Download <a href="https://ollama.com/download">Ollama</a>.</p>
-<p>Run <code><span class="noselect mr-1">$</span>ollama run phi3</code> to install <code>phi3</code>.</p>
-
-<p>To use <code>phi3</code> with <code>@predragnikolic/pn-show-db</code>, run:</p>
-<code class="code-block"><span class="noselect mr-1">$</span>npx @predragnikolic/pn-show-db --db=postgres --ollama-model=phi3
-</code>
-
-<video src="https://github.com/predragnikolic/predragnikolic.github.io/assets/22029477/eee69ed1-b8f2-4c34-b2cb-329d18d469d7" controls></video>
-
-
-<p style="text-align: right;">Христос васкрсе!</p>
     ]]></content:encoded>
   </item>
   </channel>

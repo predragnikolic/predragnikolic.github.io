@@ -1,6 +1,6 @@
-import { readdirSync, readFileSync, writeFileSync } from 'fs';
-import path from 'path';
-import { fileURLToPath } from 'url';
+import { readdirSync, readFileSync, writeFileSync } from 'node:fs';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 
 /**
  * @typedef {{
@@ -37,9 +37,9 @@ readdirSync(postsDir).forEach(file => {
       <meta name='date' content='${meta.date}'>
 
       <meta name='og:title' content='${meta.title}'>
-      <meta name='og:url' content='https://predrag.pro/blog/${meta.slug}'>
+      <meta name='og:url' content='https://predragnikolic.github.io/blog/${meta.slug}'>
       ${ meta.image ? `<meta name='og:image' content='${meta.image}`: ''}
-      <meta name='og:site_name' content='predrag.pro'>
+      <meta name='og:site_name' content='predragnikolic.github.io'>
       <meta name='og:description' content='${meta.description}'>
     `
     const layout = readFileSync(path.join(postsDir, 'base', 'layout.html'), { encoding: 'utf8' })
@@ -69,7 +69,7 @@ metas.forEach(meta => {
   rssItems.push(`<item>
     <guid isPermaLink="false">${meta.slug}</guid>
     <title>${meta.title}</title>
-    <link>https://predrag.pro/blog/${meta.slug}</link>
+    <link>https://predragnikolic.github.io/blog/${meta.slug}</link>
     <description>${meta.description}</description>
     <author>${meta.author}</author>
     <pubDate>${new Date(meta.date).toUTCString()}</pubDate>

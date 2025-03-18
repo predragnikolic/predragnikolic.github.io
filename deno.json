@@ -1,0 +1,16 @@
+{
+    "engines": {
+        "node": "19"
+    },
+    "imports": {
+        "browser-sync": "npm:browser-sync@3.0.3"
+    },
+    "tasks": {
+        "dev:ui": "browser-sync start --server --files \"*\" \"*/**/*\"",
+        "watch:build": "deno -A  --watch=./src ./scripts/generate_blog.mjs",
+        "dev": {
+          "dependencies": ["dev:ui", "watch:build"]
+        },
+        "build": "deno -A ./scripts/generate_blog.mjs"
+    }
+}
