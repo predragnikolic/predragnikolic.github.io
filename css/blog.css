@@ -157,16 +157,25 @@ h3 {
 }
 
 .blog img {
+	display: block;
 	border-radius: 0.4rem;
 	background: linear-gradient(to right, #00000020, transparent, #00000010);
 	width: 100%;
 }
 
 .blog video {
+	display: block;
 	margin: 18px 0;
 	border-radius: 0.4rem;
 	background: linear-gradient(to right, #00000020, transparent, #00000010);
 	width: 100%;
+}
+
+.blog iframe {
+	display: block;
+	border: none;
+	width: 100%;
+	margin: 18px 0;
 }
 
 .blog .video {
