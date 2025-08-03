@@ -237,6 +237,11 @@
     background: #efefef;
 }
 
+
+.timeline_item.year:after {
+    background: #000;
+}
+
 .timeline_item:last-of-type:after {
     top: 3px;
 }
