@@ -27,7 +27,12 @@
     <pubDate>Fri, 28 Mar 2025 13:00:00 GMT</pubDate>
     <category>sublime-text</category>
     <content:encoded><![CDATA[
-    <p>This <a target="_blank" href="https://predragnikolic.github.io/find-color-scheme/">web site</a> lists all published color schemes for Sublime text.</p>
+    <meta name='language' content='en'>
+
+
+
+
+<p>This <a target="_blank" href="https://predragnikolic.github.io/find-color-scheme/">web site</a> lists all published color schemes for Sublime text.</p>
 
 <iframe src="https://predragnikolic.github.io/find-color-scheme/" style="height: 500px;"></iframe>
 
@@ -52,7 +57,12 @@
 <category>phi</category>
 <category>sqlcoder</category>
     <content:encoded><![CDATA[
-    <img height="402" src="https://github.com/predragnikolic/predragnikolic.github.io/assets/22029477/57b18467-b67b-41b7-8b5d-0adfa6332eaf" >
+    <meta name='language' content='en'>
+
+
+
+
+<img height="402" src="https://github.com/predragnikolic/predragnikolic.github.io/assets/22029477/57b18467-b67b-41b7-8b5d-0adfa6332eaf" >
 
 <h3 id="getting-started">Getting started</h3>
 
@@ -103,7 +113,9 @@ DATABASE_URL=postgres://user:password@host:5432/database</code>
     <pubDate>Wed, 12 Mar 2025 12:00:00 GMT</pubDate>
     
     <content:encoded><![CDATA[
-    <meta name='keywords' content=''>
+    <meta name='language' content='sr'>
+
+<meta name='keywords' content=''>
 
 
 <p>Током <b>демон</b>страција (протеста) у Београду 9 марта 1991 у говору Патријарха српског Павла упућеном народу пренео је јасну поруку. Мир!</p>
@@ -127,7 +139,12 @@ DATABASE_URL=postgres://user:password@host:5432/database</code>
     <pubDate>Fri, 09 Jun 2023 19:21:00 GMT</pubDate>
     <category>sublime-text</category>
     <content:encoded><![CDATA[
-    <img src="https://raw.githubusercontent.com/predragnikolic/sublime-git-diff-view/master/img/showcase.png" >
+    <meta name='language' content='en'>
+
+
+
+
+<img src="https://raw.githubusercontent.com/predragnikolic/sublime-git-diff-view/master/img/showcase.png" >
 
 <p>Version 0.6.0 of the <a href="https://github.com/predragnikolic/sublime-git-diff-view">GitDiffView</a> plugin for Sublime Text is here.</p>
 
@@ -170,7 +187,12 @@ DATABASE_URL=postgres://user:password@host:5432/database</code>
     <pubDate>Sat, 06 Jan 2024 12:46:00 GMT</pubDate>
     <category>песма</category>
     <content:encoded><![CDATA[
-    <details>
+    <meta name='language' content='sr'>
+
+
+
+
+<details>
 <summary><h3 style="display: inline-block;">Oван на мотору<a href="#ovan-na-motoru" style="margin-left: 10px;">#</a></h3></summary>
 
 <p><b>Увод</b></p>
@@ -265,7 +287,12 @@ DATABASE_URL=postgres://user:password@host:5432/database</code>
     <category>CSS</category>
 <category>HTML</category>
     <content:encoded><![CDATA[
-    <a href="#color-text-based-on-background">Color text based on background color with CSS</a>
+    <meta name='language' content='en'>
+
+
+
+
+<a href="#color-text-based-on-background">Color text based on background color with CSS</a>
 
 <style>
 .text-based-on-background {
@@ -638,14 +665,18 @@ Array.from({ length: 5 }).map((v, i) => new Path({
   </item>
 <item>
     <guid isPermaLink="false">pravoslavna-knjizara-is-live.html</guid>
-    <title>"Православна књижара" is now live</title>
+    <title>"Православна књижара" је пуштена</title>
     <link>https://predragnikolic.github.io/blog/pravoslavna-knjizara-is-live.html</link>
-    <description>Let's take a look:</description>
+    <description> </description>
     <author>Предраг Николић</author>
     <pubDate>Fri, 27 Sep 2024 19:36:00 GMT</pubDate>
-    <category>redesign</category>
+    
     <content:encoded><![CDATA[
-    <link type="text/css" href="https://unpkg.com/image-compare-viewer/dist/image-compare-viewer.min.css" rel="stylesheet">
+    <meta name='language' content='sr'>
+
+<meta name='keywords' content=''>
+
+<link type="text/css" href="https://unpkg.com/image-compare-viewer/dist/image-compare-viewer.min.css" rel="stylesheet">
 
 <video height="402" src="https://pub-4da9a4732e674df0bf06664b118ecd28.r2.dev/%D0%BF%D1%80%D0%B0%D0%B2%D0%BE%D1%81%D0%BB%D0%B0%D0%B2%D0%BD%D0%B0_%D0%BA%D1%9A%D0%B8%D0%B6%D0%B0%D1%80%D0%B0_1280x720.mp4" controls></video>
 
@@ -658,15 +689,11 @@ Array.from({ length: 5 }).map((v, i) => new Path({
 }
 </style>
 
-<h2>What is "Православна Књижара"?</h2>
+<p>"Православна Књижара" је место где можете наћи православне књиге.</p>
 
-<p class="relative">"Православна Књижара" is a website where you can discover a variety of Orthodox books, including theology, spiritual guides, and prayer books.
-</p>
+<h2>Шта је ново?</h2>
 
-
-<h2>What's new?</h2>
-
-<p>The new version features a new redesign:</p>
+<p>Нови изглед:</p>
 <section class="flex justify-center">
     <section class="compare" style="max-width: 500px;">
       <div class="compare_before">
@@ -678,7 +705,7 @@ Array.from({ length: 5 }).map((v, i) => new Path({
       <input type='range' oninput="onCompareChange(event)" />
     </section>
 </section>
-<p class="text-center mb-2">Home Page</p>
+<p class="text-center mb-2">Почетна страница</p>
 
 <section class="flex justify-center">
   <section class="compare" style="max-width: 500px;">
@@ -691,14 +718,14 @@ Array.from({ length: 5 }).map((v, i) => new Path({
     <input type='range' oninput="onCompareChange(event)" />
   </section>
 </section>
-<p class="text-center mb-2">Product Details Page</p>
+<p class="text-center mb-2">Детаљи о књизи</p>
 
-<p>Apart from the obvious visual changes, the application architecture has been rebuilt from the ground up with the most modern web tooling available.</p>
-<p>The goal was to create an app that looks appealing, features smooth animations, mobile friendly, and delivers an excellent user experience.</p>
+<p>Није се само спољашњи изглед сајта порменио, оне највеће измене се не могу видети.</p>
 
-<p>Please give it a try and see if it meets these expectations.</p>
+<p>Посетите <a href="https://pravoslavnaknjizara.com">pravoslavnaknjizara.com</a>.</p>
+<p>Верујем да има нека књига која ће вам привући пажњу.</p>
 
-<p style="text-align: right;">See you at <a href="https://pravoslavnaknjizara.com">pravoslavnaknjizara.com</a></p>
+<p style="text-align: right;">Свако добро</p>
 
 
 <script>

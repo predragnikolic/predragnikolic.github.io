@@ -207,6 +207,7 @@
     list-style: none;
     padding-left: 4rem;
     z-index: 1;
+    pointer-events: none;
 }
 
 .timeline:after {
@@ -220,6 +221,7 @@
 }
 
 .timeline_item {
+    pointer-events: all;
     position: relative;
     margin-bottom: 4em;
 }

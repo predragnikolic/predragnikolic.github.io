@@ -12,6 +12,7 @@ import { fileURLToPath } from 'node:url';
  *  image?: string
  *  tags: string[]
  *  content: string
+ *  language: 'sr' | "en"
  * }} Meta
  */
 
@@ -46,7 +47,7 @@ readdirSync(postsDir).forEach(file => {
     const titleAndDecription = `
       <h1 class="blog_title">${meta.title}</h1>
       <div class='flex blog_meta flex-wrap' style='gap: 10px'>
-        ${new Intl.DateTimeFormat('en', {month: 'long', year: 'numeric', day: 'numeric'}).format(new Date(meta.date))}
+        ${new Intl.DateTimeFormat(meta.language, {month: 'long', year: 'numeric', day: 'numeric'}).format(new Date(meta.date))}
         ${meta.tags.length ? "<span>-</span>": '' }
         ${meta.tags.map(tag => `<div class="tag">${tag}</div>`).join('')}
       </div>
@@ -100,12 +101,15 @@ function parseMeta(content, slug) {
   const [fullDateMatch, date] = content.match(/<meta.+['"]date['"]\scontent=['"](.+)['"]\s?>/)
   if (!date) throw Error("<meta name='date' content='*'> missing")
   content = content.replace(fullDateMatch, '')
+  const [fullLanguageMatch, language] = content.match(/<meta.+['"]language['"]\scontent=['"](.+)['"]\s?>/)
+
 
   content = content.trim()
   /** @type {Meta} */
   const meta = {
     slug,
     author: 'Предраг Николић',
+    language,
     title,
     description,
     date,

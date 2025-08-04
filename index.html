@@ -26,13 +26,13 @@
             <div class="flex flex-wrap-reverse justify-center gap-3 align-center">
                 <div>
                     <p class="big-text">Предраг Николић</p>
-                    <p>тражим _____</p>
+                    <p>добро <span id="time-of-day-js"></span> добри људи</p>
                 </div>
                 <div>
                     <img class="profile_image" src="./img/asd.jpg">
                     <section class="text-center mt-1 flex gap-1">
                         <a class="" style="height: 40px; display: inline-flex; justify-content: center; align-items: center; flex-grow: 1; background: #000; color: #fff; border-radius: 50px;" href="https://forms.gle/Joh9wy2jPGjaG2A67" target="_blank">
-    <span style="white-space: nowrap; margin-bottom:2px;">Треба нешто?</span>
+    <span style="white-space: nowrap; margin-bottom:2px;">Питајте</span>
                         </a>
                         <a target="_blank" href="/rss.xml" title="RSS News Feed">
                             <img src="/img/rss.svg" class="github_logo">
@@ -67,7 +67,7 @@
                 </li>
                 <li class="timeline_item">
                     <article>
-                        <a class='font-bukyVede md-text' href="/blog/pravoslavna-knjizara-is-live.html">"Православна Књижара" is now live</a>
+                        <a class='font-bukyVede md-text' href="/blog/pravoslavna-knjizara-is-live.html">"Православна Књижара" је пуштена</a>
                     </article>
                 </li>
                 <li class="timeline_item">
@@ -102,6 +102,14 @@
     <script src="/components/x-graph.js"></script>
     <script type="module">
         import {createNoise2D} from "https://unpkg.com/simplex-noise@4.0.1/dist/esm/simplex-noise.js"
+        let dayEl = document.querySelector('#time-of-day-js')
+        let timeOfDay = 'јутро'
+        let currentHours = new Date().getHours()
+        if (11 < currentHours < 18) timeOfDay = 'дан'
+        if (18 <= currentHours < 3) timeOfDay = 'вече'
+        dayEl.innerText = timeOfDay
+
+
         const noise2D = createNoise2D();
         const canvas = document.querySelector('canvas')
         const ctx = canvas.getContext('2d')

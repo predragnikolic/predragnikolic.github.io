@@ -39,7 +39,7 @@ h3 {
     left: calc(88% + 20px);
     bottom: -4vh;
     opacity: 0.5;
-    background-image: radial-gradient(#000 6%, transparent 0);
+    background-image: radial-gradient(#000 4%, transparent 0);
     background-size: 28px 28px;
 }
 
@@ -52,7 +52,7 @@ h3 {
     position: absolute;
     width: 100%;
     content: '';
-	background-color: #00000004;
+	background-color: #fefefe;
 }
 /* END of dot-container */
 
