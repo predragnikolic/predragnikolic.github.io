@@ -26,7 +26,7 @@
             <div class="flex flex-wrap-reverse justify-center gap-3 align-center">
                 <div>
                     <p class="big-text">Предраг Николић</p>
-                    <p>добро <span id="time-of-day-js"></span> добри људи</p>
+    
                 </div>
                 <div>
                     <img class="profile_image" src="./img/asd.jpg">
@@ -102,13 +102,6 @@
     <script src="/components/x-graph.js"></script>
     <script type="module">
         import {createNoise2D} from "https://unpkg.com/simplex-noise@4.0.1/dist/esm/simplex-noise.js"
-        let dayEl = document.querySelector('#time-of-day-js')
-        let timeOfDay = 'јутро'
-        let currentHours = new Date().getHours()
-        if (11 < currentHours < 18) timeOfDay = 'дан'
-        if (18 <= currentHours < 3) timeOfDay = 'вече'
-        dayEl.innerText = timeOfDay
-
 
         const noise2D = createNoise2D();
         const canvas = document.querySelector('canvas')
