@@ -48,6 +48,7 @@ customElements.define(
           min-height: 1.6rem;
           max-width: 80ch;
           font-size: 0.9rem;
+          tab-size : 4;
         }
 
         #highlighed-code {
@@ -92,6 +93,14 @@ customElements.define(
       })
 
       textarea.oninput = (e) => this.render(e.target.value)
+      textarea.onkeydown = function(e){
+          if(e.keyCode==9 || e.which==9){
+              e.preventDefault();
+              var s = this.selectionStart;
+              this.value = this.value.substring(0,this.selectionStart) + "\t" + this.value.substring(this.selectionEnd);
+              this.selectionEnd = s+1;
+          }
+      }
     }
 
     render(code) {
