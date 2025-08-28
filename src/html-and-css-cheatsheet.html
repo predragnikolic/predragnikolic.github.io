@@ -5,6 +5,7 @@
 <meta name='date' content='2025-02-23T15:39:00'>
 
 <a href="#color-text-based-on-background">Color text based on background color with CSS</a>
+<script src="/components/x-codeblock.js"></script>
 
 <style>
 .text-based-on-background {
@@ -12,13 +13,13 @@
   color: lch(from var(--bg) calc((49.44 - l) * infinity) 0 0);
 }
 </style>
-<code class="code-block mt-1">.text-based-on-background {
+<x-codeblock class="mt-1">.text-based-on-background {
   --bg: #ccc;
   background: var(--bg);
   color: lch(from var(--bg) calc((49.44 - l) * infinity) 0 0);
 }
-</code>
-<div style="--bg: #333; padding: 6rem;" class="text-based-on-background rounded mt-1">
+</x-codeblock>
+<div style="--bg: #191622; padding: 6rem;" class="text-based-on-background rounded mt-1">
   Text based on background
 </div>
 <p>More info at <a href="https://x.com/devongovett/status/1863733091409461256">devongovett</a>.</p>
@@ -90,7 +91,7 @@ document.querySelector('#view-transition-reorder').addEventListener('click', (e)
 <a href="#field-sizing"><code>field-sizing</code> to resize textarea, select, and input</code></a>
 
 <p>If using <code>field-sizing</code> define <code>min-block-size</code> <code>min-inline-size</code> <code>max-inline-size</code> to constrain the element from becoming too much small or too much large.</p>
-<code class="code-block mt-1 mb-1">textarea, select, input {
+<x-codeblock class="mb-1">textarea, select, input {
   field-sizing: content;
 }
 textarea {
@@ -107,7 +108,7 @@ select {
 input {
   min-inline-size: 7ch;
 }
-</code>
+</x-codeblock>
 
 <style>
 .field-sizing-textarea, .field-sizing-select, .field-sizing-input {
@@ -155,7 +156,7 @@ input {
 <a href="#interpolate-size"><code>interpolate-size</code> <code>calc-size()</code> to animate width and height</a>
 
 <p>Prevously this required JavaScript. Now it just works with CSS:</p>
-<code class="code-block mt-1 mb-1">:root {
+<x-codeblock class="mt-1 mb-1">:root {
     interpolate-size: allow-keywords;
 }
 div p {
@@ -167,7 +168,7 @@ div p {
 div:hover p {
   height: auto; /* this will now animate */
 }
-</code>
+</x-codeblock>
 
 <style>
 :root {
