@@ -158,7 +158,7 @@ customElements.define(
 
           if (twoChars === '/*') {
             let comment = twoChars;
-            i++;
+            i+=2;
             while (i < code.length && twoChars !== '*/') {
               twoChars = code[i] + (code[i+1] ?? '')
               comment += code[i];
