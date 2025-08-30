@@ -6,6 +6,7 @@
 
 <a href="#color-text-based-on-background">Color text based on background color with CSS</a>
 <script src="/components/x-codeblock.js"></script>
+<script src="/components/x-preview-codeblock.js"></script>
 
 <style>
 .text-based-on-background {
@@ -14,21 +15,20 @@
 }
 </style>
 <div class="grid-code mt-1">
-  <x-codeblock filename="main.css" code=".text-based-on-background {
+  <x-codeblock id="based-on-background-css" filename="css" code=".text-based-on-background {
     --bg: #ccc;
     background: var(--bg);
     color: lch(from var(--bg) calc((49.44 - l) * infinity) 0 0);
 }">
   </x-codeblock>
-  <x-codeblock filename="index.html"
-code='<div style="--bg: #191622; padding: 6rem;" class="text-based-on-background rounded mt-1">
+  <x-codeblock id="based-on-background-html" filename="html"
+code='<div style="--bg: #191622; padding: 6rem;" class="text-based-on-background">
     Text based on background
 </div>'>
   </x-codeblock>
+  <x-preview-codeblock css="#based-on-background-css" html="#based-on-background-html"></x-preview-codeblock>
 </div>
-<div style="--bg: #191622; padding: 6rem;" class="text-based-on-background rounded mt-1">
-  Text based on background
-</div>
+
 <p>More info at <a href="https://x.com/devongovett/status/1863733091409461256">devongovett</a>.</p>
 
 
@@ -40,89 +40,58 @@ code='<div style="--bg: #191622; padding: 6rem;" class="text-based-on-background
 <p>Or use <code>attr</code> like <code>color: attr(data-custom-color type(&lt;color&gt;), red);</code> to read <code>&lt;p data-custom-color='blue'&gt;&lt;/p&gt;</code></p>
 
 <div class="grid-code mt-1">
-  <x-codeblock filename="main.css" code=".view-transition-cards {
-    display: flex;
-    flex-direction: row;
-    gap: 1em;
-    padding: 1em;
-  }
+  <x-codeblock id="reorder-css" filename="css" code=".view-transition-cards {
+  display: flex;
+  flex-direction: row;
+  gap: 1em;
+  padding: 1em;
+}
 
-  .view-transition-card {
-    border-radius: 0.25em;
-    width: 20vw;
-    max-width: 5em;
-    aspect-ratio: 1 / 1.6;
-    background: lightgrey;
-
-    display: grid;
-    place-content: center;
-    font-size: 2em;
-  }
+.view-transition-card {
+  border-radius: 0.25em;
+  width: 20vw;
+  max-width: 5em;
+  aspect-ratio: 1 / 1.6;
+  background: lightgrey;
+  display: grid;
+  place-content: center;
+  font-size: 2em;
+}
 
 .view-transition-card[id] {
   view-transition-name: attr(id type(<custom-ident>), none); /* view-transition-card-1, view-transition-card-2, view-transition-card-3, etc. */
   view-transition-class: view-transition-card;
 }">
   </x-codeblock>
-  <x-codeblock filename="index.html" code='<div class="view-transition-cards">
+  <x-codeblock id="reorder-html" filename="html" code='<div class="view-transition-cards">
   <div class="view-transition-card" id="view-transition-card-1">1</div>
   <div class="view-transition-card" id="view-transition-card-2">2</div>
   <div class="view-transition-card" id="view-transition-card-3">3</div>
   <div class="view-transition-card" id="view-transition-card-4">4</div>
 </div>
-<button id="view-transition-reorder" style="margin: 0 auto; display: block;">Reorder</button>'>
+<button id="view-transition-reorder" style="margin: 1rem auto; display: block;">Reorder</button>'>
   </x-codeblock>
-</div>
-<style>
-   .view-transition-cards {
-    display: flex;
-    flex-direction: row;
-    gap: 1em;
-    padding: 1em;
-  }
-
-  .view-transition-card {
-    border-radius: 0.25em;
-    width: 20vw;
-    max-width: 5em;
-    aspect-ratio: 1 / 1.6;
-    background: lightgrey;
-
-    display: grid;
-    place-content: center;
-    font-size: 2em;
-  }
-
-.view-transition-card[id] {
-  view-transition-name: attr(id type(<custom-ident>), none); /* view-transition-card-1, view-transition-card-2, view-transition-card-3, etc. */
-  view-transition-class: view-transition-card;
-} 
-</style>
-<div class="view-transition-cards">
-  <div class="view-transition-card" id="view-transition-card-1">1</div>
-  <div class="view-transition-card" id="view-transition-card-2">2</div>
-  <div class="view-transition-card" id="view-transition-card-3">3</div>
-  <div class="view-transition-card" id="view-transition-card-4">4</div>
-</div>
-<button id="view-transition-reorder" style="margin: 0 auto; display: block;">Reorder</button>
-
-<script>
-  const shuffle = (array) => {
+  <x-codeblock id="reorder-script" filename="js" code='const shuffle = (array) => {
   for (let i = array.length - 1; i >= 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
     [array[i], array[j]] = [array[j], array[i]];
   }
 }
 
-document.querySelector('#view-transition-reorder').addEventListener('click', (e) => {
-  const $cards = Array.from(document.querySelectorAll('.view-transition-card'));
+document.querySelector("#view-transition-reorder").addEventListener("click", (e) => {
+  const $cards = Array.from(document.querySelectorAll(".view-transition-card"));
   shuffle($cards);
   document.startViewTransition(() => {
     $cards.forEach(($card, i) => {
-      $card.style.setProperty('order', i);
+      $card.style.setProperty("order", i);
     });
   });
-}); 
+});'></x-codeblock>
+<x-preview-codeblock css="#reorder-css" html="#reorder-html" script="#reorder-script"></x-preview-codeblock>
+</div>
+
+<script>
+
 </script>
 <p>More info at <a href="https://www.bram.us/2025/01/20/css-attr-gets-an-upgrade/">bram.us</a>.</p>
 
@@ -134,9 +103,10 @@ document.querySelector('#view-transition-reorder').addEventListener('click', (e)
 
 <p>If using <code>field-sizing</code> define <code>min-block-size</code> <code>min-inline-size</code> <code>max-inline-size</code> to constrain the element from becoming too much small or too much large.</p>
 <div class="grid-code mt-1">
-  <x-codeblock filename="main.css" code=".field-sizing-textarea, .field-sizing-select, .field-sizing-input {
+  <x-codeblock id="inline-size-css" filename="css" code=".field-sizing-textarea, .field-sizing-select, .field-sizing-input {
   field-sizing: content;
 }
+
 .field-sizing-textarea {
   min-block-size: 3.5rlh;
   min-inline-size: 20ch;
@@ -152,46 +122,26 @@ document.querySelector('#view-transition-reorder').addEventListener('click', (e)
   min-inline-size: 7ch;
 }">
   </x-codeblock>
+  <x-codeblock id="inline-size-html" filename="html" code='<div class="p-2">
+    <textarea placeholder="Regular textarea"></textarea>
+    <br/>
+    <textarea class="field-sizing-textarea" placeholder="textarea with field-sizing that does grow…"></textarea>
+    <br/>
+    <select class="field-sizing-select">
+      <option>This shrinks to fit</option>
+      <option>hi</option>
+      <option>short</option>
+      <option>medium</option>
+      <option>annoying long option that needs rewritten</option>
+    </select>
+    <br/>
+    <input class="field-sizing-input" type="text" placeholder="I grow too">
+    <br/>
+    <input class="field-sizing-input" type="email" placeholder="Email input type too">
+</div>'>
+  </x-codeblock>
+  <x-preview-codeblock css="#inline-size-css" html="#inline-size-html"></x-preview-codeblock>
 </div>
-
-<style>
-.field-sizing-textarea, .field-sizing-select, .field-sizing-input {
-  field-sizing: content;
-}
-.field-sizing-textarea {
-  min-block-size: 3.5rlh;
-  min-inline-size: 20ch;
-  max-inline-size: 50ch;
-}
-
-.field-sizing-select {
-  min-inline-size: 5ch;
-  min-block-size: 1.5lh;
-}
-
-.field-sizing-input {
-  min-inline-size: 7ch;
-}
-</style>
-
-<section class="b-1 rounded p-2">
-  <p class="m-0 mb-1">Examples</p>
-  <textarea placeholder="Regular textarea"></textarea>
-  <br/>
-  <textarea class="field-sizing-textarea" placeholder="textarea with field-sizing that does grow…"></textarea>
-  <br/>
-  <select class="field-sizing-select">
-    <option>This shrinks to fit</option>
-    <option>hi</option>
-    <option>short</option>
-    <option>medium</option>
-    <option>annoying long option that needs rewritten</option>
-  </select>
-  <br/>
-  <input class="field-sizing-input" type="text" placeholder="I grow too">
-  <br/>
-  <input class="field-sizing-input" type="email" placeholder="Email input type too">
-</section>
 
 
 <hr class="mt-4 mb-4" />
@@ -200,34 +150,21 @@ document.querySelector('#view-transition-reorder').addEventListener('click', (e)
 <a href="#interpolate-size"><code>interpolate-size</code> <code>calc-size()</code> to animate width and height</a>
 
 <p>Prevously this required JavaScript. Now it just works with CSS:</p>
-<x-codeblock class="mt-1 mb-1" code=":root {
+<div class="grid-code mt-1">
+  <x-codeblock id="interpolate-css" filename="css" code=":root {
     interpolate-size: allow-keywords;
 }
-div p {
-  overflow: hidden;
-  transition: all 0.2s;
-  height: 0;
-}
 
-div:hover p {
-  height: auto; /* this will now animate */
-}"></x-codeblock>
-
-<style>
-:root {
-    interpolate-size: allow-keywords;
-}
 .interpolate-example-div p {
   overflow: hidden;
   transition: all 0.2s;
   height: 0;
 }
-.interpolate-example-div:hover p {
-  height: auto;
-}
-</style>
 
-<section class="b-1 rounded p-2">
+.interpolate-example-div:hover p {
+  height: auto; /* this will now animate */
+}"></x-codeblock>
+  <x-codeblock id="interpolate-html" filename="html" code='<section class="b-1 rounded p-2">
   <div class="interpolate-example-div">Hover me
     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
     tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
@@ -236,7 +173,10 @@ div:hover p {
     cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
     proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
   </div>
-</section>
+</section>'></x-codeblock>
+  <x-preview-codeblock css="#interpolate-css" html="#interpolate-html"></x-preview-codeblock>
+
+</div>
 
 <p>More info at <a href="https://developer.chrome.com/docs/css-ui/animate-to-height-auto">developer.chrome.com</a>.</p>
 
@@ -287,7 +227,6 @@ div:hover p {
   let x = 0;
 let text = document.getElementById('num');
 const svg = document.getElementById('svg');
-console.log(svg.getBoundingClientRect())
 
 class Path {
   constructor(options) {
@@ -393,7 +332,6 @@ class Path {
     window.requestAnimationFrame(this.animate.bind(this));
   }
 }
-  console.log(svg.width)
 const basePath = new Path({
   pointNum: 60,
   radius: 100,

@@ -17,8 +17,8 @@ customElements.define(
           color: #fff;
           --padding: 1rem;
           border-radius: 1rem;
-          overflow: hidden;
           overflow-x: auto;
+          max-height: 300px;
 
           --syntax-keyword: #fcb6b6;
           --syntax-string: #fcd49e;
@@ -51,10 +51,7 @@ customElements.define(
           padding:var(--padding);
           line-height: inherit;
           overflow: hidden;
-        }
-
-        #highlighed-code {
-          white-space: pre-wrap;
+          white-space: pre;
           word-break: break-word;
         }
 
@@ -85,6 +82,8 @@ customElements.define(
           display: none;
         }
         .file-name {
+          min-width: 80px;
+          text-align: center;
           display: inline-block;
           color: #fff;
           padding-top: var(--padding);
@@ -97,7 +96,7 @@ customElements.define(
 
         }
         </style>
-        <section style="width: 100%"><div class="file-name">Filename.css</div></section>
+        <section style="width: 100%; position: sticky; top: 0; background: #191622; z-index:1; left:0;"><div class="file-name">Filename.css</div></section>
         <div style="position: relative; display: flex">
           <textarea></textarea>
           <code id="highlighed-code"></code>
