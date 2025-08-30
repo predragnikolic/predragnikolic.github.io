@@ -62,6 +62,7 @@
 
 <a href="#color-text-based-on-background">Color text based on background color with CSS</a>
 <script src="/components/x-codeblock.js"></script>
+<script src="/components/x-preview-codeblock.js"></script>
 
 <style>
 .text-based-on-background {
@@ -70,21 +71,21 @@
 }
 </style>
 <div class="grid-code mt-1">
-  <x-codeblock filename="main.css" code=".text-based-on-background {
+  <x-codeblock id="hello-css" filename="main.css" code=".text-based-on-background {
     --bg: #ccc;
     background: var(--bg);
     color: lch(from var(--bg) calc((49.44 - l) * infinity) 0 0);
 }">
   </x-codeblock>
-  <x-codeblock filename="index.html"
+  <x-codeblock id="hello" filename="index.html"
 code='<div style="--bg: #191622; padding: 6rem;" class="text-based-on-background rounded mt-1">
     Text based on background
 </div>'>
   </x-codeblock>
+  <x-preview-codeblock html="#hello" css="#hello-css">
+  </x-preview-codeblock>
 </div>
-<div style="--bg: #191622; padding: 6rem;" class="text-based-on-background rounded mt-1">
-  Text based on background
-</div>
+
 <p>More info at <a href="https://x.com/devongovett/status/1863733091409461256">devongovett</a>.</p>
 
 

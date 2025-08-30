@@ -103,13 +103,17 @@ customElements.define(
           <code id="highlighed-code"></code>
         </div>
       `;
+      this.code = ''
     }
     connectedCallback() {
       // Get the code from the innerHTML and sanitize it
       const textarea = this.shadowRoot.querySelector('textarea');
       this.render(this.getAttribute("code") ?? '');
-
-      textarea.oninput = (e) => this.render(e.target.value)
+      this.code = this.getAttribute("code")
+      textarea.oninput = (e) => {
+        this.code = e.target.value;
+        this.render(e.target.value)
+      }
       textarea.onkeydown = function(e){
           if(e.keyCode==9 || e.which==9){
               e.preventDefault();
@@ -121,12 +125,23 @@ customElements.define(
     }
 
     render(code) {
+        this.dispatchEvent(new CustomEvent('change-code', {
+          bubbles: true,
+          cancelable: true,
+          detail: {
+            code: this.code
+          }
+        }))
         const textarea = this.shadowRoot.querySelector('textarea');
         textarea.textContent = code;
         const codeElement = this.shadowRoot.querySelector('#highlighed-code');
         codeElement.innerHTML = this.highlightJS(code);
         const fileNameEl = this.shadowRoot.querySelector('.file-name');
         fileNameEl.innerHTML = this.getAttribute("filename") ?? '';
+    }
+
+    getCode() {
+      return this.code
     }
 
     highlightJS(code) {
