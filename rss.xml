@@ -301,18 +301,19 @@ DATABASE_URL=postgres://user:password@host:5432/database</code>
   color: lch(from var(--bg) calc((49.44 - l) * infinity) 0 0);
 }
 </style>
-<div class="flex"><x-codeblock class="mt-1 grow">.text-based-on-background {
-  --bg: #ccc;
-  background: var(--bg);
-  color: lch(from var(--bg) calc((49.44 - l) * infinity) 0 0);
-}
-</x-codeblock>
-<x-codeblock class="mt-1 grow">.text-based-on-background {
-  --bg: #ccc;
-  background: var(--bg);
-  color: lch(from var(--bg) calc((49.44 - l) * infinity) 0 0);
-}
-</x-codeblock></div>
+<div class="grid-code mt-1">
+  <x-codeblock filename="main.css" code=".text-based-on-background {
+    --bg: #ccc;
+    background: var(--bg);
+    color: lch(from var(--bg) calc((49.44 - l) * infinity) 0 0);
+}">
+  </x-codeblock>
+  <x-codeblock filename="index.html"
+code='<div style="--bg: #191622; padding: 6rem;" class="text-based-on-background rounded mt-1">
+    Text based on background
+</div>'>
+  </x-codeblock>
+</div>
 <div style="--bg: #191622; padding: 6rem;" class="text-based-on-background rounded mt-1">
   Text based on background
 </div>
@@ -325,6 +326,41 @@ DATABASE_URL=postgres://user:password@host:5432/database</code>
 <a href="#attr-for-view-tranistion-names">Use <code>attr(id type(&lt;custom-ident&gt;), none)</code> for view transition names</a>
 
 <p>Or use <code>attr</code> like <code>color: attr(data-custom-color type(&lt;color&gt;), red);</code> to read <code>&lt;p data-custom-color='blue'&gt;&lt;/p&gt;</code></p>
+
+<div class="grid-code mt-1">
+  <x-codeblock filename="main.css" code=".view-transition-cards {
+    display: flex;
+    flex-direction: row;
+    gap: 1em;
+    padding: 1em;
+  }
+
+  .view-transition-card {
+    border-radius: 0.25em;
+    width: 20vw;
+    max-width: 5em;
+    aspect-ratio: 1 / 1.6;
+    background: lightgrey;
+
+    display: grid;
+    place-content: center;
+    font-size: 2em;
+  }
+
+.view-transition-card[id] {
+  view-transition-name: attr(id type(<custom-ident>), none); /* view-transition-card-1, view-transition-card-2, view-transition-card-3, etc. */
+  view-transition-class: view-transition-card;
+}">
+  </x-codeblock>
+  <x-codeblock filename="index.html" code='<div class="view-transition-cards">
+  <div class="view-transition-card" id="view-transition-card-1">1</div>
+  <div class="view-transition-card" id="view-transition-card-2">2</div>
+  <div class="view-transition-card" id="view-transition-card-3">3</div>
+  <div class="view-transition-card" id="view-transition-card-4">4</div>
+</div>
+<button id="view-transition-reorder" style="margin: 0 auto; display: block;">Reorder</button>'>
+  </x-codeblock>
+</div>
 <style>
    .view-transition-cards {
     display: flex;
@@ -385,24 +421,26 @@ document.querySelector('#view-transition-reorder').addEventListener('click', (e)
 <a href="#field-sizing"><code>field-sizing</code> to resize textarea, select, and input</code></a>
 
 <p>If using <code>field-sizing</code> define <code>min-block-size</code> <code>min-inline-size</code> <code>max-inline-size</code> to constrain the element from becoming too much small or too much large.</p>
-<x-codeblock class="mb-1">textarea, select, input {
+<div class="grid-code mt-1">
+  <x-codeblock filename="main.css" code=".field-sizing-textarea, .field-sizing-select, .field-sizing-input {
   field-sizing: content;
 }
-textarea {
+.field-sizing-textarea {
   min-block-size: 3.5rlh;
   min-inline-size: 20ch;
   max-inline-size: 50ch;
 }
 
-select {
+.field-sizing-select {
   min-inline-size: 5ch;
   min-block-size: 1.5lh;
 }
 
-input {
+.field-sizing-input {
   min-inline-size: 7ch;
-}
-</x-codeblock>
+}">
+  </x-codeblock>
+</div>
 
 <style>
 .field-sizing-textarea, .field-sizing-select, .field-sizing-input {
@@ -450,7 +488,7 @@ input {
 <a href="#interpolate-size"><code>interpolate-size</code> <code>calc-size()</code> to animate width and height</a>
 
 <p>Prevously this required JavaScript. Now it just works with CSS:</p>
-<x-codeblock class="mt-1 mb-1">:root {
+<x-codeblock class="mt-1 mb-1" code=":root {
     interpolate-size: allow-keywords;
 }
 div p {
@@ -461,8 +499,7 @@ div p {
 
 div:hover p {
   height: auto; /* this will now animate */
-}
-</x-codeblock>
+}"></x-codeblock>
 
 <style>
 :root {

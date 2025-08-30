@@ -82,6 +82,15 @@ hr {
     left: 0;
 }
 
+.grid-code {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+.grid-code > * {
+    width: 100%;
+}
+
 .video-grid {
     display: grid;
     gap: 1rem;

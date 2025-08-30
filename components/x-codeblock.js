@@ -9,12 +9,13 @@ customElements.define(
           position: relative;
           font-size: 0.9rem;
           display: flex;
+          align-content: start;
+          flex-wrap: wrap;
           white-space: pre;
           font-family: "Jura";
           background: #191622;
           color: #fff;
           --padding: 1rem;
-          padding: var(--padding);
           border-radius: 1rem;
           overflow: hidden;
           overflow-x: auto;
@@ -36,12 +37,6 @@ customElements.define(
           left: 0;
           position: absolute;
           caret-color: #fff;
-          width: 100%;
-          height: 100%;
-          border: 0;
-          line-height: inherit;
-          overflow: hidden;
-          padding:var(--padding);
           resize:none;
         }
 
@@ -50,6 +45,12 @@ customElements.define(
           max-width: 100%;
           font-size: 0.9rem;
           tab-size : 4;
+          width: 100%;
+          height: 100%;
+          border: 0;
+          padding:var(--padding);
+          line-height: inherit;
+          overflow: hidden;
         }
 
         #highlighed-code {
@@ -80,18 +81,33 @@ customElements.define(
         .syntax-comment {
           color: var(--syntax-comment);
         }
+        section:has(.file-name:empty) {
+          display: none;
+        }
+        .file-name {
+          display: inline-block;
+          color: #fff;
+          padding-top: var(--padding);
+          padding-left: var(--padding);
+          padding-right: var(--padding);
+          padding-bottom: calc(var(--padding) / 2);
+          border-bottom: 1px solid #fff;
+          border-image-slice: 1;
+          border-image-source: linear-gradient(to left, #000, #ffffff90, #000);
+
+        }
         </style>
-        <textarea></textarea>
-        <code id="highlighed-code"></code>
+        <section style="width: 100%"><div class="file-name">Filename.css</div></section>
+        <div style="position: relative; display: flex">
+          <textarea></textarea>
+          <code id="highlighed-code"></code>
+        </div>
       `;
     }
     connectedCallback() {
       // Get the code from the innerHTML and sanitize it
       const textarea = this.shadowRoot.querySelector('textarea');
-      setTimeout(() => {
-        const code = this.textContent;
-         this.render(code)
-      })
+      this.render(this.getAttribute("code") ?? '');
 
       textarea.oninput = (e) => this.render(e.target.value)
       textarea.onkeydown = function(e){
@@ -109,6 +125,8 @@ customElements.define(
         textarea.textContent = code;
         const codeElement = this.shadowRoot.querySelector('#highlighed-code');
         codeElement.innerHTML = this.highlightJS(code);
+        const fileNameEl = this.shadowRoot.querySelector('.file-name');
+        fileNameEl.innerHTML = this.getAttribute("filename") ?? '';
     }
 
     highlightJS(code) {
