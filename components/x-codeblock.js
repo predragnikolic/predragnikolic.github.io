@@ -28,6 +28,7 @@ customElements.define(
         }
 
         textarea {
+          box-sizing: border-box;
           outline: none;
           background: transparent;
           color: transparent;
@@ -46,7 +47,7 @@ customElements.define(
 
         #highlighed-code, textarea {
           min-height: 1.6rem;
-          max-width: 80ch;
+          max-width: 100%;
           font-size: 0.9rem;
           tab-size : 4;
         }
@@ -131,6 +132,7 @@ customElements.define(
         while (i < code.length) {
           const char = code[i];
           let twoChars = code[i] + (code[i+1] ?? '');
+          let threeChars = code[i] + (code[i+1] ?? '') + (code[i+2] ?? '');
 
           if (/\s/.test(char)) {
             let whitespace = '';
@@ -139,6 +141,18 @@ customElements.define(
               i++;
             }
             tokens.push({ type: 'whitespace', value: whitespace });
+            continue;
+          }
+
+          if (twoChars === '//') {
+            let comment = twoChars;
+            i+=2;
+            while (i < code.length && code[i] !== '\n') {
+              twoChars = code[i] + (code[i+1] ?? '')
+              comment += code[i];
+              i += 1;
+            }
+            tokens.push({ type: 'comment', value: comment });
             continue;
           }
 
@@ -153,6 +167,22 @@ customElements.define(
             if (i < code.length) {
               comment += code[i];
               i++;
+            }
+            tokens.push({ type: 'comment', value: comment });
+            continue;
+          }
+
+          if (threeChars === '<--') {
+            let comment = threeChars;
+            i+=3;
+            while (i < code.length && threeChars !== '-->') {
+              threeChars = code[i] + (code[i+1] ?? '') + (code[i+2] ?? '')
+              comment += code[i];
+              i += 1;
+            }
+            if (i < code.length) {
+              comment += code[i] + code[i+1];
+              i+=2;
             }
             tokens.push({ type: 'comment', value: comment });
             continue;
