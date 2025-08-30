@@ -301,12 +301,18 @@ DATABASE_URL=postgres://user:password@host:5432/database</code>
   color: lch(from var(--bg) calc((49.44 - l) * infinity) 0 0);
 }
 </style>
-<x-codeblock class="mt-1">.text-based-on-background {
+<div class="flex"><x-codeblock class="mt-1 grow">.text-based-on-background {
   --bg: #ccc;
   background: var(--bg);
   color: lch(from var(--bg) calc((49.44 - l) * infinity) 0 0);
 }
 </x-codeblock>
+<x-codeblock class="mt-1 grow">.text-based-on-background {
+  --bg: #ccc;
+  background: var(--bg);
+  color: lch(from var(--bg) calc((49.44 - l) * infinity) 0 0);
+}
+</x-codeblock></div>
 <div style="--bg: #191622; padding: 6rem;" class="text-based-on-background rounded mt-1">
   Text based on background
 </div>

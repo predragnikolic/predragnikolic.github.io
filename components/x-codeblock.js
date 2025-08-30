@@ -130,6 +130,7 @@ customElements.define(
 
         while (i < code.length) {
           const char = code[i];
+          let twoChars = code[i] + (code[i+1] ?? '');
 
           if (/\s/.test(char)) {
             let whitespace = '';
@@ -138,6 +139,22 @@ customElements.define(
               i++;
             }
             tokens.push({ type: 'whitespace', value: whitespace });
+            continue;
+          }
+
+          if (twoChars === '/*') {
+            let comment = twoChars;
+            i++;
+            while (i < code.length && twoChars !== '*/') {
+              twoChars = code[i] + (code[i+1] ?? '')
+              comment += code[i];
+              i += 1;
+            }
+            if (i < code.length) {
+              comment += code[i];
+              i++;
+            }
+            tokens.push({ type: 'comment', value: comment });
             continue;
           }
 
@@ -223,6 +240,8 @@ customElements.define(
               return `<span class="syntax-number">${token.value}</span>`;
             case 'function':
               return `<span class="syntax-function">${token.value}</span>`;
+            case 'comment':
+              return `<span class="syntax-comment">${token.value}</span>`;
             case 'operator':
               return `<span class="syntax-operator">${token.value}</span>`;
             default:
