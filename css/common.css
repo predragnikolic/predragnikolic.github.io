@@ -192,13 +192,8 @@
 
 .big-text {
     font-family: var(--font);
-<<<<<<< Updated upstream
     font-size: 38px;
     letter-spacing: 2px;
-=======
-    font-size: 30px;
-    letter-spacing: 1.5px;
->>>>>>> Stashed changes
     margin-bottom: 0;
 }
 
