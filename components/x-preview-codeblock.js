@@ -11,7 +11,7 @@ customElements.define(
     connectedCallback() {
         this.innerHTML = `
         <style>
-        :host {
+        .x-preview-codeblock {
           display: flex;
           align-content: start;
           flex-wrap: wrap;
@@ -29,7 +29,7 @@ customElements.define(
           }
 
         </style>
-        <div id="html"></div>
+        <section class="x-preview-codeblock"><div id="html"></div></section>
       `;
       this.setAttribute("id", this.uuid)
       // Get the code from the innerHTML and sanitize it

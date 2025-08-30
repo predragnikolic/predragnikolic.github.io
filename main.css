@@ -88,6 +88,8 @@ hr {
     gap: 1rem;
 }
 .grid-code > * {
+    flex-basis: 40%;
+    flex-grow: 1;
     width: 100%;
 }
 
