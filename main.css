@@ -7,13 +7,13 @@
 
 .font-bukyVede {
     font-family: var(--font);
-    letter-spacing: 2px;
+    letter-spacing: 3px;
 }
 
 :root {
-    --text: #282c39;
-    --b-color: #00000010;
-    --background: #fff;
+    --text: #fff;
+    --b-color: #ffffff10;
+    --background: #000000;
     --ac-color: #fccb9e;
     --rounded: 1rem;
     --font: bukyVede, "Yeseva One";
@@ -88,7 +88,7 @@ hr {
     gap: 1rem;
 }
 .grid-code > * {
-    flex-basis: 40%;
+    flex-basis: 100%;
     flex-grow: 1;
     width: 100%;
 }

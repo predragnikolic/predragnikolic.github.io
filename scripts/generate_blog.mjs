@@ -46,11 +46,9 @@ readdirSync(postsDir).forEach(file => {
     const layout = readFileSync(path.join(postsDir, 'base', 'layout.html'), { encoding: 'utf8' })
     const titleAndDecription = `
       <h1 class="blog_title">${meta.title}</h1>
-      <div class='flex blog_meta flex-wrap' style='gap: 10px'>
+      <!--<div class='flex blog_meta flex-wrap' style='gap: 10px'>
         ${new Intl.DateTimeFormat(meta.language, {month: 'long', year: 'numeric', day: 'numeric'}).format(new Date(meta.date))}
-        ${meta.tags.length ? "<span>-</span>": '' }
-        ${meta.tags.map(tag => `<div class="tag">${tag}</div>`).join('')}
-      </div>
+      </div>-->
       <p class="blog_description">${meta.description}</p>
     `
 
@@ -58,6 +56,7 @@ readdirSync(postsDir).forEach(file => {
       .replace('<!-- {{TITLE_DESCRIPTION}} -->', titleAndDecription)
       .replace('<!--  {{BLOG_POST}}  -->', content)
       .replace('<!-- {{BLOG_META}}-->', metaContent)
+
     writeFileSync(`./blog/${meta.slug}`, gluedTogetherBlogPost);
 });
 

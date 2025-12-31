@@ -78,7 +78,7 @@ customElements.define(
       ];
       [].forEach.call(graphs, (g) => {
         g.style.setProperty("--color", this._random(this._random(colorSet)));
-        g.style.filter = "grayscale(0.5)";
+        g.style.filter = "grayscale(0.1)";
         g.style.setProperty(
           "--corner",
           this._random([

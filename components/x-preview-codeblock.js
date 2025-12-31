@@ -21,6 +21,8 @@ customElements.define(
           overflow-x: auto;
           border: 0.1rem solid var(--text);
           border-radius: 1rem;
+          background: #fff;
+          color: #000;
           background-image: radial-gradient(#00000020 1px, transparent 0);
           background-size: 10px 10px;
           background-position: -20px -20px;

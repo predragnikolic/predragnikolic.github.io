@@ -1,6 +1,7 @@
 .blog_body {
-	background: #fafafa;
-	color: #333;
+	background: url("data:image/svg+xml,%3Csvg viewBox='0 0 600 600' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='2' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' opacity='0.2' filter='url(%23noiseFilter)'/%3E%3C/svg%3E"), linear-gradient(to right, #000, #333);
+	/*background:  linear-gradient(to right, #000, #333);*/
+	color: #fafafa;
 	font-family: "Jura";
 }
 
@@ -13,7 +14,11 @@ h3 {
 }
 .blog_body h2,
 .blog_body h3 {
-	font-size: 2rem;
+	font-size: 3rem;
+}
+
+.blog a {
+	color: var(--ac-color);
 }
 
 .blog h2,
@@ -52,7 +57,7 @@ h3 {
 	margin-top: 0;
 	font-family: var(--font);
 	letter-spacing: 1.5px;
-	font-size: 2.7rem;
+	font-size: 3rem;
 	animation: slideUp 0.3s backwards;
 	animation-delay: 0.2s;
 }
@@ -165,11 +170,13 @@ h3 {
 .blog {
 	font-size: 18px;
 	line-height: 1.9;
+	letter-spacing: 1.1px;
 }
 
 .blog code {
 	font-family: "Jura";
-	background: #fff;
+	background: #333;
+	color: var(--text);
 	padding: 0.1rem 0.4rem;
 	border-radius: 0.4rem;
 	border: 1px solid var(--b-color);

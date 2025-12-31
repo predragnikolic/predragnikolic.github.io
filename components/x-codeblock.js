@@ -13,7 +13,7 @@ customElements.define(
           flex-wrap: wrap;
           white-space: pre;
           font-family: "Jura";
-          background: #191622;
+          background: #000000;
           color: #fff;
           --padding: 1rem;
           border-radius: 1rem;
@@ -96,7 +96,7 @@ customElements.define(
 
         }
         </style>
-        <section style="width: 100%; position: sticky; top: 0; background: #191622; z-index:1; left:0;"><div class="file-name">Filename.css</div></section>
+        <section style="width: 100%; position: sticky; top: 0; background: #000000; z-index:1; left:0;"><div class="file-name">Filename.css</div></section>
         <div style="position: relative; display: flex">
           <textarea></textarea>
           <code id="highlighed-code"></code>

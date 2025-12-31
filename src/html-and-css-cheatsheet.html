@@ -278,9 +278,9 @@ class Path {
     }, '');
     curve += ` Q ${points[0].x},${points[0].y} ${(points[0].x + points[1].x) / 2},${(points[0].y + points[1].y) / 2}`;
     if (this.pathIndex > 1) {
-      return `<path stroke="#000" filter="url(#f${this.pathIndex})" stroke-width="2" fill="transparent" d="${curve} Z"/>`;
+      return `<path stroke="#fff" filter="url(#f${this.pathIndex})" stroke-width="2" fill="transparent" d="${curve} Z"/>`;
     } else {
-      return `<path stroke="#000" stroke-width="2" fill="transparent" d="${curve} Z"/>`;
+      return `<path stroke="#fff" stroke-width="2" fill="transparent" d="${curve} Z"/>`;
     }
     
   }

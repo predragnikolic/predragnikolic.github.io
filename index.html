@@ -5,7 +5,7 @@
     <link rel="icon" href="/img/favicon.svg">
     <meta name="theme-color" content="#161e19">
     <meta charset="utf-8">
-    <title>Исток</title>
+    <title>Предраг Николић</title>
      <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" >
     <link href="https://fonts.googleapis.com/css2?family=Jura:wght@300..700&family=Noto+Serif+Display:ital,wght@0,100..900;1,100..900&family=Yeseva+One&display=swap" rel="stylesheet">
@@ -17,19 +17,18 @@
 <body>
     <header class='container flex mt-3 mb-1'>
         <a href='/' class="flex align-center"><img src='/img/favicon.svg' style="width: 72px; background: none; margin-right: 1rem;"/>
-                <span class="ml-3 font-bukyVede" style="font-size: 26px; letter-spacing: 1.5px;">Исток</span></a>
+                <span class="ml-3 font-bukyVede" style="font-size: 2rem; letter-spacing: 1.5px;"></span></a>
     </header>
 
-    <section class="flex justify-center align-center p-2 text-right" style="width:100%;">
+    <section class="flex justify-center align-center p-2 text-center" style="width:100%;">
         <canvas id="perlin-noise-bg" style="height: 100lvh; width:100%"></canvas>
         <div class="container p-2">
             <div class="flex flex-wrap-reverse justify-center gap-3 align-center">
                 <div>
                     <p class="big-text">Предраг Николић</p>
-    
                 </div>
                 <div>
-                    <img class="profile_image" src="./img/asd.jpg">
+                    <img class="profile_image" src="./img/compressed.jpg">
                     <section class="text-center mt-1 flex gap-1">
                         <a class="" style="height: 40px; display: inline-flex; justify-content: center; align-items: center; flex-grow: 1; background: #000; color: #fff; border-radius: 50px;" href="https://forms.gle/Joh9wy2jPGjaG2A67" target="_blank">
     <span style="white-space: nowrap; margin-bottom:2px;">Питајте</span>
@@ -45,12 +44,10 @@
     </section>
 
     <section class="min-100dvh full-width flex column">
-        <div class="container grow relative mt-3">
-            <h1 class="big-text">Блог</h1>
-
+        <div class="container grow relative mt-4">
             <ul class="timeline mt-3">
                 <li class="timeline_item year">
-                    <time class="block mb-1">2026</time>
+                    <time class="block">2026</time>
                 </li>
                 <li class="timeline_item">
                     <article>
@@ -63,7 +60,7 @@
                     </article>
                 </li>
                 <li class="timeline_item year">
-                    <time class="block mb-1">2025</time>
+                    <time class="block">2025</time>
                 </li>
                 <li class="timeline_item">
                     <article>
@@ -76,7 +73,7 @@
                     </article>
                 </li>
                 <li class="timeline_item year">
-                    <time class="block mb-1">2024</time>
+                    <time class="block">2024</time>
                 </li>
                 <li class="timeline_item">
                     <article>
@@ -84,7 +81,7 @@
                     </article>
                 </li>
                 <li class="timeline_item year">
-                    <time class="block mb-1">2023</time>
+                    <time class="block">2023</time>
                 </li>
             </ul>
             <div class="home_dots flex">
@@ -109,7 +106,11 @@
 
         let frame = 1
          const draw = () => {
-            ctx.fillStyle = "#fefefe"
+            let grad = ctx.createLinearGradient(0,0, 500,0);
+            grad.addColorStop(0, "#000");
+            grad.addColorStop(1, "#222");
+
+            ctx.fillStyle = grad;
             const gridWidth = canvas.width
             const gridHeight = canvas.height
             ctx.fillRect(0, 0, gridWidth, gridHeight)
@@ -127,7 +128,7 @@
                     const h = cellWidth * 0.4
                     const n = noise2D(x * 0.001 + frame, y * 0.001)
                     const m = noise2D(x * 0.003 + frame, y * 0.003)
-                    frame += 0.000003
+                    frame += 0.000005
                     const angle = n * Math.PI * 0.2
 
                     ctx.save()
@@ -137,15 +138,14 @@
 
                     ctx.beginPath()
                     ctx.moveTo(w * -0.5, 0)
-                    ctx.strokeStyle = "rgba(0, 0, 0," + 0.18 * m * Math.PI * 0.18 + ")"
+                    ctx.strokeStyle = "rgba(250, 250, 250," + 0.4 * m * Math.PI * 0.4 + ")"
                     ctx.lineWidth = 1.2
                     ctx.quadraticCurveTo(0, h * 0.3 * (n / 2), w * 0.3, 0); // Quadratic curve to create wave effect
                     ctx.stroke()
                     ctx.restore()
                 }
             }
-
-            // requestAnimationFrame(draw)
+            requestAnimationFrame(draw)
         }
 
         const setCanvasSize = () => {
@@ -158,7 +158,6 @@
         if (!isMobile) {
             window.addEventListener('resize', (e) => {
                 setCanvasSize()
-                draw()
             })
         }
     </script>
