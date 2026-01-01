@@ -40,6 +40,12 @@ customElements.define(
         helloEl.style.height = `${height}px`;
         shuffleChildrenWithFlip(helloEl);
       });
+
+      setInterval(() => {
+        const height = helloEl.getBoundingClientRect().height;
+        helloEl.style.height = `${height}px`;
+        shuffleChildrenWithFlip(helloEl);
+      }, 1000*15)
     }
     _random(array) {
       return array[Math.floor(Math.random() * array.length)];
