@@ -52,28 +52,10 @@ customElements.define(
       const graphs = this.shadowRoot.querySelectorAll(".graph");
       const colorSet = [
         [
-          "rgb(142, 151, 141)",
-          "rgb(151, 196, 173)",
-          "rgb(191, 237, 190)",
-          "rgb(230, 252, 217)",
-          "rgb(205, 242, 214)",
-          "transparent",
-        ],
-        [
-          "rgb(190, 206, 196)",
-          "rgb(104, 138, 124)",
-          "rgb(157, 124, 91)",
-          "rgb(227, 82, 65)",
-          "rgb(228, 145, 131)",
-          "transparent",
-        ],
-        [
           "rgb(132, 191, 195)",
-          "rgb(255, 245, 214)",
           "rgb(255, 184, 112)",
-          "rgb(217, 97, 83)",
           "rgb(0, 5, 17)",
-          "transparent",
+          "#fff",
         ],
       ];
       [].forEach.call(graphs, (g) => {

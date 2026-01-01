@@ -16,35 +16,22 @@
 </head>
 <body>
     <header class='container flex mt-3 mb-1'>
-        <a href='/' class="flex align-center"><img src='/img/favicon.svg' style="width: 72px; background: none; margin-right: 1rem;"/>
-                <span class="ml-3 font-bukyVede" style="font-size: 2rem; letter-spacing: 1.5px;"></span></a>
+        <a href='/' class="flex align-center"><img src='/img/favicon.svg' style="width: 72px; background: none; margin-right: 1rem; view-transition-name: logo"/>
+                <span class="ml-3 font-MonahOCS" style="font-size: 2rem; letter-spacing: 1.5px;">Предраг Николић</span></a>
     </header>
 
     <section class="flex justify-center align-center p-2 text-center" style="width:100%;">
         <canvas id="perlin-noise-bg" style="height: 100lvh; width:100%"></canvas>
-        <div class="container p-2">
+        <div class="container p-2 py-6">
             <div class="flex flex-wrap-reverse justify-center gap-3 align-center">
-                <div>
-                    <p class="big-text">Предраг Николић</p>
-                </div>
-                <div>
-                    <img class="profile_image" src="./img/compressed.jpg">
-                    <section class="text-center mt-1 flex gap-1">
-                        <a class="" style="height: 40px; display: inline-flex; justify-content: center; align-items: center; flex-grow: 1; background: #000; color: #fff; border-radius: 50px;" href="https://forms.gle/Joh9wy2jPGjaG2A67" target="_blank">
-    <span style="white-space: nowrap; margin-bottom:2px;">Питајте</span>
-                        </a>
-                        <a target="_blank" href="/rss.xml" title="RSS News Feed">
-                            <img src="/img/rss.svg" class="github_logo">
-                        </a>
-                    </section>
-                </div>
+                <img class="profile_image" src="./img/compressed.jpg">
             </div>
             </div>
         </div>
     </section>
 
     <section class="min-100dvh full-width flex column">
-        <div class="container grow relative mt-4">
+        <div class="container grow relative mt-2">
             <ul class="timeline mt-3">
                 <li class="timeline_item year">
                     <time class="block">2026</time>
@@ -84,9 +71,6 @@
                     <time class="block">2023</time>
                 </li>
             </ul>
-            <div class="home_dots flex">
-                <x-graph numbers="20" style="--size:350px;"></x-graph>
-            </div>
         </div>
 
         <footer class="container text-center mt-4 bt-2 p-2 flex align-center justify-end gap-1">
@@ -97,70 +81,6 @@
     </section>
 
     <script src="/components/x-graph.js"></script>
-    <script type="module">
-        import {createNoise2D} from "https://unpkg.com/simplex-noise@4.0.1/dist/esm/simplex-noise.js"
-
-        const noise2D = createNoise2D();
-        const canvas = document.querySelector('canvas')
-        const ctx = canvas.getContext('2d')
-
-        let frame = 1
-         const draw = () => {
-            let grad = ctx.createLinearGradient(0,0, 500,0);
-            grad.addColorStop(0, "#000");
-            grad.addColorStop(1, "#222");
-
-            ctx.fillStyle = grad;
-            const gridWidth = canvas.width
-            const gridHeight = canvas.height
-            ctx.fillRect(0, 0, gridWidth, gridHeight)
-            const rows = gridWidth > 2000 ? 50 : gridWidth > 800 ? 33 : gridWidth > 500 ? 18 : 18
-            const cols = gridWidth > 2000 ? 50 : gridWidth > 1000 ? 33 : gridWidth > 500 ? 18 : 9
-            const cells = rows * cols,
-                cellWidth = gridWidth / cols,
-                cellHeight = gridHeight / rows;
-
-            for (let row = 0; row < rows; row++) {
-                for (let col = 0; col < cols; col++) {
-                    const x = col * cellWidth,
-                        y = row * cellHeight;
-                    const w = cellWidth * 0.4
-                    const h = cellWidth * 0.4
-                    const n = noise2D(x * 0.001 + frame, y * 0.001)
-                    const m = noise2D(x * 0.003 + frame, y * 0.003)
-                    frame += 0.000005
-                    const angle = n * Math.PI * 0.2
-
-                    ctx.save()
-                    ctx.translate(x, y)
-                    ctx.translate(cellWidth * 0.5, cellHeight * 0.5)
-                    ctx.rotate(angle)
-
-                    ctx.beginPath()
-                    ctx.moveTo(w * -0.5, 0)
-                    ctx.strokeStyle = "rgba(250, 250, 250," + 0.4 * m * Math.PI * 0.4 + ")"
-                    ctx.lineWidth = 1.2
-                    ctx.quadraticCurveTo(0, h * 0.3 * (n / 2), w * 0.3, 0); // Quadratic curve to create wave effect
-                    ctx.stroke()
-                    ctx.restore()
-                }
-            }
-            requestAnimationFrame(draw)
-        }
-
-        const setCanvasSize = () => {
-            canvas.width = window.innerWidth
-            canvas.height = window.innerHeight
-        }
-        setCanvasSize()
-        draw()
-        const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-        if (!isMobile) {
-            window.addEventListener('resize', (e) => {
-                setCanvasSize()
-            })
-        }
-    </script>
 
 </body>
 </html>
