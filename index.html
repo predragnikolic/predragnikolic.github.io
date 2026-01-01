@@ -1,32 +1,38 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="/img/favicon.svg">
     <meta name="theme-color" content="#161e19">
     <meta charset="utf-8">
     <title>Предраг Николић</title>
-     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" >
-    <link href="https://fonts.googleapis.com/css2?family=Jura:wght@300..700&family=Noto+Serif+Display:ital,wght@0,100..900;1,100..900&family=Yeseva+One&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Jura:wght@300..700&family=Noto+Serif+Display:ital,wght@0,100..900;1,100..900&family=Yeseva+One&display=swap"
+        rel="stylesheet">
 
     <link rel="preload" href="/main.css" as="style" />
     <link rel="stylesheet" type="text/css" href="/main.css">
-    <meta name="description" content="Програмер из Ликодре."/>
+    <meta name="description" content="Програмер из Ликодре." />
 </head>
+
 <body>
     <header class='container flex mt-3 mb-1'>
-        <a href='/' class="flex align-center"><img src='/img/favicon.svg' style="width: 72px; background: none; margin-right: 1rem; view-transition-name: logo"/>
-                <span class="ml-3 font-MonahOCS" style="font-size: 2rem; letter-spacing: 1.5px;">Предраг Николић</span></a>
+        <a href='/' class="flex align-center"><img src='/img/favicon.svg'
+                style="width: 72px; background: none; margin-right: 1rem; view-transition-name: logo" />
+            <span class="ml-3" style="font-size: 2rem; letter-spacing: 1.5px;"></span></a>
     </header>
 
     <section class="flex justify-center align-center text-center" style="width:100%;">
         <canvas id="perlin-noise-bg" style="height: 100lvh; width:100%"></canvas>
         <div class="container py-6">
             <div class="flex flex-wrap-reverse justify-center gap-3 align-center">
+                <p class="big-text" style="font-family: bukyVede; width: 100%;">Предраг<br>Николић</p>
                 <img class="profile_image" src="./img/compressed.jpg">
             </div>
-            </div>
+        </div>
         </div>
     </section>
 
@@ -38,12 +44,14 @@
                 </li>
                 <li class="timeline_item">
                     <article>
-                        <a class='font-bukyVede md-text' href="/blog/find-color-scheme.html">Find Color Schemes for Sublime Text</a>
+                        <a class='font-bukyVede md-text' href="/blog/find-color-scheme.html">Find Color Schemes for
+                            Sublime Text</a>
                     </article>
                 </li>
                 <li class="timeline_item">
                     <article>
-                        <a class='font-bukyVede md-text' href="/blog/html-and-css-cheatsheet.html">HTML and CSS cheatsheet</a>
+                        <a class='font-bukyVede md-text' href="/blog/html-and-css-cheatsheet.html">HTML and CSS
+                            cheatsheet</a>
                     </article>
                 </li>
                 <li class="timeline_item year">
@@ -51,12 +59,16 @@
                 </li>
                 <li class="timeline_item">
                     <article>
-                        <a class='font-bukyVede md-text' href="/blog/pravoslavna-knjizara-is-live.html">"Православна Књижара" је пуштена</a>
+                        <a class='font-bukyVede md-text' href="/blog/pravoslavna-knjizara-is-live.html">"Православна
+                            Књижара" је пуштена</a>
+                        <p><a href="https://pravoslavnaknjizara.com" target="_blank"
+                                class="text-accent">pravoslavnaknjizara.com</a></p>
                     </article>
                 </li>
                 <li class="timeline_item">
                     <article>
-                        <a class='font-bukyVede md-text' href="/blog/visualize-your-database.html">Visualize your database</a>
+                        <a class='font-bukyVede md-text' href="/blog/visualize-your-database.html">Visualize your
+                            database</a>
                     </article>
                 </li>
                 <li class="timeline_item year">
@@ -64,7 +76,8 @@
                 </li>
                 <li class="timeline_item">
                     <article>
-                        <a class='font-bukyVede md-text' href="/blog/git-diff-view-0-6-0-release.html">GitDiffView 0.6.0 is released</a>
+                        <a class='font-bukyVede md-text' href="/blog/git-diff-view-0-6-0-release.html">GitDiffView 0.6.0
+                            is released</a>
                     </article>
                 </li>
                 <li class="timeline_item year">
@@ -72,6 +85,9 @@
                 </li>
             </ul>
         </div>
+
+        <div class="container flex align-center justify-center" style="min-height: 600px;"><x-graph numbers="30" style="--size: 600px; "></div>
+
 
         <footer class="container text-center mt-4 bt-2 p-2 flex align-center justify-end gap-1">
             <a target="_blank" href="/rss.xml">
@@ -83,4 +99,5 @@
     <script src="/components/x-graph.js"></script>
 
 </body>
+
 </html>

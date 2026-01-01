@@ -188,7 +188,6 @@
 }
 
 .md-text {
-    font-family: var(--font);
     font-size: 1.5rem;
     letter-spacing: 1.5px;
     margin-bottom: 0;
@@ -196,7 +195,7 @@
 
 .big-text {
     font-size: 3rem;
-    letter-spacing: 1rem;
+    letter-spacing: 2rem;
     margin-bottom: 0;
 }
 
@@ -253,7 +252,6 @@
 }
 
 .timeline_item.year {
-    font-family: bukyVede;
     pointer-events: none;
     margin: 0rem;
     writing-mode: sideways-rl;
