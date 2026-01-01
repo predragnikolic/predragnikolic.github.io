@@ -199,6 +199,12 @@
     margin-bottom: 0;
 }
 
+@media (max-width: 600px) {
+    .big-text {
+        font-size: 2.2rem;
+    }
+}
+
 .profile_description {
     font-size: 18px;
     font-weight: 200;
