@@ -259,7 +259,7 @@
 
 .timeline_item.year time {
     font-size: 3em;
-    color: #595664;
+    color: #777;
     font-weight: bold;
     transform: translateY(-2.5rem);
 }
