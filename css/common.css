@@ -236,19 +236,19 @@
 }
 
 .timeline_item article {
-    margin-left: 1rem;
+    margin-left: 3rem;
 }
 
 .timeline_item:after {
     content: "";
     z-index: 1;
     position: absolute;
-    top: 4px;
-    left: -1.3rem;
-    width: 1rem;
-    height: 1rem;
+    top: -2px;
+    left: -1.8rem;
+    width: 2rem;
+    height: 2rem;
     border-radius: 50%;
-    border: 0.1rem solid var(--text);
+    border: 0.1rem solid transparent;
     background: #efefef;
 }
 
@@ -260,13 +260,14 @@
 
 .timeline_item.year {
     pointer-events: none;
-    margin: 0rem;
-    writing-mode: sideways-rl;
+    margin-right: 3rem;
+    margin: 1rem;
 }
 
 .timeline_item.year time {
-    font-size: 3em;
-    color: #777;
+    font-family: bukyVede;
+    font-size: 2em;
+    opacity: 0.3;
     font-weight: bold;
     transform: translateY(-2.5rem);
 }
