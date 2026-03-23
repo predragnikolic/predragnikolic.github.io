@@ -175,7 +175,7 @@
 
 .profile_image {
     width: 100%;
-    max-width: 18rem;
+    max-width: 16rem;
     aspect-ratio: 1 / 1;
     border-radius: 40px;
     object-fit: cover;
